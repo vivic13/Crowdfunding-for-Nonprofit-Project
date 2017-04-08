@@ -1,0 +1,15 @@
+<h1>產品首頁</h1>
+
+<div class="container">
+	<% @products.each do |p| %>
+		<table>
+			<tr>
+				<td>
+					<%= p.name %>
+				</td>
+			</tr>
+
+		</table>
+	<% end %>
+
+</div>

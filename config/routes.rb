@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ 
+	resources :products, only:[:index,:show] #前台只能看index和show頁面
+
+
 end
