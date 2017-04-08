@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408052311) do
+ActiveRecord::Schema.define(version: 20170408084502) do
 
   create_table "npos", force: :cascade do |t|
     t.integer  "product_id"
@@ -35,9 +35,7 @@ ActiveRecord::Schema.define(version: 20170408052311) do
     t.string   "description"
     t.integer  "lucky_number"
     t.string   "lucky_person"
-    t.integer  "people"
     t.integer  "min_amount"
-    t.string   "progress"
     t.integer  "project_id"
     t.text     "rule"
     t.string   "donation_file"
@@ -45,6 +43,8 @@ ActiveRecord::Schema.define(version: 20170408052311) do
     t.text     "cost_detail"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "npo_id"
+    t.index ["npo_id"], name: "index_products_on_npo_id"
     t.index ["project_id"], name: "index_products_on_project_id"
   end
 

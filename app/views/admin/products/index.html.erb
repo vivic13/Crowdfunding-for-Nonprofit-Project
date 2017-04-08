@@ -1,0 +1,22 @@
+<h1>產品後台首頁</h1>
+
+
+
+<div class="containere">
+	<%= link_to "新增產品", new_admin_product_path(@product) %>
+	<%= link_to "查看Npo",admin_npos_url %>
+</div>
+
+<div class="container">
+	<% @products.each do |p| %>
+		<table>
+			<tr>
+				<td>
+					<%= p.name %>
+				</td>
+			</tr>
+
+		</table>
+	<% end %>
+
+</div>

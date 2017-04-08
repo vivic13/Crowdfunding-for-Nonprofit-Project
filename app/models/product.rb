@@ -1,4 +1,4 @@
 class Product < ApplicationRecord
-	has_many :npos, dependent: :destroy
+	belongs_to :npo
 	has_many :photos, dependent: :destroy
 end

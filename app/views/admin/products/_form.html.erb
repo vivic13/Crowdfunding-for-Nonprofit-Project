@@ -1,0 +1,56 @@
+<%= form_for([:admin, @product]) do |f| %>
+	<div class="form_group">
+		<%= f.label :name, "產品名稱:" %><br>
+		<%= f.text_field :name %>
+	</div>
+	<div class="form_group">
+		<%= f.label :description, "產品簡述:" %><br>
+		<%= f.text_field :description %>
+	</div>
+	<div class="form_group">
+		<%= f.label :photo_ids, "上傳照片:" %><br>
+		<%= f.text_field :photo_ids %>
+	</div>
+	<div class="form_group">
+		<%= f.label :rule, "中獎遊戲規則:" %><br>
+		<%= f.text_field :rule %>
+	</div>
+	<div class="form_group">
+		<%= f.label :npo_id,"要捐贈的NPO:"%><br>
+      <% Npo.all.each do |s| %>
+      <%= f.radio_button :npo_id,s.id%><%= s.name%>
+    <%end%>
+	</div>
+
+
+
+	<div class="form_group">
+		<%= f.label :min_amount, "最低集資金額:" %><br>
+		<%= f.text_field :min_amount %>
+	</div>
+	<div class="form_group">
+		<%= f.label :cost, "成本總金額:" %><br>
+		<%= f.text_field :cost %>
+	</div>
+	<div class="form_group">
+		<%= f.label :cost_detail, "成本細節說明:" %><br>
+		<%= f.text_field :cost_detail %>
+	</div>
+	
+
+	<%# if @product.donation.amount == @product.min_amount %>  
+		<h2>確定募資成功後</h2>
+		<div class="form_group">
+			<%= f.label :lucky_number, "中獎號碼:" %><br>
+			<%= f.text_field :lucky_number %>
+		</div>
+
+		<div class="form_group">
+			<%= f.label :donation_file, "捐款證明:" %><br>
+			<%= f.text_field :donation_file %>
+		</div>
+	<% end %>
+	<%= f.submit class:"btn btn-default" %>
+<%# end %>
+
+
