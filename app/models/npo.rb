@@ -1,0 +1,2 @@
+class Npo < ApplicationRecord
+end
