@@ -15,7 +15,7 @@ class Admin::ProductsController < ApplicationController
 
 	def new
 		@product = Product.new
-		2.times {@photos = @product.photos.build}
+		5.times {@photos = @product.photos.build}
 
 	end
 
@@ -23,14 +23,10 @@ class Admin::ProductsController < ApplicationController
 		@product = Product.new(product_params)	
 		
 		if @product.save
-			
-
-      
-
-
 			respond_to do |format|
 				  format.html { redirect_to admin_product_path(@product)}
-		
+				  format.js	
+				  
 			end		
 		else 
 			render :new
@@ -38,6 +34,9 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def edit 
+		a = @product.photos.count
+		b = 5-a
+		b.times {@photos = @product.photos.build}
 	end
 
 	def update
@@ -45,7 +44,7 @@ class Admin::ProductsController < ApplicationController
 			
 			respond_to do |format|
 				  format.html { redirect_to admin_product_path(@product)}
-
+				  format.js
 			end		
 		else 
 			render :edit

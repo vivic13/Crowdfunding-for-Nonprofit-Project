@@ -1,17 +1,17 @@
 <h1>產品後台詳細資訊</h1>
 
-<%= @product.name %>
-<%= @product.rule %>
-<%= @product.description %>
-<%= @product.min_amount %>
-<%= @product.cost%>
-<%= @product.cost_detail %>
+<%= @product.name %> <br>
+<%= @product.rule %><br>
+<%= @product.description %><br>
+<%= @product.min_amount %><br>
+<%= @product.cost%><br>
+<%= @product.cost_detail %><br>
 
-<%= @product.npo.name %>
+<%= @product.npo.name %><br>
 
 <% @product.photos.each do|p| %>
 
-	<%= link_to image_tag(p.image.url(:medium))  %>
+	<%= link_to image_tag(p.image.url(:medium))  %><br>
 
 <% end %>
 
@@ -19,17 +19,17 @@
 
 
 <% if @product.lucky_number%>
-	<%= @product.lucky_number %>
+	<%= @product.lucky_number %><br>
 <% end %>
 
 <% if @product.lucky_person %>
-	<%= @product.lucky_person %>
+	<%= @product.lucky_person %><br>
 <% end %>
 
 <% if @product.donation_file %>
-	<%= @product.donation_file %>
+	<%= @product.donation_file %><br>
 <% end %>
 
 <%= link_to "刪除", admin_product_path(@product) ,method: :delete, data:{ confirm: "Are you sure?"} %>
-
+<%= link_to "編輯", edit_admin_product_path(@product) %>
 <%= link_to "回上ㄧ頁", admin_products_path %>

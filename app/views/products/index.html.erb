@@ -3,9 +3,10 @@
 <div class="container">
 	<% @products.each do |p| %>
 		<table>
+			
 			<tr>
 				<td>
-					<%= p.name %>
+					<%= p.name %><%= link_to "show", product_path(p)   %>
 				</td>
 			</tr>
 

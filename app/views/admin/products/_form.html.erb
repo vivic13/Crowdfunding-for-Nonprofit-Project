@@ -12,48 +12,47 @@
 <%= form_for ([:admin, @product])  do |f| %>
 	<div class="form_group">
 		<%= f.label :name, "產品名稱:" %><br>
-		<%= f.text_field :name %>
+		<%= f.text_field :name %><br>
 	</div>
 	<div class="form_group">
 		<%= f.label :description, "產品簡述:" %><br>
-		<%= f.text_field :description %>
+		<%= f.text_field :description %><br>
 	</div>
+	
 	<div class="form_group">
+		<ol>
+			<%= f.fields_for :photos do |p|  %>
 
-		
-		<%= f.fields_for :photos do |p|  %>
-			<%= p.file_field :image %>
-			<% unless p.object.new_record? %>
-    		<%= p.label :_destroy, 'Remove:' %>
-    		<%= p.check_box :_destroy %>
+				<li><%= p.label :image , "產品照片 :" %>
+				<%= p.file_field :image %></li>
+
 			<% end %>
-
-		<% end %>
+		</ol>
 	</div>
 	<div class="form_group">
 		<%= f.label :rule, "中獎遊戲規則:" %><br>
-		<%= f.text_field :rule %>
+		<%= f.text_field :rule %><br>
 	</div>
 	<div class="form_group">
 		<%= f.label :npo_id,"要捐贈的NPO:"%><br>
       <% Npo.all.each do |s| %>
       <%= f.radio_button :npo_id,s.id%><%= s.name%>
-    <%end%>
+    <%end%><br>
 	</div>
 
 
 
 	<div class="form_group">
 		<%= f.label :min_amount, "最低集資金額:" %><br>
-		<%= f.text_field :min_amount %>
+		<%= f.text_field :min_amount %><br>
 	</div>
 	<div class="form_group">
 		<%= f.label :cost, "成本總金額:" %><br>
-		<%= f.text_field :cost %>
+		<%= f.text_field :cost %><br><br>
 	</div>
 	<div class="form_group">
 		<%= f.label :cost_detail, "成本細節說明:" %><br>
-		<%= f.text_field :cost_detail %>
+		<%= f.text_field :cost_detail %><br>
 	</div>
 	
 
@@ -72,5 +71,3 @@
 	<% end %>
 	
 <%# end %>
-
-
