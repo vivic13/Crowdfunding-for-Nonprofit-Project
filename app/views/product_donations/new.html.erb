@@ -1,0 +1,16 @@
+<% if @donation.errors.present?%>
+  <ul>
+        <% @donation.errors.each do |error, message|%>
+          <li> <%= "#{error.capitalize}  #{message}" %></li>
+        <% end %>
+  </ul>
+<% end%>
+
+<%= form_for ([@product, @product.donations.build] ) do |f| %>  
+
+	<%= f.label :amount,"金額:" %>
+	<%= f.text_field :amount %>
+	
+	<%= f.submit "送出" ,class:"btn btn-default"%> 
+
+<% end %> 

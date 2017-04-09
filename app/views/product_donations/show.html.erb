@@ -1,0 +1,12 @@
+<h1>謝謝您的愛心.....，您的付款資訊如下:</h1>
+
+<div class="container">
+	<%= @donation.user.name %>
+	<%= @donation.amount %>
+	<%= @donation.created_at %>
+
+
+</div>
+
+<%= link_to '回到產品頁面', products_path ,class:"btn btn-default"%>
+

@@ -1,3 +1,11 @@
 <h1>產品詳細資訊</h1>
 
+<div class="container">
+	<%= link_to '購買', new_product_donation_path(@product) %>
+</div>
+
 <%= @product.name %>
+
+<%= link_to '回到產品頁面', products_path ,class:"btn btn-default"%>
+
+

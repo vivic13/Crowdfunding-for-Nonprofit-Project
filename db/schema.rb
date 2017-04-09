@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408142349) do
+ActiveRecord::Schema.define(version: 20170409084605) do
+
+  create_table "donations", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.integer  "amount"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_donations_on_product_id"
+    t.index ["user_id"], name: "index_donations_on_user_id"
+  end
 
   create_table "npos", force: :cascade do |t|
     t.integer  "product_id"
