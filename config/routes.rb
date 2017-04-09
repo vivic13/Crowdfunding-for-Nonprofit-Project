@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	namespace :admin do
   	resources :products  #後台CRUD都可
   	resources :npos 
+  	resources :users
 	end
 
 end

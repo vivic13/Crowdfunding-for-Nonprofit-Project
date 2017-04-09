@@ -1,0 +1,28 @@
+<h1>後台所有users頁面</h1>
+
+<div class="container">
+	<%= link_to '回後台首頁', admin_products_path %>
+</div>
+
+<div class="container">
+	<% @users.each do |u| %>
+		<div class="col-md-4 text-center">
+			<table class="table table-bordered">		
+				<tr>
+					<th class="table-info text-center">user id : <%= u.id%></th>
+				</tr>
+				<tr>
+					<td>usrer name : <%= u.name %></td>
+				</tr>
+				<tr>
+				 	<td><%= u.email %></td>
+				</tr>
+				<tr> 
+					<td><%= link_to 'Detail' ,admin_user_path(u)%></td>
+				</tr>
+
+	 		</table>
+		</div>
+	<% end %>
+</div>
+
