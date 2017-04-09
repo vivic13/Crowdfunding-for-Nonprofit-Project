@@ -15,13 +15,19 @@ class Admin::ProductsController < ApplicationController
 
 	def new
 		@product = Product.new
+		2.times {@photos = @product.photos.build}
+
 	end
 
 	def create
 		@product = Product.new(product_params)	
-
+		
 		if @product.save
 			
+
+      
+
+
 			respond_to do |format|
 				  format.html { redirect_to admin_product_path(@product)}
 		
@@ -39,7 +45,7 @@ class Admin::ProductsController < ApplicationController
 			
 			respond_to do |format|
 				  format.html { redirect_to admin_product_path(@product)}
-	
+
 			end		
 		else 
 			render :edit
@@ -66,8 +72,9 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def product_params
-		params.require(:product).permit(:name,:progress,:description,:rule ,:min_amount,:cost,:cost_detail,:people,:lucky_number,:donation_file ,:npo_id)
+		params.require(:product).permit(:name,:progress,:description,:rule ,:min_amount,:cost,:cost_detail,:people,:lucky_number,:donation_file ,:npo_id, :photos_attributes => [:id, :image, :_destroy])
 	end
+
 
 
 end

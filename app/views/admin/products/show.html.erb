@@ -9,6 +9,13 @@
 
 <%= @product.npo.name %>
 
+<% @product.photos.each do|p| %>
+
+	<%= link_to image_tag(p.image.url(:medium))  %>
+
+<% end %>
+
+
 
 
 <% if @product.lucky_number%>
@@ -24,3 +31,5 @@
 <% end %>
 
 <%= link_to "刪除", admin_product_path(@product) ,method: :delete, data:{ confirm: "Are you sure?"} %>
+
+<%= link_to "回上ㄧ頁", admin_products_path %>
