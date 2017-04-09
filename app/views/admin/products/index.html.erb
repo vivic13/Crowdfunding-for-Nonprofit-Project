@@ -3,17 +3,18 @@
 
 
 <div class="containere">
-	<%= link_to "新增產品", new_admin_product_path(@product) %>
-	<%= link_to "查看Npo",admin_npos_url %>
-	<%= link_to "查看User",admin_users_url %>
+	<%= link_to "新增產品", new_admin_product_path(@product),class:"btn btn-default" %>
+	<%= link_to "查看Npo",admin_npos_url,class:"btn btn-default" %>
+	<%= link_to "查看User",admin_users_url,class:"btn btn-default" %>
 </div>
 
 <div class="container">
 	<% @products.each do |p| %>
-		<table>
+	<div class="col-md-6 text-center">
+		<table class="table table-bordered">
 			<tr>
 				<td>
-					<%= p.name %>
+					產品名稱<%= p.name %>
 				</td>
 			</tr>
 			<tr>
@@ -23,6 +24,7 @@
 			</tr>
 
 		</table>
+	</div>
 	<% end %>
 
 </div>
