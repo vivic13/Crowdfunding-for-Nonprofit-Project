@@ -39,6 +39,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'kaminari'
 
+gem "font-awesome-rails"
+
 
 
 # Use Capistrano for deployment
