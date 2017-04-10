@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   	resources :users
 	end
 
+	namespace :api, defaults:{ format: :json }do
+
+  end 
+
 end
