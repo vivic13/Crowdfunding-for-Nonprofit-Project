@@ -41,7 +41,9 @@ gem 'kaminari'
 
 gem "font-awesome-rails"
 
+gem 'active_model_serializers' 
 
+gem "simple_form"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
