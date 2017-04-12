@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApiController
+  before_action :check_admin
   respond_to :json
   
   def index
@@ -41,5 +42,12 @@ class Api::V1::UsersController < ApiController
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation) 
+  end
+
+  
+  def check_admin 
+    unless current_user.role == "admin"
+      raise ActiveRecord::RecordNotFound      
+    end
   end
 end
