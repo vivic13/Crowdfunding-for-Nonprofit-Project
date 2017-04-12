@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409084605) do
+ActiveRecord::Schema.define(version: 20170412105904) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "user_id"
-    t.integer  "amount"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "payment_status", default: "new"
+    t.integer  "unit",           default: 0
+    t.text     "lottery_number"
     t.index ["product_id"], name: "index_donations_on_product_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
@@ -49,15 +51,19 @@ ActiveRecord::Schema.define(version: 20170409084605) do
     t.string   "description"
     t.integer  "lucky_number"
     t.string   "lucky_person"
-    t.integer  "min_amount"
     t.integer  "project_id"
     t.text     "rule"
     t.string   "donation_file"
     t.integer  "cost"
     t.text     "cost_detail"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "npo_id"
+    t.integer  "unit"
+    t.integer  "unit_price"
+    t.date     "due_date"
+    t.integer  "donation_unit_count"
+    t.text     "lottery_old_number"
     t.index ["npo_id"], name: "index_products_on_npo_id"
     t.index ["project_id"], name: "index_products_on_project_id"
   end
