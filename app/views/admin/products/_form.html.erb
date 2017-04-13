@@ -58,6 +58,12 @@
 		<%= f.label :unit_price, "單位價格:" %><br>
 		<%= f.text_field :unit_price %><br>
 	</div>
+	<div class="form_group">
+		<%= f.radio_button :is_public,true,:value => true %>
+		<%= f.label :is_public, "公布"%>
+		<%= f.radio_button :is_public,false,:value => false %>		
+		<%= f.label :is_public, "尚未公布"%>
+	</div>
 	
 
 	<% if @product.donation_unit_count == @product.unit  %>  

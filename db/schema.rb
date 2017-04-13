@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413035014) do
+ActiveRecord::Schema.define(version: 20170413161053) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "product_id"
@@ -56,14 +56,15 @@ ActiveRecord::Schema.define(version: 20170413035014) do
     t.string   "donation_file"
     t.integer  "cost"
     t.text     "cost_detail"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "npo_id"
     t.integer  "unit"
     t.integer  "unit_price"
     t.date     "due_date"
     t.integer  "donation_unit_count", default: 0
     t.text     "lottery_old_number"
+    t.boolean  "is_public",           default: false
     t.index ["npo_id"], name: "index_products_on_npo_id"
     t.index ["project_id"], name: "index_products_on_project_id"
   end

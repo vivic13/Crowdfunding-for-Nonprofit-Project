@@ -1,8 +1,8 @@
-<h1>產品後台首頁</h1>
+<h1 class="text-center">產品後台首頁</h1>
 
 
 
-<div class="containere">
+<div class="container text-center">
 	<%= link_to "新增產品", new_admin_product_path,class:"btn btn-default" %>
 	<%= link_to "查看Npo",admin_npos_url,class:"btn btn-default" %>
 	<%= link_to "查看User",admin_users_url,class:"btn btn-default" %>
@@ -15,12 +15,17 @@
 		<table class="table table-bordered">
 			<tr>
 				<td>
-					產品名稱<%= p.name %>
+					產品名稱:<%= p.name %>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<%= link_to "show", admin_product_path(p) %>
+					是否公開:<%= p.is_public %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= link_to "查看", admin_product_path(p) %>
 				</td>
 			</tr>
 

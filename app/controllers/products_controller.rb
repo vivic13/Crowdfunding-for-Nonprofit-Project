@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
 	def index
-		@products = Product.all
+		@products = Product.where(:is_public => true)
 	end
 
 	def show 
