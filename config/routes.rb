@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 	root "products#index" 
 
 	namespace :admin do
-  	resources :products  #後台CRUD都可
+  	resources :products do #後台CRUD都可
+      resources :donation, only:[:index], :controller =>"product_donations"
+    end
   	resources :npos 
   	resources :users
 	end

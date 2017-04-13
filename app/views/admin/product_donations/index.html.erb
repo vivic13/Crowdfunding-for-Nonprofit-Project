@@ -1,0 +1,22 @@
+<div class="container">
+	<% @donations.each do |d| %>
+	 <div class="col-md-5">
+	 <table>
+	 	<th>
+	 		<%= d.id %>
+	 	</th>
+	 	<tr>
+	 		<td>購買時間:<%= d.created_at %></td>
+	 	</tr>
+	 	<tr>
+	 		<td>購買單位:<%= d.unit %></td>
+	 	</tr>
+	 	<tr>
+	 		<td>樂透號碼:<%= d.lottery_number %></td>
+	 	</tr>
+	</table>
+	 </div>
+	<% end %>
+</div>
+
+<%= link_to "回上ㄧ頁", admin_product_path(@product) ,class:"btn btn-default"%>
