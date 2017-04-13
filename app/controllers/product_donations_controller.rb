@@ -9,13 +9,15 @@ class ProductDonationsController < ApplicationController
 	def create 
 		@donation = @product.donations.build(donation_params)
 		@donation.user_id = current_user.id
-		if @donation.save
+
+		if @donation.save		
 			redirect_to product_donation_path(@product,@donation)
 		else
 			render :new
 		end
 
 	end
+
 
 	def show 
 		@donation = @product.donations.find(params[:id])
@@ -28,8 +30,8 @@ class ProductDonationsController < ApplicationController
 	end
 
 	def donation_params
-		params.require(:donation).permit(:amount)
+		params.require(:donation).permit(:unit,:status, :payment_status,:lottery_number)
 	end
 
-
+	
 end

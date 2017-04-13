@@ -8,8 +8,8 @@
 
 <%= form_for ([@product, @product.donations.build] ) do |f| %>  
 
-	<%= f.label :amount,"金額:" %>
-	<%= f.text_field :amount %>
+	<%= f.label :unit,"單位:" %>
+	<%= f.text_field :unit %>
 	
 	<%= f.submit "送出" ,class:"btn btn-default"%> 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412105904) do
+ActiveRecord::Schema.define(version: 20170413032504) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "product_id"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170412105904) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "payment_status", default: "new"
-    t.integer  "unit",           default: 0
+    t.integer  "unit"
     t.text     "lottery_number"
     t.index ["product_id"], name: "index_donations_on_product_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
