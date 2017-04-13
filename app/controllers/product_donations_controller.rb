@@ -7,20 +7,27 @@ class ProductDonationsController < ApplicationController
 	end 
 
 	def create 
-		@donation = @product.donations.build(donation_params)
-		@donation.user_id = current_user.id
-
-		if @donation.save		
-			redirect_to product_donation_path(@product,@donation)
+		if @product.donation_unit_count == @product.unit
+			redirect_to product_path(@product)
+	 		flash[:alert] = "很可惜，已結束募資!"	
 		else
-			render :new
-		end
+			@donation = @product.donations.build(donation_params)
+			@donation.user_id = current_user.id
 
+			if @donation.save		
+				redirect_to product_donation_path(@product,@donation)
+			else
+				render :new
+			end
+		end
 	end
 
 
 	def show 
 		@donation = @product.donations.find(params[:id])
+		
+
+			
 	end 
 
 	protected 

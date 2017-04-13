@@ -7,7 +7,7 @@
 <% end%>
 
 
-
+<div class="container">
 
 <%= form_for ([:admin, @product])  do |f| %>
 	<div class="form_group">
@@ -43,10 +43,6 @@
 
 
 	<div class="form_group">
-		<%= f.label :min_amount, "最低集資金額:" %><br>
-		<%= f.text_field :min_amount %><br>
-	</div>
-	<div class="form_group">
 		<%= f.label :cost, "成本總金額:" %><br>
 		<%= f.text_field :cost %><br><br>
 	</div>
@@ -54,9 +50,17 @@
 		<%= f.label :cost_detail, "成本細節說明:" %><br>
 		<%= f.text_field :cost_detail %><br>
 	</div>
+	<div class="form_group">
+		<%= f.label :unit, "單位數:" %><br>
+		<%= f.text_field :unit %><br>
+	</div>
+	<div class="form_group">
+		<%= f.label :unit_price, "單位價格:" %><br>
+		<%= f.text_field :unit_price %><br>
+	</div>
 	
 
-	<%# if @product.donation.amount總額 == @product.min_amount  %>  
+	<% if @product.donation_unit_count == @product.unit  %>  
 		<h2>確定募資成功後</h2>
 		<div class="form_group">
 			<%= f.label :lucky_number, "中獎號碼:" %><br>
@@ -67,7 +71,9 @@
 			<%= f.label :donation_file, "捐款證明:" %><br>
 			<%= f.text_field :donation_file %>
 		</div>
-		<%= f.submit class:"btn btn-default" %>
 	<% end %>
+	<%= f.submit class:"btn btn-default" %>
+
 	
-<%# end %>
+<% end %>
+</div>

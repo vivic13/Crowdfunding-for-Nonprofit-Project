@@ -1,13 +1,15 @@
+<div class="container ">
 <h1>產品後台詳細資訊</h1>
 
-<%= @product.name %> <br>
-<%= @product.rule %><br>
-<%= @product.description %><br>
-<%= @product.min_amount %><br>
-<%= @product.cost%><br>
-<%= @product.cost_detail %><br>
+產品名稱：<%= @product.name %> <br>
+中獎規則: <%= @product.rule %><br>
+產品描述: <%= @product.description %><br>
+產品單位數: <%= @product.unit %><br>
+產品單位價格: <%= @product.unit_price %><br>
+產品成本: <%= @product.cost%><br>
+產品成本細節:<%= @product.cost_detail %><br>
 
-<%= @product.npo.name %><br>
+捐贈單位:<%= @product.npo.name %><br>
 
 <% @product.photos.each do|p| %>
 
@@ -17,19 +19,20 @@
 
 
 
-
 <% if @product.lucky_number%>
-	<%= @product.lucky_number %><br>
+	<p>中獎號碼:<%= @product.lucky_number %></p> 
 <% end %>
 
 <% if @product.lucky_person %>
-	<%= @product.lucky_person %><br>
+	<p>中獎人: <%= @product.lucky_person %></p> 
 <% end %>
 
 <% if @product.donation_file %>
-	<%= @product.donation_file %><br>
+	<p>中獎證明: <%= @product.donation_file %></p> 
 <% end %>
 
-<%= link_to "刪除", admin_product_path(@product) ,method: :delete, data:{ confirm: "Are you sure?"} %>
-<%= link_to "編輯", edit_admin_product_path(@product) %>
-<%= link_to "回上ㄧ頁", admin_products_path %>
+<%= link_to "刪除", admin_product_path(@product) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
+<%= link_to "編輯", edit_admin_product_path(@product) ,class:"btn btn-default"%>
+<%= link_to "查看已產生的donations",admin_product_donation_index_url(@product),class:"btn btn-default" %>
+<%= link_to "回上ㄧ頁", admin_products_path ,class:"btn btn-default"%>
+</div>

@@ -1,11 +1,24 @@
 <h1>產品詳細資訊</h1>
-
+	
 <div class="container">
-	<%= link_to '購買', new_product_donation_path(@product) %>
+	產品名稱:<%= @product.name %> <br>	
+	總共需募資單位: <%= @product.unit %><br>
+	已募資單位: <%= @product.donation_unit_count %><br>
+	單位價格:NT <%= @product.unit_price %><br> 
+	募資進度: <%= @progress %>%<br> 
+
+</div>
+<div class="container">
+<% if @product.donation_unit_count == @product.unit %>
+	<%= link_to '已結束募資，回到產品頁面', products_path ,class:"btn btn-default"%>
+	
+<% else %>
+	<%= link_to '購買', new_product_donation_path(@product),class:"btn btn-default" %>
+	<%= link_to '回到產品頁面', products_path ,class:"btn btn-default"%>
+<% end %>
+
 </div>
 
-<%= @product.name %>
 
-<%= link_to '回到產品頁面', products_path ,class:"btn btn-default"%>
 
 
