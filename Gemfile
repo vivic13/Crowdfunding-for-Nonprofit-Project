@@ -44,6 +44,7 @@ gem "font-awesome-rails"
 gem 'active_model_serializers' 
 
 gem "simple_form"
+gem 'letter_opener_web'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

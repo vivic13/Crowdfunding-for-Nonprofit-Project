@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 	end
 	root "products#index" 
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
 	namespace :admin do
   	resources :products do #後台CRUD都可
       resources :donation, only:[:index], :controller =>"product_donations"
