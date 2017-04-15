@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get"/aboutus", to:"home#about", :controller => 'home'
   get"/npos", to:"home#npos", :controller => 'home'
-  get"/company_and_celebritys", to:"home#public", :controller => 'home'
+  get"/companies_and_celebrities", to:"home#public", :controller => 'home'
 
 
 end
