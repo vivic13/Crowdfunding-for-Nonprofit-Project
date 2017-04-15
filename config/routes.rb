@@ -22,4 +22,9 @@ Rails.application.routes.draw do
     end
   end 
 
+  get"/aboutus", to:"home#about", :controller => 'home'
+  get"/npos", to:"home#npos", :controller => 'home'
+  get"/company_and_celebritys", to:"home#public", :controller => 'home'
+
+
 end

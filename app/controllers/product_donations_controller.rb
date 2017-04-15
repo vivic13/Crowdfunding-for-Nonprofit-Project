@@ -3,6 +3,7 @@ class ProductDonationsController < ApplicationController
 	before_action :find_product
 
 	def new 
+		@page_title = "參與募資"
 		@donation = @product.donations.build
 	end 
 
@@ -24,6 +25,7 @@ class ProductDonationsController < ApplicationController
 
 
 	def show 
+		@page_title = "您的訂單資訊"
 		@donation = @product.donations.find(params[:id])
 		
 
