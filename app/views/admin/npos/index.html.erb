@@ -13,6 +13,10 @@
 			<%= f.text_field :code %>
 		</div>
 		<div class="form-group">
+			<%= f.label :logo %>
+			<%= f.file_field :logo %>
+		</div>
+		<div class="form-group">
 			<%= f.label :philosophy %>
 			<%= f.text_area :philosophy %>
 		</div>
@@ -32,6 +36,11 @@
 			<tr>
 				<td>
 					代碼:<%= n.code %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= image_tag(n.logo.url(:small)) %>
 				</td>
 			</tr>
 			<tr>

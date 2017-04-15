@@ -1,17 +1,19 @@
 class ProductsController < ApplicationController
 
 	def index
-		@products = Product.where(:is_public => true)
+		@products_1 = Product.where(:is_public => true).order('due_date').limit(5)
+		@products_2 = Product.where(:is_public => true).order('progress desc')-Product.where(:is_public => true).order('due_date').limit(5)
+
+
+
+
+
 	end
 
 	def show 
 		@product = Product.find(params[:id])
-		if @product.donation_unit_count > 0
-			@progress = (@product.donation_unit_count.to_f/@product.unit)*100
-		else
-			@progress = 0
 		
-		end
+		
 
 	end
 

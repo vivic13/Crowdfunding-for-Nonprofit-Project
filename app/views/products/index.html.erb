@@ -1,7 +1,22 @@
 <h1>產品首頁</h1>
 
 <div class="container">
-	<% @products.each do |p| %>
+	<% @products_1.each do |p| %>
+		<table>
+			
+			<tr>
+				<td>
+					<%= p.name %><%= link_to "show", product_path(p)   %>
+				</td>
+			</tr>
+
+		</table>
+	<% end %>
+
+</div>
+
+<div class="container">
+	<% @products_2.each do |p| %>
 		<table>
 			
 			<tr>

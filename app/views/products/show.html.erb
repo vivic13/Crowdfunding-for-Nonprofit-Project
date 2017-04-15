@@ -5,11 +5,11 @@
 	總共需募資單位: <%= @product.unit %><br>
 	已募資單位: <%= @product.donation_unit_count %><br>
 	單位價格:NT <%= @product.unit_price %><br> 
-	募資進度: <%= @progress %>%<br> 
+	募資進度: <%= @product.progress %>%<br> 
 
 </div>
 <div class="container">
-<% if @product.donation_unit_count == @product.unit %>
+<% if @product.donation_unit_count == @product.unit ||  DateTime.now >@product.due_date  %>
 	<%= link_to '已結束募資，回到產品頁面', products_path ,class:"btn btn-default"%>
 	
 <% else %>

@@ -7,7 +7,7 @@ class ProductDonationsController < ApplicationController
 	end 
 
 	def create 
-		if @product.donation_unit_count == @product.unit
+		if @product.donation_unit_count == @product.unit || DateTime.now > @product.due_date
 			redirect_to product_path(@product)
 	 		flash[:alert] = "很可惜，已結束募資!"	
 		else

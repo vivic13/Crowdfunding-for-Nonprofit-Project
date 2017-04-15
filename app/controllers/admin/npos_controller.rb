@@ -58,6 +58,6 @@ class Admin::NposController < ApplicationController
 		end
 
 		def npo_params
-			params.require(:npo).permit(:name,:code, :philosophy)
+			params.require(:npo).permit(:name,:code,:logo, :philosophy)
 		end
 end

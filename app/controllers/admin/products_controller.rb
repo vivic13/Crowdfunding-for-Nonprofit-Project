@@ -71,7 +71,7 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def product_params
-		params.require(:product).permit(:name,:is_public,:description,:rule ,:unit,:unit_price,:cost,:cost_detail,:lucky_number,:donation_file ,:npo_id, :photos_attributes => [:id, :image, :_destroy])
+		params.require(:product).permit(:due_date,:name,:is_public,:description,:rule ,:unit,:unit_price,:cost,:cost_detail,:lucky_number,:donation_file ,:npo_id, :photos_attributes => [:id, :image, :_destroy])
 	end
 
 

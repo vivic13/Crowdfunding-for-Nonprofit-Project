@@ -39,7 +39,10 @@
       <%= f.radio_button :npo_id,s.id%><%= s.name%>
     <%end%><br>
 	</div>
-
+	<div class="form_group">
+		<%= f.label :due_date, "到期日:" %><br>
+		<%= f.text_field :due_date %><br>
+	</div>
 
 
 	<div class="form_group">

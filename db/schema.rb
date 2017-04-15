@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413161053) do
+ActiveRecord::Schema.define(version: 20170415125443) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "product_id"
@@ -30,8 +30,12 @@ ActiveRecord::Schema.define(version: 20170413161053) do
     t.string   "name"
     t.integer  "code"
     t.text     "philosophy"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.index ["product_id"], name: "index_npos_on_product_id"
   end
 
@@ -65,6 +69,8 @@ ActiveRecord::Schema.define(version: 20170413161053) do
     t.integer  "donation_unit_count", default: 0
     t.text     "lottery_old_number"
     t.boolean  "is_public",           default: false
+    t.float    "progress",            default: 0.0
+    t.boolean  "done",                default: false
     t.index ["npo_id"], name: "index_products_on_npo_id"
     t.index ["project_id"], name: "index_products_on_project_id"
   end

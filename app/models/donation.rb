@@ -4,8 +4,8 @@ class Donation < ApplicationRecord
 	serialize :lottery_number, Array
 	after_validation :check_stock
 	before_save :create_lottery_number	
-	after_save :update_product_lottery_old_number_column
-	after_save :update_product_donation_count
+	after_save :update_product_column
+
 
 	private
 
@@ -28,14 +28,25 @@ class Donation < ApplicationRecord
 	end
 
 
-	def update_product_lottery_old_number_column
-		old_number = self.lottery_number + self.product.lottery_old_number
-		self.product.update(:lottery_old_number => old_number)
+	def update_product_column
+		old_number = self.lottery_number + self.product.lottery_old_number 
+		self.product.update(:lottery_old_number => old_number) #紀錄已產生的樂透
+
+		unit_sum = self.product.lottery_old_number.size 
+		self.product.update(:donation_unit_count => unit_sum)	 #更新已賣出的units
+
+		@progress = (unit_sum.to_f/self.product.unit)*100
+		self.product.update(:progress => @progress)
+
+		if @progress >= 100 
+			self.product.update(:done => true)
+		#	self.product.update(:is_public => false) #若要產品集資完成就下架首頁的話
+		end
+
 	end
 
-	def update_product_donation_count
-		unit_sum = self.product.lottery_old_number.size 
-		self.product.update(:donation_unit_count => unit_sum)		
-	end
+	
+
+
 
 end
