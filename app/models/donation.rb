@@ -2,6 +2,7 @@ class Donation < ApplicationRecord
 	belongs_to :product
 	belongs_to :user
 	serialize :lottery_number, Array
+	validates_presence_of :unit, :address
 	after_validation :check_stock
 	before_save :create_lottery_number	
 	after_save :update_product_column

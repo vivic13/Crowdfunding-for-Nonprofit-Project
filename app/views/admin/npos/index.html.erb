@@ -38,11 +38,13 @@
 					代碼:<%= n.code %>
 				</td>
 			</tr>
+			
 			<tr>
-				<td>
-					<%= image_tag(n.logo.url(:small)) %>
+				<td>			
+						Logo: <%= image_tag(n.logo.url(:small)) %>
 				</td>
 			</tr>
+
 			<tr>
 				<td>
 					理念:<%= n.philosophy %>

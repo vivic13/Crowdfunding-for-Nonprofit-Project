@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415125443) do
+ActiveRecord::Schema.define(version: 20170415142403) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "product_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170415125443) do
     t.string   "payment_status", default: "new"
     t.integer  "unit",           default: 1
     t.text     "lottery_number"
+    t.text     "address",        default: ""
     t.index ["product_id"], name: "index_donations_on_product_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
