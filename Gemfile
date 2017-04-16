@@ -47,6 +47,8 @@ gem "simple_form"
 gem 'letter_opener_web'
 gem 'rails-i18n'
 
+gem 'omniauth-facebook'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
