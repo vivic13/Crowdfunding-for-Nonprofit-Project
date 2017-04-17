@@ -49,6 +49,9 @@ gem 'rails-i18n'
 
 gem 'omniauth-facebook'
 
+gem 'capistrano-rails', :group => :development
+gem 'capistrano-passenger', :group => :development
+gem "mysql2"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
