@@ -43,9 +43,9 @@ gem "font-awesome-rails"
 
 gem 'active_model_serializers' 
 
-gem "simple_form"
+#gem "simple_form"
 gem 'letter_opener_web'
-gem 'rails-i18n'
+#gem 'rails-i18n'
 
 gem 'omniauth-facebook'
 
