@@ -43,9 +43,9 @@ gem "font-awesome-rails"
 
 gem 'active_model_serializers' 
 
-#gem "simple_form"
+
 gem 'letter_opener_web'
-#gem 'rails-i18n'
+
 
 gem 'omniauth-facebook'
 
@@ -58,8 +58,14 @@ gem "mysql2"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'rspec-rails'
-  gem 'rails-controller-testing'
+  gem 'rspec-rails'             #for testing 
+  gem 'rails-controller-testing' #for testing 
+  gem 'email_spec' #for testing 
+  gem 'factory_girl_rails' #for testing 
+end
+
+group :test do 
+  gem 'database_cleaner'
 end
 
 group :development do

@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 RSpec.describe ProductsController, type: :controller do
 	before(:all) do 
  		@npo = Npo.create(:name => "da",)
@@ -10,6 +11,7 @@ RSpec.describe ProductsController, type: :controller do
 		get :index
 		expect(response).to have_http_status(200)
 		expect(response).to render_template(:index)
+
 	end
 	it "#show" do 
 		get :show , params: { id: @product_1.id }
