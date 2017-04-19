@@ -54,6 +54,23 @@ RSpec.describe Admin::ProductsController, type: :controller do
 		it "create record" do 
 			expect{post :create, product: FactoryGirl.attributes_for(:product)}.to change(Product,:count).by(1)
 			expect(response).to have_http_status(302)
+			expect(response).to redirect_to(admin_product_path(Product.last.id))
+		end
+
+  end
+
+  describe "#update" do
+  	before(:all) do 
+			@attr = {name:"dadcxvcv",due_date: "2017-09-30",	unit: 200,unit_price: 30, cost:3444, cost_detail: "adfd", rule: "zdfd", description: "azdf"}
+			@npo_2 = Npo.create(:name => "da")
+			@product_2 = Product.create(npo: @npo_2, :name => "truck",	:rule => "asdfdf", :description => "This is a car",:cost => 2000,:unit => 100, :unit_price => 200,:due_date => "2017-06-20",
+	 														:cost_detail => "dfdsaf dfe")
+		end
+		it "change record" do 
+			expect(@product_2).to be_valid
+			put :update, :id => @product_2.id, :product => @attr
+			expect(response).to have_http_status(302)
+			expect(response).to redirect_to(admin_product_path(@product_2.id))
 		end
 
   end
