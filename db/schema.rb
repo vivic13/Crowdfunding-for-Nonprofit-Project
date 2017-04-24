@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416032527) do
+ActiveRecord::Schema.define(version: 20170424061143) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "user_id"
-    t.string   "status"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "payment_status", default: "new"
     t.integer  "unit",           default: 1
-    t.text     "lottery_number"
     t.text     "address",        default: ""
     t.index ["product_id"], name: "index_donations_on_product_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
@@ -54,10 +52,7 @@ ActiveRecord::Schema.define(version: 20170416032527) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "lucky_number"
-    t.string   "lucky_person"
     t.integer  "project_id"
-    t.text     "rule"
     t.string   "donation_file"
     t.integer  "cost"
     t.text     "cost_detail"
@@ -68,7 +63,6 @@ ActiveRecord::Schema.define(version: 20170416032527) do
     t.integer  "unit_price"
     t.date     "due_date"
     t.integer  "donation_unit_count", default: 0
-    t.text     "lottery_old_number"
     t.boolean  "is_public",           default: false
     t.float    "progress",            default: 0.0
     t.boolean  "done",                default: false

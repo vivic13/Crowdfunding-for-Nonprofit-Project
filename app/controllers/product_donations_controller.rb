@@ -39,7 +39,7 @@ class ProductDonationsController < ApplicationController
 	end
 
 	def donation_params
-		params.require(:donation).permit(:address,:unit,:status, :payment_status,:lottery_number)
+		params.require(:donation).permit(:address,:unit, :payment_status)
 	end
 
 	

@@ -3,14 +3,7 @@
 <div class="container">
 	用戶名稱：<%= @donation.user.name %> <br>
 	您購買的單位:<%= @donation.unit %> <br>
-	
-	
-	您的號碼：<%= @donation.lottery_number.sort %> <br>
 	您的寄送地址：<%= @donation.address %> <br>
-	目前已開出號碼：<%= @product.lottery_old_number.sort %> <br>
-
-	
-
 </div>
 
 <%= link_to '回到產品頁面', products_path ,class:"btn btn-default"%>
