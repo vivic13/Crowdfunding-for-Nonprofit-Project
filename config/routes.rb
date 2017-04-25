@@ -22,9 +22,13 @@ Rails.application.routes.draw do
   namespace :api, defaults:{ format: :json }do
     namespace :v1 do
       #devise_for :users
-      resources :users, :only => [:show, :create, :update, :destroy, :index]
+      post "/login" => "auth#login"
+      post "/logout" => "auth#logout"
+      resources :users
     end
   end 
+  
+  
 
   get"/aboutus", to:"home#about", :controller => 'home'
   get"/npos", to:"home#npos", :controller => 'home'
