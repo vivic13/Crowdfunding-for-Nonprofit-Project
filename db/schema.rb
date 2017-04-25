@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170416032527) do
     t.string   "payment_status", default: "new"
     t.integer  "unit",           default: 1
     t.text     "lottery_number"
-    t.text     "address",        default: ""
+    t.text     "address"
     t.index ["product_id"], name: "index_donations_on_product_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
