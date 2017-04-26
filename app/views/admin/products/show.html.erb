@@ -2,7 +2,6 @@
 <h1>產品後台詳細資訊</h1>
 
 產品名稱：<%= @product.name %> <br>
-中獎規則: <%= @product.rule %><br>
 產品描述: <%= @product.description %><br>
 產品到期日: <%= @product.due_date %><br>
 產品單位數: <%= @product.unit %><br>
@@ -18,19 +17,6 @@
 
 <% end %>
 
-
-
-<% if @product.lucky_number%>
-	<p>中獎號碼:<%= @product.lucky_number %></p> 
-<% end %>
-
-<% if @product.lucky_person %>
-	<p>中獎人: <%= @product.lucky_person %></p> 
-<% end %>
-
-<% if @product.donation_file %>
-	<p>中獎證明: <%= @product.donation_file %></p> 
-<% end %>
 
 <%= link_to "刪除", admin_product_path(@product) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
 <%= link_to "編輯", edit_admin_product_path(@product) ,class:"btn btn-default"%>

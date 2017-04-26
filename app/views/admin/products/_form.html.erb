@@ -30,10 +30,6 @@
 		</ol>
 	</div>
 	<div class="form_group">
-		<%= f.label :rule, "中獎遊戲規則:" %><br>
-		<%= f.text_field :rule %><br>
-	</div>
-	<div class="form_group">
 		<%= f.label :npo_id,"要捐贈的NPO:"%><br>
       <% Npo.all.each do |s| %>
       <%= f.radio_button :npo_id,s.id%><%= s.name%>
@@ -71,11 +67,6 @@
 
 	<% if @product.donation_unit_count == @product.unit  %>  
 		<h2>確定募資成功後</h2>
-		<div class="form_group">
-			<%= f.label :lucky_number, "中獎號碼:" %><br>
-			<%= f.text_field :lucky_number %>
-		</div>
-
 		<div class="form_group">
 			<%= f.label :donation_file, "捐款證明:" %><br>
 			<%= f.text_field :donation_file %>
