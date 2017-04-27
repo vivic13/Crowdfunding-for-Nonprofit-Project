@@ -1,21 +1,20 @@
-<h1 class="text-center">產品後台首頁</h1>
+<h1 class="text-center">專案後台</h1>
 
 
 
 <div class="container text-center">
-	<%= link_to "新增產品", new_admin_product_path,class:"btn btn-default" %>
-	<%= link_to "查看Npo",admin_npos_url,class:"btn btn-default" %>
+	<%= link_to "新增產品", new_admin_project_path,class:"btn btn-default" %>
 	<%= link_to "查看User",admin_users_url,class:"btn btn-default" %>
 	<%= link_to "回前台",root_path,class:"btn btn-default" %>
 </div>
 
 <div class="container">
-	<% @products.each do |p| %>
+	<% @projects.each do |p| %>
 	<div class="col-md-6 text-center">
 		<table class="table table-bordered">
 			<tr>
 				<td>
-					產品名稱:<%= p.name %>
+					專案名稱:<%= p.name %>
 				</td>
 			</tr>
 			<tr>
@@ -25,7 +24,7 @@
 			</tr>
 			<tr>
 				<td>
-					<%= link_to "查看", admin_product_path(p) %>
+					<%= link_to "查看", admin_project_path(p) %>
 				</td>
 			</tr>
 

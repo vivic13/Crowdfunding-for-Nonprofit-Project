@@ -1,4 +1,0 @@
-module ProductsHelper
-
-
-end

@@ -1,5 +1,5 @@
 <div class="container text-center">
-	<%= link_to "回上ㄧ頁", admin_product_path(@product) ,class:"btn btn-default"%> <br>
+	<%= link_to "回上ㄧ頁", admin_project_path(@project) ,class:"btn btn-default"%> <br>
 	<% @donations.each do |d| %>
 	 <div class="col-md-12">
 	 <table class="table table-bordered text-center">
@@ -12,9 +12,7 @@
 	 	<tr>
 	 		<td>購買單位:<%= d.unit %></td>
 	 	</tr>
-	 	<tr>
-	 		<td>寄送住址:<%= d.address %></td>
-	 	</tr>
+	
 	 	<tr>
 	 		<td>付款狀態:<%= d.payment_status %></td>
 	 	</tr>

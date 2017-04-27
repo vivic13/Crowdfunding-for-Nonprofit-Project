@@ -1,0 +1,24 @@
+<h1>產品詳細資訊</h1>
+	
+<div class="container">
+	名稱:<%= @project.name %> <br>	
+	總共需募資單位: <%= @project.unit %><br>
+	已募資單位: <%= @project.donation_unit_count %><br>
+	單位價格:NT <%= @project.unit_price %><br> 
+	募資進度: <%= @project.progress %>%<br> 
+
+</div>
+<div class="container">
+<% if @project.donation_unit_count == @project.unit ||  DateTime.now >@project.due_date  %>
+	<%= link_to '已結束募資，回到產品頁面', projects_path ,class:"btn btn-default"%>
+	
+<% else %>
+	<%= link_to '捐贈', new_project_donation_path(@project),class:"btn btn-default" %>
+	<%= link_to '回到產品頁面', projects_path ,class:"btn btn-default"%>
+<% end %>
+
+</div>
+
+
+
+

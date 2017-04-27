@@ -1,0 +1,22 @@
+<div class="container ">
+<h1>專案後台詳細資訊</h1>
+
+名稱：<%= @project.name %> <br>
+內容: <%= @project.content %><br>
+到期日: <%= @project.due_date %><br>
+募資單位數: <%= @project.unit %><br>
+募資單位價格: <%= @project.unit_price %><br>
+
+
+<% @project.photos.each do|p| %>
+
+	<%= link_to image_tag(p.image.url(:medium))  %><br>
+
+<% end %>
+
+
+<%= link_to "刪除", admin_project_path(@project) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
+<%= link_to "編輯", edit_admin_project_path(@project) ,class:"btn btn-default"%>
+<%= link_to "查看已產生的donations",admin_project_donation_index_url(@project),class:"btn btn-default" %>
+<%= link_to "回上ㄧ頁", admin_projects_path ,class:"btn btn-default"%>
+</div>
