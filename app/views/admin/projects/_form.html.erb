@@ -1,0 +1,63 @@
+<% if @project.errors.present?%>
+  <ul>
+        <% @project.errors.each do |error, message|%>
+          <li> <%= "#{error.capitalize}  #{message}" %></li>
+        <% end %>
+  </ul>
+<% end%>
+
+
+<div class="container">
+
+<%= form_for ([:admin, @project])  do |f| %>
+	<div class="form_group">
+		<%= f.label :name, "專案名稱:" %><br>
+		<%= f.text_field :name %><br>
+	</div>
+	<div class="form_group">
+		<%= f.label :content, "專案內容:" %><br>
+		<%= f.text_field :content %><br>
+	</div>
+	
+	
+	<div class="form_group">
+		<ol>
+			<%= f.fields_for :photos do |p|  %>
+
+				<li><%= p.label :image , "專案照片 :" %>
+				<%= p.file_field :image %></li>
+
+			<% end %>
+		</ol>
+	</div>
+	
+	<div class="form_group">
+		<%= f.label :due_date, "募款到期日:" %><br>
+		<%= f.text_field :due_date %><br>
+	</div>
+
+	<div class="form_group">
+		<%= f.label :unit, "募款預計單位數:" %><br>
+		<%= f.text_field :unit %><br>
+	</div>
+	<div class="form_group">
+		<%= f.label :unit_price, "單位募款金額:" %><br>
+		<%= f.text_field :unit_price %><br>
+	</div>
+	<div class="form_group">
+		<%= f.radio_button :is_public,true,:value => true %>
+		<%= f.label :is_public, "公布"%>
+		<%= f.radio_button :is_public,false,:value => false %>		
+		<%= f.label :is_public, "尚未公布"%>
+	</div>
+	
+
+	<% if @project.donation_unit_count == @project.unit  %>  
+		<h2>確定募資成功後</h2>
+		
+	<% end %>
+	<%= f.submit class:"btn btn-default" %>
+
+	
+<% end %>
+</div>

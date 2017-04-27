@@ -1,15 +1,15 @@
 class Donation < ApplicationRecord
-	belongs_to :product
+	belongs_to :project
 	belongs_to :user
-	validates_presence_of :unit, :address
+	validates_presence_of :unit
 	after_validation :check_stock
-	#after_save :update_product_column
+	#after_save :update_project_column
 
 
 	private
 
 	def check_stock 
-		stock = self.product.unit - self.product.donation_unit_count
+		stock = self.project.unit - self.project.donation_unit_count
 		if self.unit > stock
 			self.unit = stock 
 		end
@@ -19,7 +19,7 @@ class Donation < ApplicationRecord
 	
 
 
-	#def update_product_column
+	#def update_project_column
 
 
 	#end

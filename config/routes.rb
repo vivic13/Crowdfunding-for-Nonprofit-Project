@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-	resources :products, only:[:index,:show] do #前台只能看index和show頁面
-		resources :donations, only:[:show,:new,:create], :controller =>"product_donations"
+	resources :projects, only:[:index,:show] do #前台只能看index和show頁面
+		resources :donations, only:[:show,:new,:create], :controller =>"project_donations"
 	end
-	root "products#index" 
+	root "projects#index" 
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
 	namespace :admin do
-  	resources :products do #後台CRUD都可
-      resources :donation, only:[:index], :controller =>"product_donations"
+  	resources :projects do #後台CRUD都可
+      resources :donation, only:[:index], :controller =>"project_donations"
     end
-  	resources :npos 
   	resources :users
 	end
 
@@ -31,8 +30,7 @@ Rails.application.routes.draw do
   
 
   get"/aboutus", to:"home#about", :controller => 'home'
-  get"/npos", to:"home#npos", :controller => 'home'
-  get"/companies_and_celebrities", to:"home#public", :controller => 'home'
+ 
 
 
 end

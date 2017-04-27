@@ -1,10 +1,10 @@
-class Admin::ProductDonationsController < ApplicationController
+class Admin::ProjectDonationsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :check_admin
 	
 	def index 
-		@product = Product.find(params[:product_id])
-		@donations = @product.donations
+		@project = Project.find(params[:project_id])
+		@donations = @project.donations
 	end
 
 	private

@@ -10,64 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170425142827) do
-=======
-ActiveRecord::Schema.define(version: 20170424061143) do
->>>>>>> happyday
+ActiveRecord::Schema.define(version: 20170427140617) do
 
   create_table "donations", force: :cascade do |t|
-    t.integer  "product_id"
+    t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "payment_status", default: "new"
     t.integer  "unit",           default: 1
-<<<<<<< HEAD
-    t.text     "lottery_number"
-    t.text     "address"
-=======
-    t.text     "address",        default: ""
->>>>>>> happyday
-    t.index ["product_id"], name: "index_donations_on_product_id"
+    t.string   "payment_method"
+    t.integer  "amount"
+    t.index ["project_id"], name: "index_donations_on_project_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
-  create_table "npos", force: :cascade do |t|
-    t.integer  "product_id"
-    t.string   "name"
-    t.integer  "code"
-    t.text     "philosophy"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
-    t.index ["product_id"], name: "index_npos_on_product_id"
-  end
-
   create_table "photos", force: :cascade do |t|
-    t.integer  "product_id"
+    t.integer  "project_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.index ["product_id"], name: "index_photos_on_product_id"
+    t.index ["project_id"], name: "index_photos_on_project_id"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
-    t.integer  "project_id"
-    t.string   "donation_file"
-    t.integer  "cost"
-    t.text     "cost_detail"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "npo_id"
     t.integer  "unit"
     t.integer  "unit_price"
     t.date     "due_date"
@@ -75,8 +47,8 @@ ActiveRecord::Schema.define(version: 20170424061143) do
     t.boolean  "is_public",           default: false
     t.float    "progress",            default: 0.0
     t.boolean  "done",                default: false
-    t.index ["npo_id"], name: "index_products_on_npo_id"
-    t.index ["project_id"], name: "index_products_on_project_id"
+    t.integer  "story_id"
+    t.text     "content"
   end
 
   create_table "users", force: :cascade do |t|
