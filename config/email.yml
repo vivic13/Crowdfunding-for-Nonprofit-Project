@@ -1,15 +1,8 @@
 production:
-
   address: "smtp.mailgun.org"
-
   port: "587"
-
-  domain: <%=ENV['sandboxc1b44ee7067a4bf4b4f411a0ebee1371.mailgun.org']%>
-
+  domain: 
   authentication: "plain"
-
-  user_name: <%=ENV['postmaster@sandboxc1b44ee7067a4bf4b4f411a0ebee1371.mailgun.org']%>
-
-  password: <%=ENV['9ee139df75efc9d7d0a032f85c4475f0']%>
-
+  user_name: 
+  password:
   enable_starttls_auto: true
