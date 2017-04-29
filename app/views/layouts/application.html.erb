@@ -39,6 +39,8 @@
         <%= link_to "登入 Facebook", user_facebook_omniauth_authorize_path %>
 	    <% end %>
     </p>
+    <p style="color: green"><%= flash[:notice] %></p>
+    <p style="color: red"><%= flash[:alert] %></p>
     <%= yield %>
   </body>
 </html>
