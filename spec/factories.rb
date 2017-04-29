@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :payment do
+    
+  end
+  factory :story do
+    
+  end
+  factory :stroy do
+    
+  end
     factory :user do 
       email "example@gmail.com"
       passwaord "3456778"

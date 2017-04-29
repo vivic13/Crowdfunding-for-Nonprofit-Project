@@ -21,7 +21,7 @@ class Admin::ProjectsController < ApplicationController
 
 	def create
 		@project = Project.new(project_params)	
-		
+		@stories = Story.where(need_project: "yes")
 		if @project.save
 			respond_to do |format|
 				  format.html { redirect_to admin_project_path(@project)}
@@ -34,6 +34,7 @@ class Admin::ProjectsController < ApplicationController
 	end
 
 	def edit 
+		@stories = Story.where(need_project: true)
 		a = @project.photos.count
 		b = 5-a
 		b.times {@photos = @project.photos.build}
@@ -71,7 +72,7 @@ class Admin::ProjectsController < ApplicationController
 	end
 
 	def project_params
-		params.require(:project).permit(:due_date,:name,:content,:is_public,:unit,:unit_price, :photos_attributes => [:id, :image, :_destroy])
+		params.require(:project).permit(:due_date,:name,:content,:is_public,:unit,:unit_price, :story_id,:photos_attributes => [:id, :image, :_destroy])
 	end
 
 

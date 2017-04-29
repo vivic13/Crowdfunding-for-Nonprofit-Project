@@ -11,9 +11,15 @@ Rails.application.routes.draw do
   end
 
 	namespace :admin do
+    resources :stories do 
+      collection do
+        get :home
+      end
+    end
   	resources :projects do #後台CRUD都可
       resources :donation, only:[:index], :controller =>"project_donations"
     end
+    resources :reports 
   	resources :users
 	end
 

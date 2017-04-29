@@ -1,0 +1,21 @@
+<div class="container text-center">
+	<h1>所有故事</h1>
+</div>
+<div class="container text-center">
+	<%= link_to "新增故事", new_admin_story_path,class:"btn btn-default" %>
+</div>
+<div class="container">
+	<% @stories.each do |s| %>
+		<div class="col-md-4 text-center">
+			<table class="table table-bordered">		
+				<tr>
+					<th class="table-info text-center">標題: <%= s.title%></th>
+				</tr>
+				<td>
+					<%= link_to "Detail",admin_story_path(s)%>
+				</td>
+		
+			</table>
+		</div>
+	<% end %>
+</div>

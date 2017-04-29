@@ -1,0 +1,17 @@
+<div class="container text-center">
+	<h1>故事資訊</h1>
+</div>
+<div class="container text-center">
+	<%= link_to "刪除", admin_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
+	<%= link_to "編輯", edit_admin_story_path(@story) ,class:"btn btn-default"%>
+</div>
+<div class="container">
+	<p>標題：<%= @story.title %></p>
+	<p>時間：<%= @story.story_time %></p>
+	<p>地點：<%= @story.location %></p>
+	<p>youtube：<%= @story.try(:youtube_link) %></p>
+	<p>image：<%= image_tag @story.try(:image) %></p>
+	<p>內容：<%= @story.content %></p>
+	<p>是否公開：<%= @story.is_public %></p>
+	<p>是否置頂：<%= @story.priority %></p>
+</div>

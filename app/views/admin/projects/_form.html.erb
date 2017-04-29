@@ -9,55 +9,63 @@
 
 <div class="container">
 
-<%= form_for ([:admin, @project])  do |f| %>
-	<div class="form_group">
-		<%= f.label :name, "專案名稱:" %><br>
-		<%= f.text_field :name %><br>
-	</div>
-	<div class="form_group">
-		<%= f.label :content, "專案內容:" %><br>
-		<%= f.text_field :content %><br>
-	</div>
-	
-	
-	<div class="form_group">
-		<ol>
-			<%= f.fields_for :photos do |p|  %>
+	<%= form_for ([:admin, @project])  do |f| %>
+		<div class="form_group">
+			<%= f.label :story_id %>
+			<% @stories.each do |s| %>
+    		<%= f.radio_button :story_id,s.id%><%= s.title%>
+			<% end %>	
+			<%#= f.collection_check_boxes(:story_id, Story.where(:need_project => true), :id, :title) %>
+		</div>
+		<div class="form_group">
+			<%= f.label :name, "專案名稱:" %><br>
+			<%= f.text_field :name %><br>
+		</div>
 
-				<li><%= p.label :image , "專案照片 :" %>
-				<%= p.file_field :image %></li>
+		<div class="form_group">
+			<%= f.label :content, "專案內容:" %><br>
+			<%= f.text_field :content %><br>
+		</div>
+		
+		
+		<div class="form_group">
+			<ol>
+				<%= f.fields_for :photos do |p|  %>
 
-			<% end %>
-		</ol>
-	</div>
-	
-	<div class="form_group">
-		<%= f.label :due_date, "募款到期日:" %><br>
-		<%= f.text_field :due_date %><br>
-	</div>
+					<li><%= p.label :image , "專案照片 :" %>
+					<%= p.file_field :image %></li>
 
-	<div class="form_group">
-		<%= f.label :unit, "募款預計單位數:" %><br>
-		<%= f.text_field :unit %><br>
-	</div>
-	<div class="form_group">
-		<%= f.label :unit_price, "單位募款金額:" %><br>
-		<%= f.text_field :unit_price %><br>
-	</div>
-	<div class="form_group">
-		<%= f.radio_button :is_public,true,:value => true %>
-		<%= f.label :is_public, "公布"%>
-		<%= f.radio_button :is_public,false,:value => false %>		
-		<%= f.label :is_public, "尚未公布"%>
-	</div>
-	
+				<% end %>
+			</ol>
+		</div>
+		
+		<div class="form_group">
+			<%= f.label :due_date, "募款到期日:" %><br>
+			<%= f.date_select :due_date %><br>
+		</div>
 
-	<% if @project.donation_unit_count == @project.unit  %>  
-		<h2>確定募資成功後</h2>
+		<div class="form_group">
+			<%= f.label :unit, "募款預計單位數:" %><br>
+			<%= f.text_field :unit %><br>
+		</div>
+		<div class="form_group">
+			<%= f.label :unit_price, "單位募款金額:" %><br>
+			<%= f.text_field :unit_price %><br>
+		</div>
+		<div class="form_group">
+			<%= f.radio_button :is_public,true,:value => true %>
+			<%= f.label :is_public, "公布"%>
+			<%= f.radio_button :is_public,false,:value => false %>		
+			<%= f.label :is_public, "尚未公布"%>
+		</div>
+		
+
+		<% if @project.donation_unit_count == @project.unit  %>  
+			<h2>確定募資成功後</h2>
+			
+		<% end %>
+		<%= f.submit class:"btn btn-default" %>
+
 		
 	<% end %>
-	<%= f.submit class:"btn btn-default" %>
-
-	
-<% end %>
 </div>

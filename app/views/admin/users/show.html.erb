@@ -4,6 +4,10 @@
 	<h3> ID : <%= @user.id %>  </h3>
 
 	<h3> name : <%= @user.name %></h3>
+	<div class="container text-center">
+		<h1>詳細資訊</h1>
+	</div>
+
 
 	<h3> role:  <%= @user.role %></h3>
 
@@ -19,9 +23,6 @@
 	<p>fb_token: <%#= @user.fb_token %> </p>
 
 	
-
-
-	<%= link_to '回後台首頁',  admin_products_path, class:"btn btn-default" %>
 
 	<%= link_to '編輯', edit_admin_user_path(@user), class:"btn btn-default" %>
 

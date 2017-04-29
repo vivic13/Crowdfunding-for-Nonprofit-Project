@@ -10,28 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170425142827) do
-=======
-ActiveRecord::Schema.define(version: 20170427140617) do
->>>>>>> startnew
+ActiveRecord::Schema.define(version: 20170429035117) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "user_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "payment_status", default: "new"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "payment_status", default: "pending"
     t.integer  "unit",           default: 1
-<<<<<<< HEAD
-    t.text     "address"
-    t.index ["product_id"], name: "index_donations_on_product_id"
-=======
-    t.string   "payment_method"
+    t.string   "payment_method", default: "CREDIT"
     t.integer  "amount"
     t.index ["project_id"], name: "index_donations_on_project_id"
->>>>>>> startnew
     t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "donation_id"
+    t.string   "payment_method"
+    t.integer  "amount"
+    t.datetime "paid_at"
+    t.text     "params"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["donation_id"], name: "index_payments_on_donation_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -58,6 +60,24 @@ ActiveRecord::Schema.define(version: 20170427140617) do
     t.boolean  "done",                default: false
     t.integer  "story_id"
     t.text     "content"
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "youtube_link"
+    t.boolean  "is_public",          default: false
+    t.string   "location"
+    t.datetime "story_time"
+    t.boolean  "priority",           default: false
+    t.string   "need_project",       default: "no"
+    t.text     "reflection"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
