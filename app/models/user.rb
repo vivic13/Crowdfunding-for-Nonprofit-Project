@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
   devise :omniauthable, :omniauth_providers => [:facebook]
-
+  has_many :donations
   before_validation :set_name_default
   before_create :generate_authentication_token
   before_save :ensure_authentication_token

@@ -1,10 +1,37 @@
-<h1>謝謝您的愛心.....，您的捐款資訊如下:</h1>
-
+<div class="container text-center">
+	<h1>您的捐款資訊</h1>
+</div>
 <div class="container">
 	用戶名稱：<%= @donation.user.name %> <br>
 	您購買的單位:<%= @donation.unit %> <br>
-
+	<p>付款狀態：<%= @donation.payment_status %></p>
 </div>
 
-<%= link_to '回到產品頁面', projects_path ,class:"btn btn-default"%>
+<div class="container">
+	<% if @donation.paid? %>
+		<%= link_to '回到專案頁面', project_path(@project) ,class:"btn"%>
+	<% else %>
+		<p>付款方式:</p>
+		<% Payment::PAYMENT_METHODS.each do |pm| %>
+			<%= link_to t(pm, :scope => "PaymentPay2go"), checkout_pay2go_project_donation_path(@donation, :payment_method => pm), :class => "btn btn-default", :method => :post %>
+		<% end %>
+	<% end %>
+</div>
 
+<% if @donation.payments.count > 0 %>
+	<div class="container">
+		<h2>付款紀錄</h2>
+		<ul>	
+			<% @donation.payments.each do |p| %>
+				<li>
+					<% if p.paid_at %>
+						<p>付款成功，請至email確認</p>
+					<% else %>
+						<p>付款失敗，請再試ㄧ次</p>
+					<% end %>
+					<p><%= p.created_at %></p> 
+				</li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

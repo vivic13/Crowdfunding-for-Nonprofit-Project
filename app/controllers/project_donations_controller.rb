@@ -1,6 +1,6 @@
 class ProjectDonationsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :find_project
+	before_action :find_project, except:[:checkout_pay2go]
 
 	def new 
 		@page_title = "參與募資"
@@ -31,6 +31,18 @@ class ProjectDonationsController < ApplicationController
 
 			
 	end 
+
+	def checkout_pay2go
+		@donation = current_user.donations.find( params[:id] )
+
+		if @donation.paid?
+			redirect_to :back, alert: 'already paid!'
+		else
+			@payment = Payment.create!( :donation => @donation,:payment_method => params[:payment_method],
+                                  :amount => @donation.amount )
+			render :layout => false
+		end
+	end
 
 	protected 
 
