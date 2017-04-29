@@ -15,7 +15,6 @@
 			<% @stories.each do |s| %>
     		<%= f.radio_button :story_id,s.id%><%= s.title%>
 			<% end %>	
-			<%#= f.collection_check_boxes(:story_id, Story.where(:need_project => true), :id, :title) %>
 		</div>
 		<div class="form_group">
 			<%= f.label :name, "專案名稱:" %><br>

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
     resources :reports 
   	resources :users
+    resources :tags
 	end
 
 	 #API routes path

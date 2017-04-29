@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :story_tag do
+    
+  end
+  factory :tag do
+    
+  end
   factory :payment do
     
   end

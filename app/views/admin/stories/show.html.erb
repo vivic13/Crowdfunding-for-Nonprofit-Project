@@ -7,6 +7,13 @@
 </div>
 <div class="container">
 	<p>標題：<%= @story.title %></p>
+	<% if @story.tags %>
+		<p>標籤：<% @story.tags.each do|t| %> 
+				<%= t.name %> 
+			<%end%>	
+		</p>
+	<% end %>
+	
 	<p>時間：<%= @story.story_time %></p>
 	<p>地點：<%= @story.location %></p>
 	<p>youtube：<%= @story.try(:youtube_link) %></p>
@@ -15,3 +22,13 @@
 	<p>是否公開：<%= @story.is_public %></p>
 	<p>是否置頂：<%= @story.priority %></p>
 </div>
+
+
+<script type="text/javascript">
+ $("document").ready(function(){
+	$("input:checkbox").click(function(){
+    if ($("input:checkbox:checked").length > 3){
+      alert('限制選取3項');}
+	});
+
+});

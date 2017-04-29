@@ -1,5 +1,6 @@
 class Admin::StoriesController < ApplicationController
 	layout "admin"
+	before_action :check_admin
 	before_action :find_story, only:[:show,:edit, :update, :destroy]
 	def home
 		@page_title = "後台首頁"
@@ -63,9 +64,6 @@ class Admin::StoriesController < ApplicationController
 	end
 
 
-
-
-
 	protected
 
 	def find_story
@@ -73,9 +71,14 @@ class Admin::StoriesController < ApplicationController
 	end
 
 	def story_params
-		params.require(:story).permit(:story_time,:title,:content,:reflection,:youtube_link,:is_public,:location,:image)
+		params.require(:story).permit(:story_time,:title,:content,:reflection,:youtube_link,:is_public,:location,:image, :tag_ids => [])
 	end
 
+	def check_admin
+    unless current_user.role == "admin"
+    	raise ActiveRecord::RecordNotFound
+    end      
+  end
 
 
 end

@@ -12,6 +12,11 @@
 			<%= f.text_field :title %><br>
 		</div>
 		<div class="form_group">
+			<%= f.label :tag_ids, "標籤:" %><br><strong>(限制選取3項)</strong><br>
+			<%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+
+		</div>
+		<div class="form_group">
 			<%= f.label :story_time, "時間:" %><br>
 			<%= f.datetime_select :story_time %><br>
 		</div>
