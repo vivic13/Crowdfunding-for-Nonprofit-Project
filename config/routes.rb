@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-	resources :projects, only:[:index,:show] do #前台只能看index和show頁面
+	resources :stories, only:[:index,:show] 
+  resources :projects, only:[:index,:show] do #前台只能看index和show頁面
 		resources :donations, only:[:show,:new,:create], :controller =>"project_donations" do 
       member do
         post :checkout_pay2go
       end
     end
 	end
-	root "projects#index" 
-
+	root "stories#index" 
+  resources :tags, only:[:show]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
@@ -42,7 +43,7 @@ Rails.application.routes.draw do
   
 
   get"/aboutus", to:"home#about", :controller => 'home'
- 
+  
 
 
 end

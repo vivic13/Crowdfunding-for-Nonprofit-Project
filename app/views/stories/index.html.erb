@@ -1,0 +1,24 @@
+<div class="container text-center">
+	<h1>故事牆</h1>
+</div>
+<p><i>依願望分類搜尋:</i>&nbsp;&nbsp;&nbsp;
+
+	<% Tag.all.each do |t| %>
+
+		<i class="fa fa-tag " aria-hidden="true"><%= link_to t.name, tag_path(t.id)%>&nbsp;&nbsp;</i>
+						
+	<% end %>
+
+	</i></p>
+<div class="container">
+	<% @stories.each do |s| %>
+		<div class="col-md-3 text-center">
+			<table class="table table-bordered">
+				<tr><th>故事標題:<%= s.title %></th></tr> 
+				<tr><td>時間: <%= s.story_time %></td></tr>
+				<tr><td>地點: <%= s.location %></td></tr>
+				<tr><td><%= link_to "更多", story_path(s) %></td></tr>
+			</table>
+		</div>
+	<% end %>
+</div>
