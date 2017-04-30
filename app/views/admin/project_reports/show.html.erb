@@ -1,0 +1,15 @@
+<h1>專案名稱：<%= @project.name %></h1>
+	
+<div class="container">
+
+  <% if @project.report %>
+    <p>專案成效報告名稱:<%= @project.report.title %></p>
+    <p>專案成效報告內容:<%= @project.report.content %></p>
+    <p><%= link_to "edit", edit_admin_project_report_path(@project) %></p>
+    <p><%= link_to "destroy", admin_project_report_path(@project), :method => :delete %></p>
+  <% else %>
+    <p>N/A</p>
+    <p><%= link_to "新增報告", new_admin_project_report_path(@project) %></p>
+  <% end %>
+
+</div>
