@@ -1,0 +1,20 @@
+<h1>專案成效報告</h1>
+<div class="container">
+	專案名稱:<%= @project.name %> <br>	
+	專案內容: <%= @project.content %><br>
+</div>
+
+<div class="container">
+<%= form_for @report, :url => admin_project_report_path(@project) do |f| %>
+  <div class="form_group">
+		<%= f.label :title, "專案成效報告名稱:" %><br>
+		<%= f.text_field :title %><br>
+  </div>
+  <div class="form_group">
+		<%= f.label :content, "專案成效報告內容:" %><br>
+		<%= f.text_area :content %><br>
+	</div>
+	<%= f.submit class:"btn btn-default" %>
+<% end %>
+
+</div>

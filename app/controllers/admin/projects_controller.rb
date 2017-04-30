@@ -6,7 +6,6 @@ class Admin::ProjectsController < ApplicationController
 
 	def index 
 		@projects = Project.all
-
 	end
 
 	def show 
@@ -58,11 +57,6 @@ class Admin::ProjectsController < ApplicationController
 		redirect_to admin_projects_path
 	end
     
-    def report
-      @project = Project.find(params[:project_id])
-      @report = @project.build_report
-    end
-
 
 
 	protected 
