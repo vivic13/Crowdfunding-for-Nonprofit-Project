@@ -1,6 +1,6 @@
 class RenameColumnsOnDonations < ActiveRecord::Migration[5.0]
   def change
-  	drop_table :npos
+  	#drop_table :npos
   	remove_column :donations, :address
   	rename_column :donations , :product_id, :project_id
   	rename_index :donations , :product_id, :project_id

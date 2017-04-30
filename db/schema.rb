@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429040515) do
+ActiveRecord::Schema.define(version: 20170429134755) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "project_id"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20170429040515) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["donation_id"], name: "index_payments_on_donation_id"
+  end
+
+  create_table "photofiles", force: :cascade do |t|
+    t.integer  "story_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["story_id"], name: "index_photofiles_on_story_id"
   end
 
   create_table "photos", force: :cascade do |t|
