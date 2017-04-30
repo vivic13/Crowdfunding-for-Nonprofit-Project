@@ -41,6 +41,8 @@ gem 'kaminari'
 
 gem "font-awesome-rails"
 
+gem 'chartkick'
+
 
 gem 'active_model_serializers' 
 

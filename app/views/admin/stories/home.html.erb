@@ -1,31 +1,36 @@
+
 <div class="text-center">
-	<h1>全站統計資訊</h1>
+	<h1>全站Dashboard</h1>
 </div>
 <div class="row">
 	<div class="container text-center">
-		<div class="container col-md-12">
-			<h5>目前共有<%= @users_count %>個用戶</h5> 
-			<h6>後台人員：個</h6>
-			<h6>一般用戶：個</h6>
-		</div>
+		
 		<div class="container col-md-12">
 			<h5>目前共有<%= @stories_count %>則故事</h5> 
-			<h6>公開故事：則</h6>
-			<h6>未公開故事：則</h6>
-			<canvas id="tags" width="200" height="200"></canvas>
+			<h6>公開故事：<%= @stories_public %>則 / 未公開故事：<%= @stories_private %>則</h6>
+			<%#= pie_chart Story.group(:title).count %>
+			<%= pie_chart Story.includes(:tags).group(:name).count(:name) %>
 		</div>
 		<div class="container col-md-12">
-			<h5>目前共有<%= @projecs_count %>則專案</h5> 
-			<h6>公開專案：則</h6>
-			<h6>未公開專案：則</h6>
-			<h6>募資完成專案：則</h6>
+			<p>目前共有<%= @users_count %>個ㄧ般用戶</p>
+			<% User.where(:role => "admin").each do|u| %>
+				<p><i class="fa fa-lock" aria-hidden="true"">員工用戶:<%= u.email %></i></p>
+			<% end %>
+			
+		</div>
+		<div class="container col-md-12">
+			<h5>目前共有<%= @projects_count %>則專案</h5> 
+			<h6>公開專案：<%= @project_public %>則 / 未公開專案：<%= @project_private %>則 </h6>
+			<%= line_chart Project.group(:project_id).group(:created_at) %>
+
 		</div>
 		
 		<div class="container col-md-12">
 			<h5>目前共有<%#= @reports_count %>則報告</h5> 
-			<h6>公開報告：則</h6>
-			<h6>未公開報告：則</h6>
+			<h6>公開報告：則 / 未公開報告：則</h6>
+			<%#= line_chart Report.group(:report_id).group(:created_at) %>
 		</div>
 	</div>
 
 </div>
+

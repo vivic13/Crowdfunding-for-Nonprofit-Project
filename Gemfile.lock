@@ -72,8 +72,7 @@ GEM
       capistrano-bundler (~> 1.1)
     case_transform (0.2)
       activesupport
-    chart-js-rails (0.1.2)
-      railties (> 3.1)
+    chartkick (2.2.3)
     climate_control (0.1.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -296,7 +295,7 @@ DEPENDENCIES
   byebug
   capistrano-passenger
   capistrano-rails
-  chart-js-rails
+  chartkick
   coffee-rails (~> 4.2)
   database_cleaner
   devise

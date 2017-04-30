@@ -3,11 +3,15 @@ class Admin::StoriesController < ApplicationController
 	before_action :check_admin
 	before_action :find_story, only:[:show,:edit, :update, :destroy]
 	def home
-		@page_title = "後台首頁"
 		@stories_count = Story.all.count
-		@projecs_count = Project.all.count
-		@users_count = User.all.count
+		@stories_public = Story.where(:is_public => true).count
+		@stories_private = @stories_count - @stories_public
+		@projects_count = Project.all.count
+		@project_public = Project.where(:is_public => true).count
+		@projct_private = @projects_count - @project_public
+		@users_count = User.where.not(:role => "admin").count
 		#@reports_count = Report.all.count
+
 	end
 
 	def index 
