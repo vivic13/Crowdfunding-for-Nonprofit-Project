@@ -18,5 +18,7 @@
 <%= link_to "刪除", admin_project_path(@project) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
 <%= link_to "編輯", edit_admin_project_path(@project) ,class:"btn btn-default"%>
 <%= link_to "查看已產生的donations",admin_project_donation_index_url(@project),class:"btn btn-default" %>
+<%= link_to "產生成果報告", new_admin_project_report_path(@project),class:"btn btn-default" %>
 <%= link_to "回上ㄧ頁", admin_projects_path ,class:"btn btn-default"%>
+
 </div>

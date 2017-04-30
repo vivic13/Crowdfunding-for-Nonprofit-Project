@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :report do
+    project_id 1
+    title "MyString"
+    content "MyText"
+  end
   factory :story_tag do
     
   end
