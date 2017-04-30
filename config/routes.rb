@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   
 
   get"/aboutus", to:"home#about", :controller => 'home'
-  
+  get"/contactus", to:"home#contact", :controller => 'home'
 
 
 end
