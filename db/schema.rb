@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429134755) do
+ActiveRecord::Schema.define(version: 20170430072816) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "project_id"
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(version: 20170429134755) do
     t.boolean  "done",                default: false
     t.integer  "story_id"
     t.text     "content"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stories", force: :cascade do |t|

@@ -24,8 +24,9 @@ Rails.application.routes.draw do
     end
   	resources :projects do #後台CRUD都可
       resources :donation, only:[:index], :controller =>"project_donations" 
+      resource :report, :controller => 'project_reports'
     end
-    resources :reports 
+    
   	resources :users
     resources :tags
 	end

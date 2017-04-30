@@ -57,7 +57,11 @@ class Admin::ProjectsController < ApplicationController
 		@project.destroy
 		redirect_to admin_projects_path
 	end
-
+    
+    def report
+      @project = Project.find(params[:project_id])
+      @report = @project.build_report
+    end
 
 
 
@@ -72,7 +76,12 @@ class Admin::ProjectsController < ApplicationController
 	end
 
 	def project_params
-		params.require(:project).permit(:due_date,:name,:content,:is_public,:unit,:unit_price, :story_id,:photos_attributes => [:id, :image, :_destroy])
+		params.require(:project).permit(:due_date,:name,:content,
+			                            :is_public,:unit,:unit_price, 
+			                            :story_id,
+			                            :photos_attributes => [:id, :image, :_destroy],
+			                            :report_attributes => [:id, :name, :_destroy] 
+			                            )
 	end
 
 
