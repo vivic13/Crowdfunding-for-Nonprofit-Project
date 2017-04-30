@@ -41,6 +41,16 @@
 			<%= f.file_field :image %><br>
 		</div>
 		<div class="form_group">
+			<ol>
+				<%= f.fields_for :photofiles do |p|  %>
+
+					<li><%= p.label :image , "故事照片 :" %>
+					<%= p.file_field :image %></li>
+
+				<% end %>
+			</ol>
+		</div>
+		<div class="form_group">
 			<%= f.radio_button :priority,false,:value => false %>
 			<%= f.label :priority, "不要置頂" %>
 			<%= f.radio_button :priority,true,:value => true %>

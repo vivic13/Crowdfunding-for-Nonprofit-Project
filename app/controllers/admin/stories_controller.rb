@@ -21,7 +21,7 @@ class Admin::StoriesController < ApplicationController
 
 	def new
 		@story = Story.new
-		#5.times {@photos = @project.photos.build}
+		5.times {@photofiles = @story.photofiles.build}
 
 	end
 
@@ -40,9 +40,9 @@ class Admin::StoriesController < ApplicationController
 	end
 
 	def edit 
-		#a = @story.photos.count
-		#b = 5-a
-		#b.times {@photos = @story.photos.build}
+		a = @story.photofiles.count
+		b = 5-a
+		b.times {@photofiles = @story.photofiles.build}
 	end
 
 	def update
@@ -71,7 +71,11 @@ class Admin::StoriesController < ApplicationController
 	end
 
 	def story_params
-		params.require(:story).permit(:story_time,:title,:content,:reflection,:youtube_link,:is_public,:location,:image, :tag_ids => [])
+		params.require(:story).permit(:story_time,:title,:content,:reflection,
+			                          :youtube_link,:is_public,:location,
+			                          :image, :tag_ids => [],
+			                          :photofiles_attributes => [:id, :image, :_destroy]
+			                          )
 	end
 
 	def check_admin

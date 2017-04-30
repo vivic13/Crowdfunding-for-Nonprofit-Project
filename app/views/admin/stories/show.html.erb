@@ -18,6 +18,9 @@
 	<p>地點：<%= @story.location %></p>
 	<p>youtube：<%= @story.try(:youtube_link) %></p>
 	<p>image：<%= image_tag @story.try(:image) %></p>
+	<% @story.photofiles.each do|p| %>
+	  <%= link_to image_tag(p.image.url(:medium))  %><br>
+    <% end %>
 	<p>內容：<%= @story.content %></p>
 	<p>是否公開：<%= @story.is_public %></p>
 	<p>是否置頂：<%= @story.priority %></p>
