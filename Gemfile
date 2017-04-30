@@ -41,7 +41,6 @@ gem 'kaminari'
 
 gem "font-awesome-rails"
 
-gem 'chart-js-rails'
 
 gem 'active_model_serializers' 
 

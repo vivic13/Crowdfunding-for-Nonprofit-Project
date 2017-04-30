@@ -1,28 +1,27 @@
-<div class="container">
-	<h1 class="text-center">全站統計資訊</h1>
+<div class="text-center">
+	<h1>全站統計資訊</h1>
 </div>
-
-
 <div class="row">
 	<div class="container text-center">
-		<div class="container col-md-6">
+		<div class="container col-md-12">
 			<h5>目前共有<%= @users_count %>個用戶</h5> 
 			<h6>後台人員：個</h6>
 			<h6>一般用戶：個</h6>
 		</div>
-		<div class="container col-md-6">
+		<div class="container col-md-12">
 			<h5>目前共有<%= @stories_count %>則故事</h5> 
 			<h6>公開故事：則</h6>
 			<h6>未公開故事：則</h6>
+			<canvas id="tags" width="200" height="200"></canvas>
 		</div>
-		<div class="container col-md-6">
+		<div class="container col-md-12">
 			<h5>目前共有<%= @projecs_count %>則專案</h5> 
 			<h6>公開專案：則</h6>
 			<h6>未公開專案：則</h6>
 			<h6>募資完成專案：則</h6>
 		</div>
 		
-		<div class="container col-md-6">
+		<div class="container col-md-12">
 			<h5>目前共有<%#= @reports_count %>則報告</h5> 
 			<h6>公開報告：則</h6>
 			<h6>未公開報告：則</h6>

@@ -5,9 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>    
   </head>
 
   <body>
@@ -25,9 +23,6 @@
       </p>
       <p style="color: green"><%= flash[:notice] %></p>
       <p style="color: red"><%= flash[:alert] %></p>
-      <div class="logo-banner">
-              <%= image_tag "brand_logo.png" %>        
-        </div>
         <nav class="nav navbar-default">
           <div class="container-fluid">
              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -36,13 +31,11 @@
                       <span class="icon-bar"></span> 
                   </button>
             <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-            <li> <%= link_to '首頁', root_path%></li>
-            <li> <%= link_to '關於我們', aboutus_path %></li>
-            <li><%= link_to '聯絡我們', contactus_path %></li>
-            
-           
-          </ul>
+            <ul class="nav navbar-nav">
+              <li> <%= link_to '首頁', root_path%></li>
+              <li> <%= link_to '關於我們', aboutus_path %></li>
+              <li><%= link_to '聯絡我們', contactus_path %></li>          
+            </ul>
           </div>
           </div>
 
