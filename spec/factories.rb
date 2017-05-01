@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :report_photo do
+    report nil
+  end
   factory :report do
     project_id 1
     title "MyString"

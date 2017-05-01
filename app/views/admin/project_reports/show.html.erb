@@ -5,6 +5,9 @@
   <% if @project.report %>
     <p>專案成效報告名稱:<%= @project.report.title %></p>
     <p>專案成效報告內容:<%= @project.report.content %></p>
+    <% @report.report_photos.each do|p| %>
+      <%= link_to image_tag(p.image.url(:medium))  %><br>
+    <% end %>
     <p><%= link_to "edit", edit_admin_project_report_path(@project) %></p>
     <p><%= link_to "destroy", admin_project_report_path(@project), :method => :delete %></p>
   <% else %>
