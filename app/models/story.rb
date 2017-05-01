@@ -6,7 +6,7 @@ class Story < ApplicationRecord
 	has_many :likes
 	has_many :users, :through => :likes
 	accepts_nested_attributes_for :photofiles,:allow_destroy => true, :reject_if => :all_blank
-	has_attached_file :image,:default_url => 'upload_image.png', styles: { small: "100x100"}
+	has_attached_file :image,:default_url => 'upload_image.png', styles: { small: "300x300"}
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 	validates_presence_of :title, :content, :location, :story_time
 

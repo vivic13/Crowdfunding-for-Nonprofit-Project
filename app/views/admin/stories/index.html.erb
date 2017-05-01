@@ -9,11 +9,30 @@
 		<div class="col-md-4 text-center">
 			<table class="table table-bordered">		
 				<tr>
-					<th class="table-info text-center">標題: <%= s.title%></th>
+					<th class="table-info text-center">
+					  標題: <%= s.title%>	
+					</th>
+				</tr> 
+				<tr>
+				  <td>
+					  時間：<%= s.story_time %>
+				  </td>
 				</tr>
-				<td>
-					<%= link_to "Detail",admin_story_path(s)%>
-				</td>
+				<tr>
+				  <td>
+					  地點：<%= s.location %>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+					  是否公開：<%= s.is_public %>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+					  <%= link_to "Detail",admin_story_path(s)%>
+				  </td>
+				</tr>
 		
 			</table>
 		</div>

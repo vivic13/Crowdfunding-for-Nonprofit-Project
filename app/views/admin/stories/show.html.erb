@@ -1,31 +1,53 @@
 <div class="container text-center">
-	<h1>故事資訊</h1>
+	<h1>呆丸各角落故事</h1>
+	<hr class="short">
 </div>
 <div class="container text-center">
-	<%= link_to "刪除", admin_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
+	<%= link_to "刪除", admin_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn btn-default"%>
 	<%= link_to "編輯", edit_admin_story_path(@story) ,class:"btn btn-default"%>
+	<%= link_to "返回所有故事列表", admin_story_path ,class:"btn btn-default"%>
 </div>
+<section>
+	<div class="container">
+	  <div class="row">
+	    <div class="col-sm-12">
+	      <h2>封面照片</h2>
+	      <%= image_tag (@story.image.url(:small)) %>
+	      <h2>故事其他資訊</h2>
+	      <ul>
+            <li> 時間：<%= @story.story_time %> </li>
+            <li> 地點：<%= @story.location %> </li>
+            <li>youtube：<%= @story.try(:youtube_link) %></li>
+            <li>是否公開：<%= @story.is_public %></li>
+	        <li>是否置頂：<%= @story.priority %></li>
+          </ul>
+	    </div>
+      
+      <div class="col-sm-12">
+        <h2>故事照片</h2>
+        <% @story.photofiles.each do|p| %>
+	        <%= link_to image_tag(p.image.url(:medium)) ,class:"img-responsive" %>
+        <% end %>
+      </div>
 
-<div class="container">
-	<p>標題：<%= @story.title %></p>
-	<% if @story.tags %>
-		<p>標籤：<% @story.tags.each do|t| %> 
-				<%= t.name %> 
-			<%end%>	
-		</p>
-	<% end %>
-	
-	<p>時間：<%= @story.story_time %></p>
-	<p>地點：<%= @story.location %></p>
-	<p>youtube：<%= @story.try(:youtube_link) %></p>
-	<p>image：<%= image_tag @story.try(:image) %></p>
-	<% @story.photofiles.each do|p| %>
-	  <%= link_to image_tag(p.image.url(:medium))  %><br>
-    <% end %>
-	<p>內容：<%= @story.content %></p>
-	<p>是否公開：<%= @story.is_public %></p>
-	<p>是否置頂：<%= @story.priority %></p>
-</div>
+	    <div class="col-sm-12">
+	      <h2> 故事標題：<%= @story.title %> </h2>
+	      <% if @story.tags %>
+	        <h2>標籤：<% @story.tags.each do|t| %> 
+			      <%= t.name %> 
+		    <%end%>	
+	        </h2>
+	      <% end %>
+	      <div style="height:100px;">
+	        <p>
+	          <h2>內容:</h2><%= @story.content %>
+	        </p>
+	      </div>
+	    </div>	    
+	  </div>
+	</div>
+</section>
+
 
 
 <script type="text/javascript">
