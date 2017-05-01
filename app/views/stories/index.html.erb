@@ -18,6 +18,20 @@
 				<tr><td>時間: <%= s.story_time %></td></tr>
 				<tr><td>地點: <%= s.location %></td></tr>
 				<tr><td><%= link_to "更多", story_path(s) %></td></tr>
+				<tr>
+					<td>
+			      <% if s.already_liked(current_user) %>      
+			        <%= button_to  unlike_story_path(s) , {:remote => true} do %>
+			        		<i class="fa fa-heart fa-2x" aria-hidden="true"><%= s.like_count %></i>
+							<%end %>
+			      <%else%>      
+			        <%= button_to like_story_path(s) , {:remote => true} do%>
+			        	<i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= s.like_count %>
+			        	</i>
+			        <%end%>
+			      <% end %>
+    			</td>
+				</tr>
 			</table>
 		</div>
 	<% end %>

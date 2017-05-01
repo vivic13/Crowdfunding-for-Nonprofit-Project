@@ -5,6 +5,7 @@
 	<%= link_to "刪除", admin_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
 	<%= link_to "編輯", edit_admin_story_path(@story) ,class:"btn btn-default"%>
 </div>
+
 <div class="container">
 	<p>標題：<%= @story.title %></p>
 	<% if @story.tags %>

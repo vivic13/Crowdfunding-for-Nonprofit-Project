@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :like do
+    
+  end
   factory :report_photo do
     report nil
   end

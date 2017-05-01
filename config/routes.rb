@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-	resources :stories, only:[:index,:show] 
+	resources :stories, only:[:index,:show]  do 
+    member do 
+      post :like
+      post :unlike
+    end 
+  end
   resources :projects, only:[:index,:show] do #前台只能看index和show頁面
 		resources :donations, only:[:show,:new,:create], :controller =>"project_donations" do 
       member do

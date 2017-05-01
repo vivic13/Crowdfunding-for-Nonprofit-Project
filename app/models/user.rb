@@ -6,6 +6,8 @@ class User < ApplicationRecord
          
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_many :donations
+  has_many :likes
+  has_many :stories , :through => :likes
   before_validation :set_name_default
   before_create :generate_authentication_token
   before_save :ensure_authentication_token
