@@ -8,13 +8,14 @@ class StoriesController < ApplicationController
 
 
 	def show 
-		
+		@photos = @story.photofiles
+		@photos_count = @photos.count
 	end
 
 	def like 	
 		unless @story.already_liked(current_user)
 			@like = Like.create(:user => current_user, :story => @story)
-			redirect_to stories_url
+			redirect_to :back
 		end
 	
 	end
@@ -23,7 +24,7 @@ class StoriesController < ApplicationController
 		if @story.already_liked(current_user)
 			@like = @story.find_like(current_user)
 			@like.destroy
-			redirect_to stories_url
+			redirect_to :back
 		end
 	end
 
