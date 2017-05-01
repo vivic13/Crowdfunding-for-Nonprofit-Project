@@ -1,7 +1,23 @@
 <div class="container text-center">
 	<h1>故事內容</h1>
 </div>
-
+<div class="container">
+	<% if current_user.present? %>
+		<% if @story.already_liked(current_user) %>      
+      <%= button_to  unlike_story_path(@story) , {:remote => true} do %>
+      		<i class="fa fa-heart fa-2x" aria-hidden="true"><%= @story.like_count %></i>
+			<%end %>
+    <%else%>      
+      <%= button_to like_story_path(@story) , {:remote => true} do%>
+      	<i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= @story.like_count %>
+      	</i>
+      <%end%>
+    <% end %>
+  <% else %>
+		<i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= @story.like_count %> <small>登入按讚</small>
+    </i>
+  <% end %>
+</div>
 
 <div class="container">
 	<p>標題: <%= @story.title %></p>
