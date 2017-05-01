@@ -1,8 +1,9 @@
 class StoriesController < ApplicationController
 	before_action :authenticate_user!, except:[:index,:show]
 	before_action :find_story, except:[:index]
+	
 	def index 
-		@stories = Story.where(:is_public => true, :priority => true)+Story.where(:is_public => true, :priority => false) 
+		@stories = Story.where(:is_public => true) 
 	end
 
 
@@ -11,8 +12,11 @@ class StoriesController < ApplicationController
 	end
 
 	def like 	
-		@like = Like.create(:user => current_user, :story => @story)
-		redirect_to stories_url
+		unless @story.already_liked(current_user)
+			@like = Like.create(:user => current_user, :story => @story)
+			redirect_to stories_url
+		end
+	
 	end
 
 	def unlike

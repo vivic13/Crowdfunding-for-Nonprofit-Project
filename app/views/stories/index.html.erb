@@ -1,7 +1,8 @@
 <div class="container text-center">
 	<h1>故事牆</h1>
 </div>
-<p><i>依願望分類搜尋:</i>&nbsp;&nbsp;&nbsp;
+<div class="container">
+	<p><i>依分類搜尋:</i>&nbsp;&nbsp;&nbsp;
 
 	<% Tag.all.each do |t| %>
 
@@ -10,6 +11,7 @@
 	<% end %>
 
 	</i></p>
+</div>
 <div class="container">
 	<% @stories.each do |s| %>
 		<div class="col-md-3 text-center">
@@ -20,19 +22,25 @@
 				<tr><td><%= link_to "更多", story_path(s) %></td></tr>
 				<tr>
 					<td>
-			      <% if s.already_liked(current_user) %>      
-			        <%= button_to  unlike_story_path(s) , {:remote => true} do %>
-			        		<i class="fa fa-heart fa-2x" aria-hidden="true"><%= s.like_count %></i>
-							<%end %>
-			      <%else%>      
-			        <%= button_to like_story_path(s) , {:remote => true} do%>
-			        	<i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= s.like_count %>
-			        	</i>
-			        <%end%>
-			      <% end %>
+						<% if current_user.present? %>
+				      <% if s.already_liked(current_user) %>      
+				        <%= button_to  unlike_story_path(s) , {:remote => true} do %>
+				        		<i class="fa fa-heart fa-2x" aria-hidden="true"><%= s.like_count %></i>
+								<%end %>
+				      <%else%>      
+				        <%= button_to like_story_path(s) , {:remote => true} do%>
+				        	<i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= s.like_count %>
+				        	</i>
+				        <%end%>
+				      <% end %>
+				   <% else %>
+							<i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= s.like_count %> <small>登入按讚</small></i>
+  				<% end %>
     			</td>
 				</tr>
 			</table>
 		</div>
 	<% end %>
 </div>
+
+
