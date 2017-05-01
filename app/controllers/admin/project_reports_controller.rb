@@ -1,5 +1,6 @@
 class Admin::ProjectReportsController < ApplicationController
 	before_action :find_project
+  layout "admin"
 
 	def show
     @report = @project.report
