@@ -10,12 +10,30 @@
 					<th class="table-info text-center">user id : <%= u.id%></th>
 				</tr>
 				<tr>
-					<td>usrer name : <%= u.name %></td>
+					<td>user name : <%= u.name %></td>
 				</tr>
 				<tr>
 				 	<td><%= u.email %></td>
 				</tr>
 				<tr> 
+				  <td>
+            <% if u.role =="admin" %>
+             管理者
+            <% else %>
+             一般使用者
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <% if u.role =="admin" %>
+              <%= link_to("轉為一般使用者", to_normal_admin_user_path(u), method: :post, class: "btn btn-info") %>
+            <% else %>
+              <%= link_to("轉為管理者", to_admin_admin_user_path(u), method: :post, class: "btn btn-primary") %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
 					<td><%= link_to 'Detail' ,admin_user_path(u)%></td>
 				</tr>
 

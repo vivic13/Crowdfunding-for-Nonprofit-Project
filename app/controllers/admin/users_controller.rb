@@ -20,13 +20,27 @@ class Admin::UsersController < ApplicationController
   def update
     if @user.update(user_params)
     	respond_to do |format|
-				  format.html { redirect_to admin_user_path(@user)}
+				format.html { redirect_to admin_user_path(@user)}
 			end	
     	
     else
     	render :edit
 
     end
+  end
+
+  def to_admin
+    @user = User.find(params[:id])
+    @user.to_admin
+
+    redirect_to admin_users_path
+  end
+
+  def to_normal
+    @user = User.find(params[:id])
+    @user.to_normal
+
+    redirect_to admin_users_path
   end
 
 

@@ -13,7 +13,15 @@ class User < ApplicationRecord
   before_save :ensure_authentication_token
 
   def generate_authentication_token
-     self.authentication_token = Devise.friendly_token
+    self.authentication_token = Devise.friendly_token
+  end
+
+  def to_admin
+    self.update_columns(role: "admin")
+  end
+
+  def to_normal
+    self.update_columns(role: "user")
   end
 
   protected
@@ -24,7 +32,7 @@ class User < ApplicationRecord
     end
   end
   
-   def self.from_omniauth(auth)
+  def self.from_omniauth(auth)
     # Case 1: Find existing user by facebook uid
     user = User.find_by_fb_uid( auth.uid )
     if user
@@ -60,9 +68,9 @@ class User < ApplicationRecord
 
   private
 
-    def set_name_default
-      self.name = self.email.split("@").first
-    end
+  def set_name_default
+    self.name = self.email.split("@").first
+  end
 
 
 end

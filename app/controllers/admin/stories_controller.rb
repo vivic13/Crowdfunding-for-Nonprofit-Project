@@ -84,7 +84,7 @@ class Admin::StoriesController < ApplicationController
 
 	def check_admin
     unless current_user.role == "admin"
-    	raise ActiveRecord::RecordNotFound
+      raise ActiveRecord::RecordNotFound
     end      
   end
 

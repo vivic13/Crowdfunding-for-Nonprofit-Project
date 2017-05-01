@@ -32,7 +32,12 @@ Rails.application.routes.draw do
       resource :report, :controller => 'project_reports'
     end
     
-  	resources :users
+  	resources :users do
+      member do
+        post :to_admin
+        post :to_normal
+      end
+    end
     resources :tags
 	end
 

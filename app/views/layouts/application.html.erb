@@ -15,7 +15,7 @@
          	<%= current_user.name %>
           <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
           <%= link_to('更改資料', edit_registration_path(:user)) %>
-          <% if current_user.role = "admin" %>
+          <% if current_user.role == "admin" %>
             <%= link_to("Admin 選單", home_admin_stories_path ) %>
           <% end %>
   	    <% else %>
