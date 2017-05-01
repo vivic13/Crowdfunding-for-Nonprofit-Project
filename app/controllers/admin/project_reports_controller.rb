@@ -7,6 +7,7 @@ class Admin::ProjectReportsController < ApplicationController
 
 	def new
     @report = @project.build_report
+    5.times {@report_photos = @report.report_photos.build}
   end
 
   def create
@@ -20,6 +21,9 @@ class Admin::ProjectReportsController < ApplicationController
 
   def edit
     @report = @project.report
+    a = @report.report_photos.count
+    b = 5-a 
+    b.times {@report_photos = @report.report_photos.build}
   end
 
   def update
@@ -48,7 +52,11 @@ class Admin::ProjectReportsController < ApplicationController
   end
   
   def report_params
-    params.require(:report).permit(:title, :content, :project_id)
+    params.require(:report).permit(:title, 
+                                   :content, 
+                                   :project_id, 
+                                   :report_photos_attributes => [:id, :image, :_destroy]
+                                   )
   end
  
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430072816) do
+ActiveRecord::Schema.define(version: 20170501004312) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "project_id"
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 20170430072816) do
     t.boolean  "done",                default: false
     t.integer  "story_id"
     t.text     "content"
+  end
+
+  create_table "report_photos", force: :cascade do |t|
+    t.integer  "report_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["report_id"], name: "index_report_photos_on_report_id"
   end
 
   create_table "reports", force: :cascade do |t|
