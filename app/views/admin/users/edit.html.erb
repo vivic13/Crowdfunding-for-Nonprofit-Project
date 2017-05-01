@@ -1,41 +1,29 @@
 <div class="container">
 	<h2> 更新用戶資料</h2>
 	<%= form_for([:admin, @user])do |f| %> 
-
-		<%= f.label :id, "ID:" %><br>
-		<%= f.text_field :id,:value => @user.id,:readonly => true%><br>
-
-		<%= f.label :name, "nickname:" %><br>
-		<%= f.text_field :name,:value => @user.name,:readonly => true%><br>
+    <div class="form_group">
+	  	<%= f.label :id, "ID:"  %>
+		  <%= f.text_field :id,:value => @user.id,:readonly => true%>
+    </div>
+    <div class="form_group">
+		  <%= f.label :name, "nickname:" %>
+		  <%= f.text_field :name,:value => @user.name,:readonly => true%>
+		</div>
+		<div class="form_group">
+		  <%= f.label :role, "role:" %><br>
 		
-		<%= f.label :role, "role:" %><br>
-		
-		<%= f.radio_button :role,"user",:value => "user"%>
-		<%= f.label :role, "user",:value => "user"%>
+		  <%= f.radio_button :role,"user",:value => "user"%>
+		  <%= f.label :role, "user",:value => "user"%>
 
-		<%= f.radio_button :role,"admin",:value => "admin"%>
-		<%= f.label :role, "admin",:value => "admin"%><br>
-		
+		  <%= f.radio_button :role,"admin",:value => "admin"%>
+		  <%= f.label :role, "admin",:value => "admin"%><br>
+		</div>
 
-
-		<%= f.label :email, "email:" %><br>
-		<%= f.text_field :email,:value => @user.email %><br>
-
-		<%= f.label :created_at, "created_at:" %><br>
-		<%= f.text_field :created_at,:value => @user.created_at,:readonly => true%><br>
-
-		<%= f.label :updated_at, "updated_at:" %><br>
-		<%= f.text_field :updated_at,:value => @user.updated_at,:readonly => true%><br>
-		
-
-		<%#= f.label :fb_uid, "fb_uid:" %><br>
-		<%#= f.text_field :fb_uid,:value => @user.fb_uid%><br>
-
-		<%#= f.label :fb_token, "fb_token:" %><br>
-		<%#= f.text_field :fb_token,:value => @user.fb_token%><br>
-
-
-
+    <div class="form_group">
+		  <%= f.label :email, "email:" %><br>
+		  <%= f.text_field :email,:value => @user.email %><br>
+    </div>
+ 
 		<%= f.submit "儲存" ,class:"btn btn-default"%>
 
 	<% end %>
