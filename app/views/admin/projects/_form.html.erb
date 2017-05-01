@@ -13,7 +13,7 @@
 		<div class="form_group">
 			<%= f.label :story_id %>
 			<% @stories.each do |s| %>
-    		<%= f.radio_button :story_id,s.id%><%= s.title%>
+    		<%= f.radio_button :story_id, s.id%><%= s.title%>
 			<% end %>	
 		</div>
 		<div class="form_group">

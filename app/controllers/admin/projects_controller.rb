@@ -15,6 +15,7 @@ class Admin::ProjectsController < ApplicationController
 	def new
 		@project = Project.new
 		5.times {@photos = @project.photos.build}
+		@stories = Story.where(need_project: "yes")
 
 	end
 
