@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= @page_title %></title>
+<head>
+    <title>My Profile</title>
     <%= csrf_meta_tags %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
   </head>
 
   <body>
-    
-    <nav class="nav navbar-default navbar-fixed-top">
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %> 
+  <div class="container text-center">
+    <%= link_to("我喜歡的故事", account_stories_path ,class: "btn btn-default") %> 
+    <%= link_to("我捐贈的專案", account_project_donations_path,class: "btn-default") %>
+    <%= link_to '返回首頁', stories_path,class: "btn-default" %>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav navbar-default navbar-fixed-top">
       <div class="navbar-header">
         <a class="navbar-brand navbar-left" href="#">
           <img alt="Brand" src="...">
@@ -35,8 +49,7 @@
           <% if current_user %> 
             <%= current_user.name %>
             <%= link_to('登出', destroy_user_session_path, :method => :delete,class:"btn-default") %>
-            <%= link_to('更改資料', edit_registration_path(:user),class:"btn-default") %>
-            <%= link_to("My Profile", account_stories_path,class:"btn-default") %>    
+            <%= link_to('更改資料', edit_registration_path(:user),class:"btn-default") %>   
           <% else %>
             <%= link_to('註冊', new_registration_path(:user),class:"btn-default") %>
             <%= link_to('登入', new_session_path(:user),class:"btn-default") %>
@@ -48,28 +61,5 @@
     </div>
 
   </nav>
-
-
-    <%= yield %>
-  </body>
+</body>
 </html>
-
-
-<script>
-      window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '481652665500095',
-        xfbml      : true,
-        version    : 'v2.9'
-        });
-      FB.AppEvents.logPageView();
-      };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-    </script>
