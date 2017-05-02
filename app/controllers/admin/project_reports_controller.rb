@@ -55,6 +55,7 @@ class Admin::ProjectReportsController < ApplicationController
   def report_params
     params.require(:report).permit(:title, 
                                    :content, 
+                                   :is_public,
                                    :project_id, 
                                    :report_photos_attributes => [:id, :image, :_destroy]
                                    )

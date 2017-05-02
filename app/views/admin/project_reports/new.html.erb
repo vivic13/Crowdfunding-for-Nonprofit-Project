@@ -15,6 +15,12 @@
 		<%= f.text_area :content %><br>
   </div>
   <div class="form_group">
+		<%= f.radio_button :is_public,false,:value => false %>		
+		<%= f.label :is_public, "尚未公布"%>
+		<%= f.radio_button :is_public,true,:value => true %>
+		<%= f.label :is_public, "公布"%>
+	</div>
+  <div class="form_group">
  		<ol>
  			<%= f.fields_for :report_photos do |p|  %>
  

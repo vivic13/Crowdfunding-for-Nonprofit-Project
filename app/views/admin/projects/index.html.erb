@@ -28,7 +28,11 @@
 			</tr>
 			<tr>
 				<td>
-				  <%= link_to "成效報告", admin_project_report_path(p),class:"btn btn-default" %>
+				  <% if p.report %>
+            <%= link_to "查看成效報告", admin_project_report_path(p),class:"btn btn-default"%>
+			    <% else %>
+			      <%= link_to "新增成效報告", new_admin_project_report_path(p) ,class:"btn btn-default"%>
+			    <% end %>
 				</td>
 			</tr>
 

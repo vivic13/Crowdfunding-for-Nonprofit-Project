@@ -1,6 +1,6 @@
 
 <div class="text-center">
-	<h1>全站Dashboard</h1>
+	<h1>呆丸眉角全站Dashboard</h1>
 </div>
 <div class="row">
 	<div class="container text-center">
@@ -8,7 +8,7 @@
 		<div class="container col-md-12">
 			<h5>目前共有<%= @stories_count %>則故事</h5> 
 			<h6>公開故事：<%= @stories_public %>則 / 未公開故事：<%= @stories_private %>則</h6>
-			<%#= pie_chart Story.group(:title).count %>
+			<%= pie_chart Story.group(:title).count %>
 			<%= pie_chart Story.includes(:tags).group(:name).count(:name) %>
 		</div>
 		<div class="container col-md-12">
@@ -26,9 +26,9 @@
 		</div>
 		
 		<div class="container col-md-12">
-			<h5>目前共有<%#= @reports_count %>則報告</h5> 
-			<h6>公開報告：則 / 未公開報告：則</h6>
-			<%#= line_chart Report.group(:report_id).group(:created_at) %>
+			<h5>目前共有<%= @reports_count %>則報告</h5> 
+			<h6>公開報告：<%= @report_public %>則 / 未公開報告：<%= @report_private %>則</h6>
+			<%= line_chart Report.group(:report_id).group(:created_at) %>
 		</div>
 	</div>
 

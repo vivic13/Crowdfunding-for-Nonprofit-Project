@@ -10,7 +10,9 @@ class Admin::StoriesController < ApplicationController
 		@project_public = Project.where(:is_public => true).count
 		@projct_private = @projects_count - @project_public
 		@users_count = User.where.not(:role => "admin").count
-		#@reports_count = Report.all.count
+		@reports_count = Report.all.count
+		@report_public = Report.where(:is_public => true).count
+		@report_private = @reports_count - @report_public
 
 	end
 

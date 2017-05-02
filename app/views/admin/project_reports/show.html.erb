@@ -10,6 +10,7 @@
           <% end %>
           <h2>報告名稱</h2><p><%= @project.report.title %></p>
           <h2>報告內容</h2><p><%= @project.report.content %></p>
+          <p>是否公開：<%= @report.is_public %></p>
           <%= link_to "編輯報告", edit_admin_project_report_path(@project),class:"btn btn-default"%>
           <%= link_to "刪除報告", admin_project_report_path(@project), :method => :delete ,class:"btn btn-default" %>
           <%= link_to "查看專案資訊", admin_project_path(@project),class:"btn btn-default"%>
