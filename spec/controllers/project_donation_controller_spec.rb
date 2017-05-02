@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProductDonationsController, type: :controller do
+RSpec.describe ProjectDonationsController, type: :controller do
 
 	include EmailSpec::Helpers
   include EmailSpec::Matchers
