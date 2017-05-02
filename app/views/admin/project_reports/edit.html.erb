@@ -6,33 +6,4 @@
 	專案內容: <%= @project.content %><br>
 </div>
 
-<div class="container">
-<%= form_for @report, :url => admin_project_report_path(@project) do |f| %>
-  <div class="form_group">
-		<%= f.label :title, "專案成效報告名稱:" %><br>
-		<%= f.text_field :title %><br>
-  </div>
-  <div class="form_group">
-		<%= f.label :content, "專案成效報告內容:" %><br>
-		<%= f.text_area :content %><br>
-	</div>
-	<div class="form_group">
-		<%= f.radio_button :is_public,false,:value => false %>		
-		<%= f.label :is_public, "尚未公布"%>
-		<%= f.radio_button :is_public,true,:value => true %>
-		<%= f.label :is_public, "公布"%>		
-	</div>
-	<div class="form_group">
- 		<ol>
- 			<%= f.fields_for :report_photos do |p|  %>
- 
- 				<li><%= p.label :image , "報告照片 :" %>
- 				 <%= p.file_field :image %></li>
- 
- 			<% end %>
- 		</ol>
- 	</div>
-	<%= f.submit class:"btn btn-default" %>
-<% end %>
-
-</div>
+<%= render :partial => "form" %>
