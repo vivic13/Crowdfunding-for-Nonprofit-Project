@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ProductsController, type: :controller do
+RSpec.describe Admin::ProjectsController, type: :controller do
 	include EmailSpec::Helpers
   include EmailSpec::Matchers
 

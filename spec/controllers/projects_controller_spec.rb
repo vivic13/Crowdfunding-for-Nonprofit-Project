@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.describe ProductsController, type: :controller do
+RSpec.describe ProjectsController, type: :controller do
 	before(:all) do 
  		@npo = Npo.create(:name => "da",)
   	@product_1 = Product.create(npo: @npo, :name => "car", :description => "This is a car",:cost => 2000,:unit => 100, :unit_price => 200,:due_date => "2017-06-20",
