@@ -23,7 +23,9 @@ class Admin::StoriesController < ApplicationController
 	end
 
 	def show 
-		@link = "https://www.youtube.com/embed/" + @story.youtube_code + "?autoplay=0"
+		if @story.youtube_link.present?
+			@link = "https://www.youtube.com/embed/" + @story.youtube_code + "?autoplay=0"
+		end
 	end
 
 	def new
