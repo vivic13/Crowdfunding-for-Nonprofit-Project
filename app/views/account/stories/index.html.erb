@@ -1,8 +1,12 @@
 
 <div class="container text-center">
-	<h1>我喜歡的故事</h1>
-</div>
+	<h1>Profile</h1>
+	<hr>
 
+</div>
+<div class="container text-center">
+  <h4><%= @user.name%>喜歡的故事</h4>
+</div>
 <div class="container">
 	<% @likes.each do |like| %>
 		<div class="col-md-4 text-center">
