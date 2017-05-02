@@ -1,22 +1,7 @@
 <h1>專案頁面</h1>
 
 <div class="container">
-	<% @projects_1.each do |p| %>
-		<table>
-			
-			<tr>
-				<td>
-					<%= p.name %><%= link_to "show", project_path(p)   %>
-				</td>
-			</tr>
-
-		</table>
-	<% end %>
-
-</div>
-
-<div class="container">
-	<% @projects_2.each do |p| %>
+	<% @projects.each do |p| %>
 		<table>
 			
 			<tr>

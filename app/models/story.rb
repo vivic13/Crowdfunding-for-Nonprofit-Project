@@ -1,5 +1,5 @@
 class Story < ApplicationRecord
-	has_one :project
+	has_many :projects
 	has_many :story_tags
 	has_many :tags, :through => :story_tags
 	has_many :photofiles, dependent: :destroy

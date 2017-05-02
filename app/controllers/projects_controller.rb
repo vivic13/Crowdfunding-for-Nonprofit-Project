@@ -2,8 +2,8 @@ class ProjectsController < ApplicationController
 
 	def index
 		@page_title = "募資專案"
-		@projects_1 = Project.where(:is_public => true).order('due_date').limit(5)
-		@projects_2 = Project.where(:is_public => true).order('progress desc')-Project.where(:is_public => true).order('due_date').limit(5)
+		@projects = Project.where(:is_public => true)
+		
 	end
 
 	def show 

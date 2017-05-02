@@ -14,8 +14,9 @@ class Admin::ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new
-		5.times {@photos = @project.photos.build}
 		@stories = Story.where(need_project: "yes")
+		5.times {@photos = @project.photos.build}
+		
 
 	end
 
@@ -72,7 +73,7 @@ class Admin::ProjectsController < ApplicationController
 
 	def project_params
 		params.require(:project).permit(:due_date,:name,:content,
-			                            :is_public,:unit,:unit_price, 
+			                            :is_public,:total_amount, 
 			                            :story_id,
 			                            :photos_attributes => [:id, :image, :_destroy],
 			                            :report_attributes => [:id, :name, :_destroy] 

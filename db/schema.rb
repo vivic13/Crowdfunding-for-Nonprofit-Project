@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502015602) do
+ActiveRecord::Schema.define(version: 20170502034045) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "project_id"
@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20170502015602) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "payment_status", default: "pending"
-    t.integer  "unit",           default: 1
     t.string   "payment_method", default: "CREDIT"
-    t.integer  "amount"
+    t.integer  "amount",         default: 500
+    t.string   "name"
     t.index ["project_id"], name: "index_donations_on_project_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
@@ -67,17 +67,15 @@ ActiveRecord::Schema.define(version: 20170502015602) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.integer  "unit"
-    t.integer  "unit_price"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.date     "due_date"
-    t.integer  "donation_unit_count", default: 0
-    t.boolean  "is_public",           default: false
-    t.float    "progress",            default: 0.0
-    t.boolean  "done",                default: false
+    t.boolean  "is_public",       default: false
+    t.boolean  "done",            default: false
     t.integer  "story_id"
     t.text     "content"
+    t.integer  "total_amount"
+    t.integer  "donation_amount", default: 0
   end
 
   create_table "report_photos", force: :cascade do |t|

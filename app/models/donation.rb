@@ -2,10 +2,10 @@ class Donation < ApplicationRecord
 	belongs_to :project
 	belongs_to :user
 	has_many :payments
-	validates_presence_of :unit
-	after_validation :check_stock
-	after_validation :calculate_amount
-	#after_save :update_project_column
+	validates_presence_of :name
+	validates :amount, numericality: { only_integer: true }
+
+	after_save :update_project_column
 
 	def paid?
 		self.payment_status == "Paid"
@@ -13,25 +13,16 @@ class Donation < ApplicationRecord
 
 	private
 
-	def calculate_amount
-		self.amount = self.unit.to_i * self.project.unit_price
-	end
 
-	def check_stock 
-		stock = self.project.unit - self.project.donation_unit_count
-		if self.unit > stock
-			self.unit = stock 
+	def update_project_column
+		if self.paid?
+			@update_amount = self.project.donation_amount +  self.amount
+			self.project.update(:donation_amount => @update_amount)
+			if self.project.donation_amount >= self.project.total_amount
+				self.project.update(:done => true)
+			end
 		end
 	end
-	
-
-	
-
-
-	#def update_project_column
-
-
-	#end
 
 	
 

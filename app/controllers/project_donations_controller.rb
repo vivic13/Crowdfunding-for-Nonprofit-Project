@@ -8,7 +8,7 @@ class ProjectDonationsController < ApplicationController
 	end 
 
 	def create 
-		if @project.donation_unit_count == @project.unit || DateTime.now > @project.due_date
+		if @project.done == true || DateTime.now > @project.due_date
 			redirect_to project_path(@project)
 	 		flash[:alert] = "很可惜，已結束募資!"	
 		else
@@ -51,7 +51,7 @@ class ProjectDonationsController < ApplicationController
 	end
 
 	def donation_params
-		params.require(:donation).permit(:unit, :payment_status)
+		params.require(:donation).permit(:name, :amount, :payment_status)
 	end
 
 	

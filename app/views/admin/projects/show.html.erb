@@ -13,14 +13,14 @@
 	        <li>名稱：<%= @project.name %></li>
 					<li>內容: <%= @project.content %></li>
 					<li>到期日: <%= @project.due_date %></li>
-					<li>募資單位數: <%= @project.unit %></li>
-					<li>募資單位價格: <%= @project.unit_price %></li>
+					<li>募資總金額: <%= @project.total_amount %></li>
+					<li>已募得金額: <%= @project.donation_amount %></li>
           </ul>
 	    </div>     
 	  </div>
 	  <%= link_to "刪除", admin_project_path(@project) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
     <%= link_to "編輯", edit_admin_project_path(@project) ,class:"btn btn-default"%>
-    <%= link_to "查看已產生的donations",admin_project_donation_index_url(@project),class:"btn btn-default" %>
+    <%= link_to "查看募資細節",admin_project_donation_index_url(@project),class:"btn btn-default" %>
 
     <% if @project.report %>
       <%= link_to "查看成效報告", admin_project_report_path(@project),class:"btn btn-default"%>

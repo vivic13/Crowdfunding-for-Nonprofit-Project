@@ -7,11 +7,12 @@
 <% end%>
 
 <%= form_for ([@project, @project.donations.build] ) do |f| %>  
-
-	<%= f.label :unit,"單位:" %>
-	<%= f.text_field :unit %>
+	<%= f.label :name,"捐款姓名:" %>
+	<%= f.text_field :name %>
+	<%= f.label :amount,"金額:" %>
+	<%= f.text_field :amount %>
 
 	
-	<%= f.submit "送出" ,class:"btn btn-default"%> 
+	<%= f.submit "送出" ,class:"btn-default"%> 
 
 <% end %> 

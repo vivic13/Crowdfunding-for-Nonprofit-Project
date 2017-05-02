@@ -44,13 +44,10 @@
 		</div>
 
 		<div class="form_group">
-			<%= f.label :unit, "募款預計單位數:" %><br>
-			<%= f.text_field :unit %><br>
+			<%= f.label :total_amount, "預計募款總金額:" %><br>
+			<%= f.text_field :total_amount %><br>
 		</div>
-		<div class="form_group">
-			<%= f.label :unit_price, "單位募款金額:" %><br>
-			<%= f.text_field :unit_price %><br>
-		</div>
+		
 		<div class="form_group">
 			<%= f.radio_button :is_public,true,:value => true %>
 			<%= f.label :is_public, "公布"%>
@@ -59,10 +56,6 @@
 		</div>
 		
 
-		<% if @project.donation_unit_count == @project.unit  %>  
-			<h2>確定募資成功後</h2>
-			
-		<% end %>
 		<%= f.submit class:"btn btn-default" %>
 
 		

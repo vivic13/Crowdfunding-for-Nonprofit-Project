@@ -2,14 +2,14 @@
 	<h1>您的捐款資訊</h1>
 </div>
 <div class="container">
-	用戶名稱：<%= @donation.user.name %> <br>
-	您購買的單位:<%= @donation.unit %> <br>
+	捐款姓名：<%= @donation.name %> <br>
+	您購買的單位:<%= @donation.amount %> <br>
 	<p>付款狀態：<%= @donation.payment_status %></p>
 </div>
 
 <div class="container">
 	<% if @donation.paid? %>
-		<%= link_to '回到專案頁面', project_path(@project) ,class:"btn"%>
+		<%= link_to '回到專案頁面', project_path(@project) ,class:"btn-default"%>
 	<% else %>
 		<p>付款方式:</p>
 		<% Payment::PAYMENT_METHODS.each do |pm| %>
