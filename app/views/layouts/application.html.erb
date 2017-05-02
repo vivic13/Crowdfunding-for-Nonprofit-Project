@@ -26,9 +26,9 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li> <%= link_to '我們在做什麼', aboutus_path%></li>
-          <li> <%= link_to '呆丸各角落', stories_path%></li>
+          <li> <%= link_to '呆丸各個眉角', stories_path%></li>
           <li> <%= link_to '贊助支持', projects_path %></li>
-          <li><%= link_to '聯絡我們', contactus_path %></li>
+          <%#= link_to '聯絡我們', contactus_path %>
         </ul>
 
         <p class="login navbar-text navbar-right"> 
@@ -36,11 +36,9 @@
             <%= current_user.name %>
             <%= link_to('登出', destroy_user_session_path, :method => :delete,class:"btn-default") %>
             <%= link_to('更改資料', edit_registration_path(:user),class:"btn-default") %>
-            <%= link_to("My Profile", account_stories_path,class:"btn-default") %>    
+            <%= link_to("會員中心", account_stories_path,class:"btn-default") %>    
           <% else %>
-            <%= link_to('註冊', new_registration_path(:user),class:"btn-default") %>
-            <%= link_to('登入', new_session_path(:user),class:"btn-default") %>
-            <%= link_to "FB登入", user_facebook_omniauth_authorize_path ,class:"btn-default"%>
+            <%= link_to('登入/註冊', new_registration_path(:user),class:"btn-default") %>
           <% end %>
           </p>
 
@@ -48,7 +46,6 @@
     </div>
 
   </nav>
-
 
     <%= yield %>
   </body>
