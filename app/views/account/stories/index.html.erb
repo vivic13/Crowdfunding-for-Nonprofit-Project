@@ -1,0 +1,39 @@
+
+<div class="container text-center">
+	<h1>我喜歡的故事</h1>
+</div>
+
+<div class="container">
+	<% @likes.each do |like| %>
+		<div class="col-md-4 text-center">
+			<table class="table table-bordered">		
+				<tr>
+					<th class="table-info text-center">
+					  標題: <%= like.story.title%>	
+					</th>
+				</tr> 
+				<tr>
+				  <td>
+					  時間：<%= like.story.story_time %>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+					  地點：<%= like.story.location %>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+					  是否公開：<%= like.story.is_public %>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+					  <%= link_to "Detail",story_path(like.story)%>
+				  </td>
+				</tr>
+		
+			</table>
+		</div>
+	<% end %>
+</div>
