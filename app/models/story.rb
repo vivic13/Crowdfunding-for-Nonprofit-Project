@@ -20,8 +20,8 @@ class Story < ApplicationRecord
 		self.likes.count
 	end
 
-	def youtube_code
-		self.youtube_link.split("/").last
+	def youtube_code		
+			self.youtube_link.split("/").last
 	end
 
 end

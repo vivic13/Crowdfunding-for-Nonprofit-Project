@@ -19,9 +19,9 @@
 	        <li>是否置頂：<%= @story.priority %></li>
           </ul>
 	    </div>
-	
-	    <iframe id="ytplayer" type="text/html" width="640" height="360" src= "<%= @link %>" frameborder="0"></iframe>
-      
+			<% if @story.youtube_link.present? %>
+	    	<iframe id="ytplayer" type="text/html" width="640" height="360" src= "<%= @link %>" frameborder="0"></iframe>
+      <% end %>
       <div class="col-sm-12">
         <h2>故事照片集</h2>
         <% @story.photofiles.each do|p| %>
