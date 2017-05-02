@@ -29,9 +29,6 @@
           <li> <%= link_to '呆丸各角落', stories_path%></li>
           <li> <%= link_to '贊助支持', projects_path %></li>
           <li><%= link_to '聯絡我們', contactus_path %></li>
-          <li> <%= link_to("My Stories", account_stories_path) %></li>            
-          <li> <%= link_to("My project_donations", account_project_donations_path) %></li> 
-           
         </ul>
 
         <p class="login navbar-text navbar-right"> 
@@ -39,6 +36,8 @@
             <%= current_user.name %>
             <%= link_to('登出', destroy_user_session_path, :method => :delete,class:"btn-default") %>
             <%= link_to('更改資料', edit_registration_path(:user),class:"btn-default") %>
+            <%= link_to("My Stories", account_stories_path,class:"btn-default") %>    
+            <%= link_to("My project_donations", account_project_donations_path,class:"btn-default") %>
           <% else %>
             <%= link_to('註冊', new_registration_path(:user),class:"btn-default") %>
             <%= link_to('登入', new_session_path(:user),class:"btn-default") %>
