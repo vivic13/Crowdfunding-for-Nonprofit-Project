@@ -47,6 +47,11 @@ Rails.application.routes.draw do
     resources :tags
 	end
 
+  namespace :account do
+    resources :stories
+    resources :project_donations
+  end
+
 	 #API routes path
   namespace :api, defaults:{ format: :json }do
     namespace :v1 do
