@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "medium-editor/medium-editor";
 @import "admin/stories";
 @import "admin/projects";
 @import "admin/project_reports";
@@ -90,4 +91,8 @@ small {
 
 }
 
+.editable{
+  border: 1px dashed;
+  height:200px;
+}
 

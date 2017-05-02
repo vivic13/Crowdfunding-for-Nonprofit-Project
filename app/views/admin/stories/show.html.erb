@@ -1,5 +1,11 @@
 <div class="container text-center">
-	<h1>呆丸各角落故事</h1>
+	<h1><%=truncate(@story.title, length: 20)%> </h1>
+	<% if @story.tags %>
+	  <h5>標籤：<% @story.tags.each do|t| %> 
+	    <i class="fa fa-tag " aria-hidden="true"><%= t.name %></i>
+			 <%end%>	
+	  </h5>
+	<% end %>
 	<hr class="short">
 </div>
 <div class="container text-center">
@@ -11,13 +17,13 @@
 	<div class="container">
 	  <div class="row">
 	    <div class="col-sm-12">
-	      <h2>故事資訊</h2>
-	      <ul>
-            <li> 時間：<%= @story.story_time %> </li>
-            <li> 地點：<%= @story.location %> </li>
-            <li>是否公開：<%= @story.is_public %></li>
-	        <li>是否置頂：<%= @story.priority %></li>
-          </ul>
+	    	<h2>細節</h2>  
+	    	<ul>   
+          <p><i class="fa fa-asterisk" aria-hidden="true">時間：</i><%= @story.story_time %> </p>
+         	<p><i class="fa fa-asterisk" aria-hidden="true">地點：</i><%= @story.location %> </p>
+          <p><i class="fa fa-asterisk" aria-hidden="true">是否公開：</i><%= @story.is_public %> </p>
+	        <p><i class="fa fa-asterisk" aria-hidden="true">是否置頂：</i> <%= @story.priority %> </p>
+				</ul> 
 	    </div>
 			<% if @story.youtube_link.present? %>
 	    	<iframe id="ytplayer" type="text/html" width="640" height="360" src= "<%= @link %>" frameborder="0"></iframe>
@@ -30,16 +36,15 @@
       </div>
 			
 	    <div class="col-sm-12">
-	      <h2> 故事標題：<%= @story.title %> </h2>
-	      <% if @story.tags %>
-	        <h2>標籤：<% @story.tags.each do|t| %> 
-			      <%= t.name %> 
-		    <%end%>	
-	        </h2>
-	      <% end %>
+	      
 	      <div style="height:100px;">
 	        <p>
-	          <h2>內容:</h2><%= @story.content %>
+	          <h2>內容:</h2><%= sanitize(@story.content) %>
+	        </p>
+	      </div>
+	      <div style="height:100px;">
+	        <p>
+	          <h2>反思:</h2><%= sanitize(@story.reflection) %>
 	        </p>
 	      </div>
 	    </div>	    

@@ -43,6 +43,7 @@ gem "font-awesome-rails"
 
 gem 'chartkick'
 
+gem 'medium-editor-rails'
 
 gem 'active_model_serializers' 
 

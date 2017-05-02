@@ -16,4 +16,7 @@
 //= require_tree .
 //= require chartkick
 //= require bootstrap-sprockets
+//= require medium-editor
+
+
 

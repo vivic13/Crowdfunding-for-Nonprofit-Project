@@ -11,7 +11,7 @@
 	      <ul>
 	        <li>故事標題 : <%= @project.story_title %></li>
 	        <li>名稱：<%= @project.name %></li>
-					<li>內容: <%= @project.content %></li>
+					<li>內容: <%= sanitize(@project.content) %></li>
 					<li>到期日: <%= @project.due_date %></li>
 					<li>募資總金額: <%= @project.total_amount %></li>
 					<li>已募得金額: <%= @project.donation_amount %></li>

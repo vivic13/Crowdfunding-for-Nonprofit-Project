@@ -25,11 +25,11 @@
 		</div>
 		<div class="form_group">
 			<%= f.label :content, "內容:" %><br>
-			<%= f.text_area :content %><br>
+			<%= f.text_area :content ,class:"editable" %><br>
 		</div>
 		<div class="form_group">
 			<%= f.label :reflection, "反思:" %><br>
-			<%= f.text_area :reflection %><br>
+			<%= f.text_area :reflection ,class:"editable"%><br>
 		</div>
 		<div class="form_group">
 			<%= f.label :youtube_link, "youtube連結:" %><br>
@@ -68,9 +68,6 @@
 			<%= f.label :need_project, "不要有專案" %>
 			<%= f.radio_button :need_project,"yes",:value => "yes" %>
 			<%= f.label :need_project, "要有專案" %>
-			<%= f.radio_button :need_project,"alreay_had",:value => "alreay_had" %>
-			<%= f.label :need_project, "已專案" %>
-
 			
 		</div>
 		<%= f.submit class:"btn btn-default" %>
