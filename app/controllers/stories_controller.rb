@@ -10,6 +10,7 @@ class StoriesController < ApplicationController
 	def show 
 		@photos = @story.photofiles
 		@photos_count = @photos.count
+		@link = "https://www.youtube.com/embed/" + @story.youtube_code + "?autoplay=0"
 	end
 
 	def like 	

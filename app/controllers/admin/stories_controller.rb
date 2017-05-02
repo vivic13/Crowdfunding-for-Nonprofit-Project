@@ -1,7 +1,8 @@
 class Admin::StoriesController < ApplicationController
 	layout "admin"
 	before_action :check_admin
-	before_action :find_story, only:[:show,:edit, :update, :destroy]
+	before_action :find_story, only:[:show,:edit, :update, :destroy, :allow_youtube_iframe]
+	
 	def home
 		@stories_count = Story.all.count
 		@stories_public = Story.where(:is_public => true).count
@@ -22,7 +23,7 @@ class Admin::StoriesController < ApplicationController
 	end
 
 	def show 
-
+		@link = "https://www.youtube.com/embed/" + @story.youtube_code + "?autoplay=0"
 	end
 
 	def new
@@ -91,5 +92,6 @@ class Admin::StoriesController < ApplicationController
     end      
   end
 
+ 
 
 end
