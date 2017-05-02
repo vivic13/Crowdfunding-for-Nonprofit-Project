@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502034045) do
+ActiveRecord::Schema.define(version: 20170502042421) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "project_id"
@@ -102,18 +102,14 @@ ActiveRecord::Schema.define(version: 20170502034045) do
     t.string   "title"
     t.text     "content"
     t.string   "youtube_link"
-    t.boolean  "is_public",          default: false
+    t.boolean  "is_public",    default: false
     t.string   "location"
     t.datetime "story_time"
-    t.boolean  "priority",           default: false
-    t.string   "need_project",       default: "no"
+    t.boolean  "priority",     default: false
+    t.string   "need_project", default: "no"
     t.text     "reflection"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "story_tags", force: :cascade do |t|

@@ -11,25 +11,24 @@
 	<div class="container">
 	  <div class="row">
 	    <div class="col-sm-12">
-	      <h2>封面照片</h2>
-	      <%= image_tag (@story.image.url(:small)) %>
-	      <h2>故事其他資訊</h2>
+	      <h2>故事資訊</h2>
 	      <ul>
             <li> 時間：<%= @story.story_time %> </li>
             <li> 地點：<%= @story.location %> </li>
-            <li>youtube：<%= @story.try(:youtube_link) %></li>
             <li>是否公開：<%= @story.is_public %></li>
 	        <li>是否置頂：<%= @story.priority %></li>
           </ul>
 	    </div>
+	
+	    <iframe id="ytplayer" type="text/html" width="640" height="360" src= "<%= @link %>" frameborder="0"></iframe>
       
       <div class="col-sm-12">
-        <h2>故事照片</h2>
+        <h2>故事照片集</h2>
         <% @story.photofiles.each do|p| %>
 	        <%= link_to image_tag(p.image.url(:medium)) ,class:"img-responsive" %>
         <% end %>
       </div>
-
+			
 	    <div class="col-sm-12">
 	      <h2> 故事標題：<%= @story.title %> </h2>
 	      <% if @story.tags %>
@@ -57,3 +56,23 @@
 	});
 
 });
+
+  // Load the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Replace the 'ytplayer' element with an <iframe> and
+  // YouTube player after the API code downloads.
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+      height: '360',
+      width: '640',
+      videoId: 'M7lc1UVf-VE'
+    });
+  }
+
+
+</script>
