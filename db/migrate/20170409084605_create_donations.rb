@@ -3,7 +3,7 @@ class CreateDonations < ActiveRecord::Migration[5.0]
     create_table :donations do |t|
     	t.integer :product_id
     	t.integer :user_id 
-    	t.integer :amount
+    	#t.integer :amount
     	t.string :status
       t.timestamps
     end
