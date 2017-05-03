@@ -13,5 +13,6 @@ class CreateStories < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_attachment :stories, :image
+    
   end
 end
