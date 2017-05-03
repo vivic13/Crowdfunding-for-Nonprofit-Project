@@ -6,7 +6,7 @@ class AdjustColumnsOnProjects < ActiveRecord::Migration[5.0]
   	#remove_column :projects, :donation_file
   	#remove_column :projects, :description
   	#remove_column :projects, :npo_id
-  	add_column :projects, :story_id ,:integer
+  	#add_column :projects, :story_id ,:integer
 		add_column :projects, :content,:text
 		rename_column :photos, :product_id, :project_id
 		rename_index :photos, :product_id, :project_id

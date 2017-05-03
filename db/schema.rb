@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 20170502042421) do
     t.date     "due_date"
     t.boolean  "is_public",       default: false
     t.boolean  "done",            default: false
-    t.integer  "story_id"
     t.text     "content"
+    t.integer  "story_id"
     t.integer  "total_amount"
     t.integer  "donation_amount", default: 0
   end
