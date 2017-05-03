@@ -24,7 +24,7 @@ set :keep_releases, 5
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/secrets.yml", "config/facebook.yml", "config/email.yml",, "config/pay2go.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml", "config/facebook.yml", "config/email.yml", "config/pay2go.yml"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
