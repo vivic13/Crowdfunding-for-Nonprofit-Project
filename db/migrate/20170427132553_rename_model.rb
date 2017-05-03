@@ -6,4 +6,5 @@ class RenameModel < ActiveRecord::Migration[5.0]
   def self.down
     rename_table :projects, :products
   end
+  
 end
