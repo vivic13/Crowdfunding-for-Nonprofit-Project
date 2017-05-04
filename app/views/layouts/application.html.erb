@@ -39,7 +39,7 @@
 
             <%= link_to("會員中心", account_stories_path,class:"btn-default") %>  
             <% if current_user.role == "admin" %>
-              <%= link_to("admin中心", home_admin_stories_path ,class:"btn-default") %>
+              <%= link_to("admin中心", admin_stories_path ,class:"btn-default") %>
             <% end %>  
 
           <% else %>
