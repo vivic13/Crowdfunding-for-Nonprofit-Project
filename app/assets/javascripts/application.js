@@ -20,3 +20,17 @@
 
 
 
+//= require bootstrap.min.js
+//= require bootstrap.js
+//= require html5shiv.js
+//= require classie.js
+//= require jquery-1.9.1.min.js
+//= require jquery-1.10.2.js
+//= require jquery.corner.js
+//= require jquery.magnific-popup.js
+//= require wow.min.js
+//= require owl.carousel.js
+//= require PIE_IE9.js
+//= require PIE_IE678.js
+
+
