@@ -1,0 +1,10 @@
+<% if @comment.save  %>
+
+	$("#comment-list").prepend("<%=j render(:partial => 'story_comments/comment', :locals => {:c => @comment })%>");
+	$("#count").text('<%= @story.comments.count %>');
+
+	$("#comment-text").val("");
+	$("#image-text").val("");
+
+  $(".upload-preview img").attr("src","/assets/upload_image.png");
+<% end %>
