@@ -10,9 +10,9 @@
 	<hr class="short">
 </div>
 <div class="container text-center">
-	<%= link_to "刪除", admin_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn btn-default"%>
-	<%= link_to "編輯", edit_admin_story_path(@story) ,class:"btn btn-default"%>
-	<%= link_to "返回所有故事列表", admin_stories_path ,class:"btn btn-default"%>
+	<%= link_to "刪除", account_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn btn-default"%>
+	<%= link_to "編輯", edit_account_story_path(@story) ,class:"btn btn-default"%>
+	<%= link_to "返回故事記錄", account_stories_path ,class:"btn btn-default"%>
 </div>
 <section>
 	<div class="container">
