@@ -6,8 +6,20 @@
 @import "admin/projects";
 @import "admin/project_reports";
 
+
+
+@import "animate.css";
+@import "bootstrap.min.css";
+@import "bootstrapTheme.css";
+@import "custom.css";
+@import "general.css";
+@import "magnific-popup.css";
+@import "owl.carousel.css";
+@import "owl.theme.css";
+@import "style.css";
+
 body{
-	padding-top: 100px; 
+	padding-top: 60px; 
   box-sizing: border-box;
   font-size: 15px;
 }

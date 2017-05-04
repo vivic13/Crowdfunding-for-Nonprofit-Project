@@ -41,6 +41,8 @@
             <% if current_user.role == "admin" %>
               <%= link_to("admin中心", admin_stories_path ,class:"btn-default") %>
             <% end %>  
+              <p class="notice"><%= flash[:notice] %></p>
+            <p class="alert"><%= flash[:alert] %></p>   
 
           <% else %>
             <%= link_to '登入', new_session_path(:user), class:"btn-default login"%>
@@ -53,9 +55,7 @@
       </div>
     </div>
   </nav>
-
-    <p style="color: green"><%= flash[:notice] %></p>
-    <p style="color: red"><%= flash[:alert] %></p>   
+  
 
     <%= yield %>
   </body>
@@ -67,6 +67,15 @@
     height:52px;
 
   }
+.notice{
+  color: rgba(210,210,210,1);
+  font-size: 20px;
+  font-weight: 300px;
+  background-color: rgba(242,242,242,0.5);
+  float:right;
+  width: 20%;
+  
+}
   a {
     margin: 0px;
   }
