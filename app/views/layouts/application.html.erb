@@ -37,7 +37,7 @@
             <%= link_to('登出', destroy_user_session_path, :method => :delete,class:"btn-default") %>
             <%= link_to('更改資料', edit_registration_path(:user),class:"btn-default") %>
             <%= link_to("會員中心", account_stories_path,class:"btn-default") %>  
-            <% if current_user.role = "admin" %>
+            <% if current_user.role == "admin" %>
               <%= link_to("admin中心", home_admin_stories_path ,class:"btn-default") %>
             <% end %>  
           <% else %>
