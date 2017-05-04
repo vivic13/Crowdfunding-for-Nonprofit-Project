@@ -3,6 +3,7 @@ class Story < ApplicationRecord
 	has_many :story_tags
 	has_many :tags, :through => :story_tags
 	has_many :photofiles, dependent: :destroy
+	has_many :comments, dependent: :destroy
 	has_many :likes
 	has_many :users, :through => :likes
 	accepts_nested_attributes_for :photofiles,:allow_destroy => true, :reject_if => :all_blank

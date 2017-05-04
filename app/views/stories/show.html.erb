@@ -60,8 +60,36 @@
 <% else %>
   <iframe id="ytplayer" type="text/html" width="640" height="360" src= "<%= @link %>" frameborder="0"></iframe>
 <% end %>
-<div class="container">
-  <%= render 'disqus'%>
+
+<div class="container">   
+
+  <% if current_user %>
+  <hr>
+    <div class="container">
+      <h3>目前:<span id="count"><%= @comment_no %></span> 則留言<i class="fa fa-commenting" aria-hidden="true"></i></h3>
+
+      
+      <%= render :partial => 'story_comments/form' %>
+    </div>
+      <div class="container" id="comment-list">
+        <% @comments.each do |c| %>
+          <%= render :partial => 'story_comments/comment', :locals => {:c => c }%>
+          
+        <% end %>
+
+      </div>
+
+      <% paginate @comments %>
+
+      
+      <% if @next_page %>
+        <%= link_to '更多留言',story_path(@story, :page => @next_page) ,:id => 'load-more',:remote => true %>
+      <% end %>
+<% else %>
+
+  <h3>登入就可觀看留言</h3>
+ <% end %>
+  <%#= render 'disqus'%>
 </div>
 
 <script>

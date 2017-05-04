@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
 	
   resources :stories, only:[:index,:show] , :controller => 'stories' do 
+    resources :comments, only:[:create,:destroy], :controller => 'story_comments'
     member do 
       post :like ,:controller => 'stories'
       post :unlike,:controller => 'stories'

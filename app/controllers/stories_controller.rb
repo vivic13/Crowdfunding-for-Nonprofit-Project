@@ -8,6 +8,14 @@ class StoriesController < ApplicationController
 
 
 	def show 
+		@comment_no = @story.comments_count
+		@comments = @story.comments.page(params[:page]).per(5)
+		if @comments.last_page?
+          @next_page = nil
+        else
+          @next_page = @comments.next_page
+        end
+        
 		@photos = @story.photofiles
 		@photos_count = @photos.count
 		if @story.youtube_link.present?

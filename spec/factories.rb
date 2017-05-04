@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :comment do
+    commenter "MyString"
+    story_id 1
+    comment_body "MyText"
+  end
   factory :like do
     
   end

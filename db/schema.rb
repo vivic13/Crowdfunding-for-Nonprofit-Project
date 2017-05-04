@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502042421) do
+ActiveRecord::Schema.define(version: 20170504081932) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "commenter"
+    t.integer  "story_id"
+    t.text     "comment_body"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "donations", force: :cascade do |t|
     t.integer  "user_id"
@@ -102,14 +110,15 @@ ActiveRecord::Schema.define(version: 20170502042421) do
     t.string   "title"
     t.text     "content"
     t.string   "youtube_link"
-    t.boolean  "is_public",    default: false
+    t.boolean  "is_public",      default: false
     t.string   "location"
     t.datetime "story_time"
-    t.boolean  "priority",     default: false
-    t.string   "need_project", default: "no"
+    t.boolean  "priority",       default: false
+    t.string   "need_project",   default: "no"
     t.text     "reflection"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "comments_count", default: 0,     null: false
   end
 
   create_table "story_tags", force: :cascade do |t|
