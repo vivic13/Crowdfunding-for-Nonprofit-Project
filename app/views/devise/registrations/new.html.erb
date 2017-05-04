@@ -1,38 +1,45 @@
-<div class="container text-center">
-  <%- if devise_mapping.omniauthable? %>
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "#{OmniAuth::Utils.camelize(provider)}註冊", omniauth_authorize_path(resource_name, provider) ,class:"btn btn-default" %><br />
-    <% end -%>
-  <% end -%>
 
-  <p>或使用電子信箱註冊</p>
+ 
+      <div class="container text-center">
+        <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <%= link_to omniauth_authorize_path(resource_name, provider) do%>
+              <%= image_tag "fb2.png" %>
+            <% end %>
+          <% end -%>
+        <% end -%>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+        <p>或使用電子信箱註冊</p>
 
-    <div class="field">
-      <%= f.label :電子信箱 %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
 
-    <div class="field">
-      <%= f.label :密碼 %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
+          <div class="form-group text-center">
+            <%= f.email_field :email,  placeholder:"電子信箱" ,autofocus: true,class:"form-length"  %>
+          </div>
 
-    <div class="field">
-      <%= f.label :確認密碼 %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
+          <div class="form-group text-center">
+            <% if @minimum_password_length %>
+            <em>密碼最短6個字元</em> <br>
+            <% end %>
+            <%= f.password_field :password, placeholder:"密碼" , autocomplete: "off" ,class:"form-length" %>
+          </div>
 
-    <div class="actions">
-      <%= f.submit "註冊",class:"btn btn-default" %>
-    </div>
-  <% end %>
-  <p>已有帳號了？</p>
+          <div class="form-group text-center">
+            <%= f.password_field :password_confirmation, placeholder:"請再輸入ㄧ次密碼確認" , autocomplete: "off" ,class:"form-length" %>
+          </div>
 
-  <%= render "devise/shared/links" %>
-</div>
+
+          <div class="actions">
+            <%= f.submit "註冊",class:"btn-default" %>
+          </div>
+        <% end %>
+      </div>
+ 
+
+<style>
+  
+  
+
+</style>
+

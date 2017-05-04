@@ -24,8 +24,6 @@ class User < ApplicationRecord
     self.update_columns(role: "user")
   end
 
-  protected
-
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
