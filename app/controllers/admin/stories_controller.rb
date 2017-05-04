@@ -1,7 +1,7 @@
 class Admin::StoriesController < ApplicationController
 	layout "admin"
 	before_action :check_admin
-	before_action :find_story, only:[:show,:edit, :update, :destroy, :allow_youtube_iframe]
+	before_action :find_story, only:[:show,:edit, :update, :destroy]
 	
 	def home
 		@stories_count = Story.all.count
@@ -36,7 +36,11 @@ class Admin::StoriesController < ApplicationController
 
 	def create
 		@story = Story.new(story_params)	
-		
+			if current_user.role != "admin"
+				@story.author = current_user.name
+			else
+				@story.author = "小編"
+			end
 		if @story.save
 			respond_to do |format|
 				  format.html { redirect_to admin_story_path(@story)}

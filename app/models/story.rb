@@ -9,6 +9,7 @@ class Story < ApplicationRecord
 	accepts_nested_attributes_for :photofiles,:allow_destroy => true, :reject_if => :all_blank
 	validates_presence_of :title, :content, :location, :story_time
 
+
 	def find_like(user)
 		Like.find_by(:story => self, :user => user)
 	end
@@ -22,7 +23,8 @@ class Story < ApplicationRecord
 	end
 
 	def youtube_code		
-			self.youtube_link.split("/").last
+		self.youtube_link.split("/").last
 	end
+
 
 end

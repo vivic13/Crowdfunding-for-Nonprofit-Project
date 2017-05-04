@@ -10,17 +10,12 @@
 			<table class="table table-bordered">		
 				<tr>
 					<th class="table-info text-center">
-					  標題: <%= s.title%>	
+					  標題: <%= s.title%>	/ 作者: <%= s.try(:author)%>
 					</th>
 				</tr> 
 				<tr>
 				  <td>
-					  時間：<%= s.story_time %>
-				  </td>
-				</tr>
-				<tr>
-				  <td>
-					  地點：<%= s.location %>
+					  時間：<%= s.story_time %> / 地點：<%= s.location %>
 				  </td>
 				</tr>
 				<tr>

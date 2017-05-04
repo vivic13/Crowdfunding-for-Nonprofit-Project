@@ -5,4 +5,11 @@ class Account::ProjectDonationsController < ApplicationController
   	@user = current_user
     @donations = Donation.where(:user_id => current_user.id)
   end
+
+  def show 
+  	@donation = Donation.find(params[:id])
+
+  end 
+
+
 end

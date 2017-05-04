@@ -10,36 +10,35 @@
 
 </div>
 <div class="container text-center">
-  <h4><%= @user.name%>的捐贈記錄</h4>
+  <h4><%= @user.name%>喜歡的故事</h4>
 </div>
-
 <div class="container">
-	<% @donations.each do |donation| %>
+	<% @likes.each do |like| %>
 		<div class="col-md-4 text-center">
 			<table class="table table-bordered">		
 				<tr>
 					<th class="table-info text-center">
-					  捐贈的專案: <%= donation.project.try(:name)%>	
+					  標題: <%= like.story.title%>	
 					</th>
 				</tr> 
 				<tr>
 				  <td>
-					  捐贈金額：<%= donation.amount %>
+					  時間：<%= like.story.story_time %>
 				  </td>
 				</tr>
 				<tr>
 				  <td>
-					  付款狀態：<%= donation.payment_status %>
+					  地點：<%= like.story.location %>
 				  </td>
 				</tr>
 				<tr>
 				  <td>
-					  付款方式：<%= donation.payment_method %>
+					  是否公開：<%= like.story.is_public %>
 				  </td>
 				</tr>
 				<tr>
 				  <td>
-					  <%= link_to "捐贈記錄",account_project_donation_path(donation)%>
+					  <%= link_to "Detail",story_path(like.story)%>
 				  </td>
 				</tr>
 		

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post :like ,:controller => 'stories'
       post :unlike,:controller => 'stories'
     end 
+
   end
 
   resources :projects, only:[:index,:show] do #前台只能看index和show頁面
@@ -49,7 +50,11 @@ Rails.application.routes.draw do
 	end
 
   namespace :account do
-    resources :stories
+    resources :stories do 
+      collection do
+        get :liked
+      end
+    end
     resources :project_donations
   end
 
