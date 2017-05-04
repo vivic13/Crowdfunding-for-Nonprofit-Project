@@ -7,9 +7,9 @@ class StoryCommentsController < ApplicationController
 		@comment=@story.comments.new(comment_params)
 		if @comment.save
 			respond_to do |format|
-	      format.html { redirect_to story_path(@story)}
-	      format.js	 # create.js.erb
-    	end
+	        format.html { redirect_to story_path(@story)}
+	        format.js	 # create.js.erb
+    	  end
 		else
 			flash[:alert] = "請至少輸入ㄧ個字!"	
 		end
@@ -41,6 +41,6 @@ class StoryCommentsController < ApplicationController
 	end
 
 	def comment_params
-		params.require(:comment).permit(:comment_body, :commenter) #, :image )
+		params.require(:comment).permit(:comment_body, :commenter, :image )
 	end
 end
