@@ -36,7 +36,10 @@
             <%= current_user.name %>
             <%= link_to('登出', destroy_user_session_path, :method => :delete,class:"btn-default") %>
             <%= link_to('更改資料', edit_registration_path(:user),class:"btn-default") %>
-            <%= link_to("會員中心", account_stories_path,class:"btn-default") %>    
+            <%= link_to("會員中心", account_stories_path,class:"btn-default") %>  
+            <% if current_user.role = "admin" %>
+              <%= link_to("admin中心", home_admin_stories_path ,class:"btn-default") %>
+            <% end %>  
           <% else %>
             <%= link_to('登入/註冊', new_registration_path(:user),class:"btn-default") %>
           <% end %>
@@ -46,7 +49,8 @@
     </div>
 
   </nav>
-
+    <p style="color: green"><%= flash[:notice] %></p>
+    <p style="color: red"><%= flash[:alert] %></p>   
     <%= yield %>
   </body>
 </html>
