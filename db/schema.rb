@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 20170502042421) do
 
   create_table "donations", force: :cascade do |t|
-    t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "payment_status", default: "pending"
     t.string   "payment_method", default: "CREDIT"
     t.integer  "amount",         default: 500
+    t.integer  "project_id"
     t.string   "name"
     t.index ["project_id"], name: "index_donations_on_project_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
