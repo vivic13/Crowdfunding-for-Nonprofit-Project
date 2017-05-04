@@ -1,28 +1,78 @@
-<div class="container text-center">
-  <%= link_to "使用Facebook登入", user_facebook_omniauth_authorize_path ,class:"btn-default"%>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
+      <div class=" container text-center">
+        <%= link_to user_facebook_omniauth_authorize_path do %> 
+          <%= image_tag "fb.png" %>
+        <% end %>
+        <p>或使用電子信箱登入</p>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group text-center">
 
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+            <%= f.email_field :email, placeholder:"電子信箱" ,autofocus: true ,class:"form-length"%>
+          </div>
+
+          <div class="form-group text-center">
+       
+            <%= f.password_field :password, placeholder:"密碼",autocomplete: "off",class:"form-length" %>
+          </div>
+          
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="form-group text-center">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "記住我" %> <br><br>
+            </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "登入" ,class:"btn-default" %>
+          </div>
+        <% end %>
+        <br>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <%= link_to "忘記登入密碼?", new_password_path(resource_name) %><br />
+        <% end -%>
+
+        <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+          <%= link_to "沒有收到認證信?", new_confirmation_path(resource_name) %><br />
+        <% end -%>
+
+        <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+          <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+        <% end -%> 
       </div>
-    <% end -%>
 
-    <div class="actions">
-      <%= f.submit "登入" ,class:"btn btn-default" %>
-    </div>
-  <% end %>
 
-  <%= render "devise/shared/links" %>
-</div>
+<style>
+  .form-length{
+    width:320px;
+    height:52px;
+
+  }
+  a {
+    margin: 0px;
+  }
+  .container{
+    margin-top: 10px;
+  }
+  p{
+    margin-top: 10px;
+    color: rgba(200,200,200,1);
+  }
+  .btn-default{
+    box-sizing: border-box;
+    width:320px;
+    height:52px;
+    padding:8px;
+  }
+  .btn-default:hover{
+    background-color: #fa7f7f;
+    color: #fff;
+  }
+  
+
+</style>
+
+
+
+

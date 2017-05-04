@@ -13,7 +13,7 @@
     <nav class="nav navbar-default navbar-fixed-top">
       <div class="navbar-header">
         <a class="navbar-brand navbar-left" href="#">
-          <img alt="Brand" src="...">
+          <%= image_tag "logo.png" %>
         </a>
       </div>
       <div class="container-fluid">
@@ -36,26 +36,58 @@
             <%= current_user.name %>
             <%= link_to('登出', destroy_user_session_path, :method => :delete,class:"btn-default") %>
             <%= link_to('更改資料', edit_registration_path(:user),class:"btn-default") %>
+
             <%= link_to("會員中心", account_stories_path,class:"btn-default") %>  
             <% if current_user.role == "admin" %>
               <%= link_to("admin中心", home_admin_stories_path ,class:"btn-default") %>
             <% end %>  
+
           <% else %>
-            <%= link_to('登入/註冊', new_registration_path(:user),class:"btn-default") %>
+            <%= link_to '登入', new_session_path(:user), class:"btn-default login"%>
+            
+            <%= link_to '註冊',new_registration_path(:user), class:"btn-default login" %>
+            
           <% end %>
           </p>
 
       </div>
     </div>
-
   </nav>
+
     <p style="color: green"><%= flash[:notice] %></p>
     <p style="color: red"><%= flash[:alert] %></p>   
+
     <%= yield %>
   </body>
 </html>
 
+<style>
+.form-length{
+    width:320px;
+    height:52px;
 
+  }
+  a {
+    margin: 0px;
+  }
+  .container{
+    margin-top: 10px;
+  }
+  p{
+    margin-top: 10px;
+    color: rgba(200,200,200,1);
+  }
+  .btn-default{
+    box-sizing: border-box;
+    width:320px;
+    height:52px;
+    padding:8px;
+  }
+  .btn-default:hover{
+    background-color: #fa7f7f;
+    color: #fff;
+  }
+</style>
 <script>
       window.fbAsyncInit = function() {
       FB.init({
@@ -73,4 +105,6 @@
        js.src = "//connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
+
+
     </script>
