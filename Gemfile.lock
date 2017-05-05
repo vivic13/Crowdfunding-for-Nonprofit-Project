@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/huacnlee/social-share-button.git
+  revision: 3cdf2f7ed0c9417e155da34a21519705cf21d9b5
+  specs:
+    social-share-button (0.10.0)
+      coffee-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -318,6 +325,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails
   sass-rails (~> 5.0)
+  social-share-button!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

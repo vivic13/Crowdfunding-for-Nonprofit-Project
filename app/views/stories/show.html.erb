@@ -1,6 +1,9 @@
 <div class="container text-center">
 	<h1>故事內容</h1>
 </div>
+<div class="container text-center">
+  <%= social_share_button_tag(@story.title) %>
+</div>
 <div class="container">
 	<% if current_user.present? %>
 		<% if @story.already_liked(current_user) %>      

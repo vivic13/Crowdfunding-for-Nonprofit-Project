@@ -17,6 +17,7 @@
 //= require chartkick
 //= require bootstrap-sprockets
 //= require medium-editor
+//= require social-share-button
 
 
 
