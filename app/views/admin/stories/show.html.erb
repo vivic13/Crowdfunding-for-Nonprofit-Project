@@ -7,7 +7,8 @@
 			 <%end%>	
 	  </h5>
 	<% end %>
-	<hr class="short">
+	<hr class="short" style="border-top: 4px double #8c8b8b;
+	text-align: center;">
 </div>
 <div class="container text-center">
 	<%= link_to "刪除", admin_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn btn-default"%>
@@ -15,10 +16,12 @@
 	<%= link_to "返回所有故事列表", admin_stories_path ,class:"btn btn-default"%>
 </div>
 <section>
+
 	<div class="container">
 	  <div class="row">
 	    <div class="col-sm-12">
 	    	<h2>細節</h2>  
+	    	<hr class="short" style="border-top: 1px dotted #8c8b8b;">
 	    	<ul>   
           <p><i class="fa fa-asterisk" aria-hidden="true">時間：</i><%= @story.story_time %> </p>
          	<p><i class="fa fa-asterisk" aria-hidden="true">地點：</i><%= @story.location %> </p>
@@ -31,6 +34,7 @@
       <% end %>
       <div class="col-sm-12">
         <h2>故事照片集</h2>
+        <hr class="short" style="border-top: 1px dotted #8c8b8b;">
         <% @story.photofiles.each do|p| %>
 	        <%= link_to image_tag(p.image.url(:medium)) ,class:"img-responsive" %>
         <% end %>
@@ -38,15 +42,19 @@
 			
 	    <div class="col-sm-12">
 	      
-	      <div style="height:100px;">
-	        <p>
+	      <div style="height:auto;">
+	        <div class="container ">
 	          <h2>內容:</h2><%= sanitize(@story.content) %>
-	        </p>
+	          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
+	        </div>
 	      </div>
-	      <div style="height:100px;">
-	        <p>
+	    </div>
+	    <div class="col-sm-12">
+	      <div style="height:auto;">
+	        <div class="container ">
 	          <h2>反思:</h2><%= sanitize(@story.reflection) %>
-	        </p>
+	          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
+	        </div>
 	      </div>
 	    </div>	    
 	  </div>
