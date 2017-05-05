@@ -3,6 +3,7 @@
 @import "font-awesome";
 @import "medium-editor/medium-editor";
 @import "stories";
+@import "projects";
 @import "story_comments";
 @import "admin/stories";
 @import "admin/projects";
@@ -10,7 +11,7 @@
 @import "social-share-button";
 
 body{
-	padding-top: 60px; 
+	padding-top: 100px; 
   box-sizing: border-box;
   font-size: 15px;
 }

@@ -9,6 +9,9 @@ class ProjectsController < ApplicationController
 	def show 
 		@page_title = "專案細節"
 		@project = Project.find(params[:id])
+		@photos = @project.photos
+		@photos_count = @photos.count
+		@progress = @project.progress.round(0)
 	end
 
 end
