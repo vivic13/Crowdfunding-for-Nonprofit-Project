@@ -1,24 +1,11 @@
 <section>
-	<div class="container">
-	  <h1>專案詳細資訊</h1>
-	  <div class="row">
-	    <div class="col-sm-12">
-	      <h2>專案照片</h2>
-	      <% @project.photos.each do|p| %>
-	        <%= image_tag(p.image.url(:medium))  %>
-        <% end %>
-	      <h2>專案其他資訊</h2>
-	      <ul>
-	        <li>故事標題 : <%= @project.story_title %></li>
-	        <li>名稱：<%= @project.name %></li>
-					<li>內容: <%= sanitize(@project.content) %></li>
-					<li>到期日: <%= @project.due_date %></li>
-					<li>募資總金額: <%= @project.total_amount %></li>
-					<li>已募得金額: <%= @project.donation_amount %></li>
-          </ul>
-	    </div>     
-	  </div>
-	  <%= link_to "刪除", admin_project_path(@project) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
+  <div class="container text-center ">
+	  <h1><%= @project.name %>專案</h1>
+	  <hr class="short" style="border-top: 4px double #8c8b8b;
+	text-align: center;">
+	</div>
+	<div class="container text-center">
+    <%= link_to "刪除", admin_project_path(@project) ,method: :delete, data:{ confirm: "Are you sure?"} ,class:"btn btn-default"%>
     <%= link_to "編輯", edit_admin_project_path(@project) ,class:"btn btn-default"%>
     <%= link_to "查看募資細節",admin_project_donation_index_url(@project),class:"btn btn-default" %>
 
@@ -27,6 +14,37 @@
     <% else %>
        <%= link_to "新增成效報告", new_admin_project_report_path(@project) ,class:"btn btn-default"%>
     <% end %>	
-    <%= link_to "返回專案列表", admin_projects_path ,class:"btn btn-default"%>    
+    <%= link_to "返回專案列表", admin_projects_path ,class:"btn btn-default"%> 
+  </div>
+	<div class="container ">
+	  <div class="row">
+
+      <div class="col-sm-12">
+	    	<h2>細節</h2>  
+	    	<hr class="short" style="border-top: 1px dotted #8c8b8b;">
+	    	<ul>   
+          <p><i class="fa fa-asterisk" aria-hidden="true">故事標題：</i><%= @project.story_title %> </p>
+	        <p><i class="fa fa-asterisk" aria-hidden="true">到期日：</i> <%= @project.due_date %> </p>
+	        <p><i class="fa fa-asterisk" aria-hidden="true">募資總金額：</i> <%= @project.total_amount %> </p>
+	        <p><i class="fa fa-asterisk" aria-hidden="true">已募得金額：</i> <%= @project.donation_amount %> </p>
+				</ul> 
+	    </div>
+
+	    <div class="col-sm-12">
+        <h2>專案照片集</h2>
+        <hr class="short" style="border-top: 1px dotted #8c8b8b;">
+        <% @project.photos.each do|p| %>
+	        <%= link_to image_tag(p.image.url(:medium)) ,class:"img-responsive" %>
+        <% end %>
+      </div>
+
+	    <div class="col-sm-12">
+        <div class="container " style="height:auto;">
+          <h2>內容:</h2><%= sanitize(@project.content) %>
+          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
+        </div>
+	    </div>    
+	  </div>
+	     
 	</div>
 </section>

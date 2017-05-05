@@ -1,15 +1,23 @@
 <section>
-  <div class="container">
+  <div class="container text-center ">
     <h1>成效報告_<%= @project.name %>專案</h1>
+    <hr class="short" style="border-top: 4px double #8c8b8b;
+  text-align: center;">
+  </div>
+  <div class="container">
+    
     <div class="row">
       <div class="col-sm-12">
         <% if @project.report %>
-          <h2>報告照片</h2>
+          <h2>報告照片集</h2>
+          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
           <% @report.report_photos.each do|p| %>
             <%= image_tag(p.image.url(:medium))  %>
           <% end %>
           <h2>報告名稱</h2><p><%= @project.report.title %></p>
+          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
           <h2>報告內容</h2><p><%= sanitize(@project.report.content) %></p>
+          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
           <p>是否公開：<%= @report.is_public %></p>
           <%= link_to "編輯報告", edit_admin_project_report_path(@project),class:"btn btn-default"%>
           <%= link_to "刪除報告", admin_project_report_path(@project), :method => :delete ,class:"btn btn-default" %>

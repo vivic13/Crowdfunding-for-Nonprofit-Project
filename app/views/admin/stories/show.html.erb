@@ -40,22 +40,17 @@
         <% end %>
       </div>
 			
-	    <div class="col-sm-12">
-	      
-	      <div style="height:auto;">
-	        <div class="container ">
-	          <h2>內容:</h2><%= sanitize(@story.content) %>
-	          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
-	        </div>
-	      </div>
+	    <div class="col-sm-12">     
+        <div class="container " style="height:auto;">
+          <h2>內容:</h2><%= sanitize(@story.content) %>
+          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
+        </div>
 	    </div>
 	    <div class="col-sm-12">
-	      <div style="height:auto;">
-	        <div class="container ">
-	          <h2>反思:</h2><%= sanitize(@story.reflection) %>
-	          <hr class="short" style="border-top: 1px dotted #8c8b8b;">
-	        </div>
-	      </div>
+        <div class="container " style="height:auto;">
+          <h2>反思:</h2><%= sanitize(@story.reflection) %>
+          <hr class="short" style="border-top: 1px dotted #8c8b8b;">   
+        </div>
 	    </div>	    
 	  </div>
 	</div>

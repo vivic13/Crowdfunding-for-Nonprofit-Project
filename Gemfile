@@ -51,6 +51,7 @@ gem 'active_model_serializers'
 gem 'letter_opener_web'
 gem 'social-share-button', github: "huacnlee/social-share-button"
 
+
 gem 'omniauth-facebook'
 
 gem 'capistrano-rails', :group => :development
