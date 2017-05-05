@@ -13,7 +13,6 @@ class StoryCommentsController < ApplicationController
 		else
 			flash[:alert] = "請至少輸入ㄧ個字!"	
 		end
-
 	end
 
 

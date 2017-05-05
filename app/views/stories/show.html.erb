@@ -91,10 +91,11 @@
 
       <% paginate @comments %>
 
-      
-      <% if @next_page %>
-        <%= link_to '更多留言',story_path(@story, :page => @next_page) ,:id => 'load-more',:remote => true %>
-      <% end %>
+      <div class="container text-center" >
+        <% if @next_page %>
+          <%= link_to '顯示更多',story_path(@story, :page => @next_page) ,:id => 'load-more',:remote => true %>
+        <% end %>
+      </div>
 <% else %>
 
   <h3>登入就可觀看留言</h3>
