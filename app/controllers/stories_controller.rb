@@ -2,8 +2,10 @@ class StoriesController < ApplicationController
 	before_action :authenticate_user!, except:[:index,:show]
 	before_action :find_story, except:[:index]
 	
-	def index 
-		@stories = Story.where(:is_public => true) 
+	def index 	
+		@top_story =  Story.where(:is_public => true).first
+		@stories =  Story.where(:is_public => true).page(params[:page]).per(8)
+
 	end
 
 

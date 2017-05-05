@@ -1,14 +1,12 @@
 <div class="container text-center">
-		<%= link_to("我的故事紀錄", account_stories_path ,class:"btn btn-default") %> 
-		<%= link_to("我的按讚紀錄", liked_account_stories_path ,class:"btn btn-default") %> 
-    <%= link_to("我的捐贈記錄", account_project_donations_path, class:"btn-default") %>
-    <%= link_to '返回首頁', stories_path,class:"btn-default" %>
+		<div class="container">
+		<%= link_to("我的故事紀錄", account_stories_path ,class:"btn-2nd") %> 
+		<%= link_to("我的按讚紀錄", liked_account_stories_path ,class:"btn-2nd") %> 
+    <%= link_to("我的捐贈記錄", account_project_donations_path, class:"btn-2nd") %>
+    <%= link_to '返回首頁', stories_path,class:"btn-2nd" %>
+    </div>
 </div>
-<div class="container text-center">
-	<h1>Profile</h1>
-	<hr>
 
-</div>
 <div class="container text-center">
   <h4><%= @user.name%>喜歡的故事</h4>
 </div>
@@ -21,24 +19,10 @@
 					  標題: <%= like.story.title%>	
 					</th>
 				</tr> 
+		
 				<tr>
 				  <td>
-					  時間：<%= like.story.story_time %>
-				  </td>
-				</tr>
-				<tr>
-				  <td>
-					  地點：<%= like.story.location %>
-				  </td>
-				</tr>
-				<tr>
-				  <td>
-					  是否公開：<%= like.story.is_public %>
-				  </td>
-				</tr>
-				<tr>
-				  <td>
-					  <%= link_to "Detail",story_path(like.story)%>
+					  <%= link_to "閱讀更多",story_path(like.story)%>
 				  </td>
 				</tr>
 		

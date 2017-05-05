@@ -33,7 +33,8 @@
 
         <p class="login navbar-text navbar-right"> 
           <% if current_user %> 
-            <%= current_user.name %>
+            <%= current_user.name %>&nbsp;<%= flash[:notice] %>&nbsp;<%= flash[:alert] %>
+              
             <%= link_to('登出', destroy_user_session_path, :method => :delete,class:"btn-default") %>
             <%= link_to('更改資料', edit_registration_path(:user),class:"btn-default") %>
 
@@ -41,8 +42,6 @@
             <% if current_user.role == "admin" %>
               <%= link_to("admin中心", admin_stories_path ,class:"btn-default") %>
             <% end %>  
-              <p class="notice"><%= flash[:notice] %></p>
-            <p class="alert"><%= flash[:alert] %></p>   
 
           <% else %>
             <%= link_to '登入', new_session_path(:user), class:"btn-default login"%>
@@ -61,42 +60,7 @@
   </body>
 </html>
 
-<style>
-.form-length{
-    width:320px;
-    height:52px;
 
-  }
-.notice{
-  color: rgba(210,210,210,1);
-  font-size: 20px;
-  font-weight: 300px;
-  background-color: rgba(242,242,242,0.5);
-  float:right;
-  width: 20%;
-  
-}
-  a {
-    margin: 0px;
-  }
-  .container{
-    margin-top: 10px;
-  }
-  p{
-    margin-top: 10px;
-    color: rgba(200,200,200,1);
-  }
-  .btn-default{
-    box-sizing: border-box;
-    width:320px;
-    height:52px;
-    padding:8px;
-  }
-  .btn-default:hover{
-    background-color: #fa7f7f;
-    color: #fff;
-  }
-</style>
 <script>
       window.fbAsyncInit = function() {
       FB.init({
@@ -114,6 +78,32 @@
        js.src = "//connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
+
+
+ var editor = new MediumEditor('.editable', {
+    toolbar: {
+        allowMultiParagraphSelection: true,
+        buttons: ['bold', 'italic', 'h4','orderedlist','unorderedlist'],
+        diffLeft: 0,
+        diffTop: -10,
+        firstButtonClass: 'medium-editor-button-first',
+        lastButtonClass: 'medium-editor-button-last',
+        relativeContainer: null,
+        standardizeSelectionStart: false,
+        static: true,
+        align: 'center',
+        sticky: false,
+        updateOnEmptySelection: false
+    },
+    placeholder: {
+        /* This example includes the default options for placeholder,
+           if nothing is passed this is what it used */
+        text: '輸入內容，選取文字範圍即可編輯',
+        hideOnClick: true
+    }
+   
+});
+
 
 
     </script>

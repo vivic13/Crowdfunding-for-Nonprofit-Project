@@ -1,63 +1,94 @@
-<div>
-	<%= image_tag "bgc.png" ,class:"resize"%>
+<div class=" banner container">
+	<%= image_tag "bgc.jpg" ,class:"resize"%>
+	<div class="newlayer container text-center ">
+			<h3><br><br>我們挖掘台灣每個不起眼的小角落 <br><br> <strong> <a href="#story">看故事</a> </strong> <br><br></h3>
+			
+	</div>
 </div>
-
-<div class="container">
-	<h1>台灣眉角故事</h1>
-</div>
-
-
-
-
-<div class="container">
-	<p><i>依分類搜尋:</i>&nbsp;&nbsp;&nbsp;
-
+<div class="container text-center" id="story">
+	<h1>TaiwanMega說故事</h1>
+	 <small>我們挖掘台灣每個不起眼的小角落，讓你知道他們的故事</small> <br><br>
+	 <p><i>依分類搜尋故事:</i>&nbsp;&nbsp;&nbsp;
 	<% Tag.all.each do |t| %>
-
-		<i class="fa fa-tag " aria-hidden="true"><%= link_to t.name, tag_path(t.id)%>&nbsp;&nbsp;</i>
-						
+		<i class="fa fa-tag " aria-hidden="true"><%= link_to t.name, tag_path(t.id)%>&nbsp;&nbsp;</i>						
 	<% end %>
-
 	</i></p>
 </div>
-<div class="container">
-	<% @stories.each do |s| %>
-		<div class="col-md-3 text-center">
-			<table class="table table-bordered">
-				<tr><th>故事標題:<%= s.title %></th></tr> 
-				<tr><td>時間: <%= s.story_time %></td></tr>
-				<tr><td>地點: <%= s.location %></td></tr>
-				<tr><td><%= link_to "更多", story_path(s) %></td></tr>
-				<tr>
-					<td>
-						<% if current_user.present? %>
-				      <% if s.already_liked(current_user) %>      
-				        <%= button_to  unlike_story_path(s) , {:remote => true} do %>
-				        		<i class="fa fa-heart fa-2x" aria-hidden="true"><%= s.like_count %></i>
-								<%end %>
-				      <%else%>      
-				        <%= button_to like_story_path(s) , {:remote => true} do%>
-				        	<i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= s.like_count %>
-				        	</i>
-				        <%end%>
-				      <% end %>
-				   <% else %>
-							<i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= s.like_count %> <small>登入按讚</small></i>
-  				<% end %>
-    			</td>
-				</tr>
-			</table>
-		</div>
-	<% end %>
+
+
+<div class="container  text-center">
+	<div class="col-md-12 table-bordered">
+	<div class="col-md-6">
+		<%= link_to image_tag(@top_story.photofiles.first.image.url,class:"top")  %>
+	</div>					
+	<div class="col-md-6">
+		<h3><%=truncate(@top_story.title, length: 20)%></strong></h3>	
+		<% if current_user.present? %>
+	      <% if @top_story.already_liked(current_user) %>      
+	        <%= button_to  unlike_story_path(@top_story) , {:remote => true} do %>
+	        		<i class="fa fa-heart " aria-hidden="true"><%= @top_story.like_count %></i>
+					<%end %>
+	      <%else%>      
+	        <%= button_to like_story_path(@top_story) , {:remote => true} do%>
+	        	<i class="fa fa-heart-o " aria-hidden="true"><%= @top_story.like_count %>
+	        	</i>
+	        <%end%>
+	      <% end %>
+	   <% else %>
+				<i class="fa fa-heart-o " aria-hidden="true"><%= @top_story.like_count %> <small>登入按讚</samll></i>
+		<% end %>		
+		<br>
+		<%= sanitize(@top_story.content, :tags=>[]).truncate(200, :separator => " ").html_safe	 %>	<br><br>
+		<%= link_to "閱讀更多",story_path(@top_story),class:"btn-2nd" %>	<br><br>	
+	</div>
+	</div>			
 </div>
 
-<style>
-	.resize{
-		box-sizing: border-box;
-		margin:0px;
-		padding: 0px;
-		width:100%;
-		height: auto;
-	}
+<div class="container  ">
+	<% @stories.each do |s| %>
+	<row>
+		<div class="col-md-3 table-bordered ">
+			<div class="col-md-12">
+				<%if s.photofiles.present? %>
+					<%= link_to image_tag(s.photofiles.first.image.url,class:"story")%>
+				<% elsif s.youtube_link.present? %>
+					<% @link = "https://www.youtube.com/embed/" + s.youtube_code + "?autoplay=0" %>
+					<iframe id="ytplayer" type="text/html"   width="100%" height="150 px" src= "<%= @link %>" frameborder="0"></iframe>
+				<% end %>
+			</div>
+			<div class="col-md-12 text-center ">
+				<h4><%=truncate(s.title, length: 14)%></h4>
+				<% if current_user.present? %>
+		      <% if s.already_liked(current_user) %>
+		        <%= button_to  unlike_story_path(s) , {:remote => true} do %>
+		        		<i class="fa fa-heart" aria-hidden="true"><%= s.like_count %></i>
+						<%end %>
+		      <%else%>      
+		        <%= button_to like_story_path(s) , {:remote => true} do%>
+		        	<i class="fa fa-heart-o" aria-hidden="true"><%= s.like_count %>
+		        	</i>
+		        <%end%>
+		  		<% end %>
+		   <% else %>
+					<i class="fa fa-heart-o" aria-hidden="true"><%= s.like_count %> <small>登入按讚</small></i> <br>
+			<% end %>
 	
-</style>
+				<%= sanitize(s.content, :tags=>[]).truncate(90, :separator => " ").html_safe	 %>	<br><br><%= link_to "閱讀更多",story_path(s) ,class:"btn-2nd"%> <br><br>
+
+		</div>
+	</div>
+	</row>
+	<% end %>
+	<div class="container text-center">
+		<%=paginate @stories%>
+	</div>
+</div>
+<div class="container footer text-center">
+	<h5>特別感謝</h5>
+	<%= image_tag "support.jpg" %>
+	<hr>
+	<small>copyright @taiwanmega 2017</small> <br>
+	<small>聯絡信箱: twmega@gmail.com</small> <br>
+	<small>聯絡電話: 0975-110 263</small> <br>
+</div>
+

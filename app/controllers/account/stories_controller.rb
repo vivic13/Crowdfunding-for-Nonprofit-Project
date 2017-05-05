@@ -1,6 +1,5 @@
 class Account::StoriesController < ApplicationController
 	before_action :authenticate_user!
- 
 	before_action :find_story, only:[:show,:edit, :update, :destroy]
 
 	def index 
