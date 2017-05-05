@@ -4,7 +4,7 @@
  	<p><%= c.comment_body %> </p>
  	<div id="image">
 		<% if c.image_file_name %>
-	 		<%= link_to image_tag(c.image.url(:thumb)), c.image.url %>
+	 		<%= link_to image_tag(c.image.url(:medium)), c.image.url %>
 		<% end %>
 
 	</div>

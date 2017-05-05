@@ -2,6 +2,8 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "medium-editor/medium-editor";
+@import "stories";
+@import "story_comments";
 @import "admin/stories";
 @import "admin/projects";
 @import "admin/project_reports";
@@ -14,7 +16,7 @@ body{
 }
 
 .container{
-  margin_top: 10px;
+  margin-top: 10px;
 }
 .navbar-right{
   margin-right: 30px;
@@ -56,6 +58,7 @@ a{
   border-width: 1px;
   border-color: #fff;
   color: #fff;
+  font-size:16px;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 5px;
@@ -68,6 +71,7 @@ a{
     color: #fa7f7f;
     border-color: #fa7f7f;
     text-decoration: none;
+    border-radius: 3px;
   }
 
 .btn-2nd{
@@ -75,6 +79,7 @@ a{
   border-radius: 3px;
   border-style: solid;
   border-width: 1px;
+  font-size:16px;
   border-color: #fa7f7f;
   color: #fa7f7f;
   padding-top: 3px;
@@ -88,6 +93,7 @@ a{
 	background-color: #fa7f7f;
 	border-color: #fff;
 	color: #fff;
+  border-radius: 3px;
 }
 
 i{

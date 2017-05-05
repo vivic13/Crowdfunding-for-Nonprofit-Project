@@ -1,17 +1,15 @@
 <div class="container text-center">
-		<%= link_to("我的故事紀錄", account_stories_path ,class:"btn btn-default") %> 
-		<%= link_to("我的按讚紀錄", liked_account_stories_path ,class:"btn btn-default") %> 
-    <%= link_to("我的捐贈記錄", account_project_donations_path, class:"btn-default") %>
-    <%= link_to '返回首頁', stories_path,class:"btn-default" %>
+		<div class="container">
+		<%= link_to("我的故事紀錄", account_stories_path ,class:"btn-2nd") %> 
+		<%= link_to("我的按讚紀錄", liked_account_stories_path ,class:"btn-2nd") %> 
+    <%= link_to("我的捐贈記錄", account_project_donations_path, class:"btn-2nd") %>
+    <%= link_to '返回首頁', stories_path,class:"btn-2nd" %>
+    </div>
 </div>
 <div class="container text-center">
-	<h1>Profile</h1>
-	<hr>
+  <h4><%= current_user.name%>的捐贈記錄</h4>
+</div>
 
-</div>
-<div class="container text-center">
-  <h4><%= @user.name%>的捐贈記錄</h4>
-</div>
 
 <div class="container">
 	<% @donations.each do |donation| %>
@@ -24,7 +22,7 @@
 				</tr> 
 				<tr>
 				  <td>
-					  捐贈金額：<%= donation.amount %>
+					  捐贈金額：NT$<%= donation.amount %>
 				  </td>
 				</tr>
 				<tr>

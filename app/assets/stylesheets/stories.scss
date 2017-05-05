@@ -1,3 +1,68 @@
 // Place all the styles related to the stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+	.banner{
+
+		position: relative;
+	}
+	.newlayer{
+		display: none;
+		z-index: 1;
+		position: absolute;
+		top:30%;
+		left:0;
+		width:100%;
+		box-sizing: border-box;
+		padding-top: 20px;
+	}
+	.banner:hover h3{
+		background-color: rgba(255,255,255,0.8);
+
+	} 
+	
+	.banner:hover .newlayer {
+		display: block;
+	}
+
+	
+	.resize{
+		box-sizing: border-box;
+		margin:0px;
+		padding: 0px;
+		width:100%;
+		max-height:100%;
+	}
+
+	.container{
+		box-sizing: border-box;
+		margin-bottom:20px;
+	}
+	
+	.top{
+		width: 100%;
+	}
+	.story{
+		width: 100%;
+		height: 155px;
+	}
+	.col-md-3{
+	 	box-sizing: border-box;
+	 	border-width: 2px;
+	 	border-style: dashed;
+
+	}
+	.footer{
+		margin-top: 100px;
+	}
+	
+	h1, h2, h3 ,h4, h5, h6{
+		color:#fa7f7f;
+	}
+
+	small{
+		color: rgba(160,170,170,1);
+		font-size: 14px;
+	}
+	
+

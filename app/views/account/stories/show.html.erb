@@ -1,57 +1,66 @@
 <div class="container text-center">
-	<h1><%=truncate(@story.title, length: 20)%> </h1>
-	<h6>作者: <%= @story.try(:author)%></h6>
-	<% if @story.tags %>
-	  <h5>標籤：<% @story.tags.each do|t| %> 
-	    <i class="fa fa-tag " aria-hidden="true"><%= t.name %></i>
-			 <%end%>	
-	  </h5>
-	<% end %>
-	<hr class="short">
-</div>
+  <h1><%=truncate(@story.title, length: 20)%> </h1>
+  <h6>作者: <%= @story.try(:author)%></h6>
+  <% if @story.tags %>
+    <h5><% @story.tags.each do|t| %> 
+      <i class="fa fa-tag " aria-hidden="true"><%= t.name %></i>
+       <%end%>  
+        &nbsp;<i class="fa fa-map-marker" aria-hidden="true"><%= @story.try(:location)%></i>  &nbsp;<i class="fa fa-clock-o" aria-hidden="true"><%= time_ago_in_words(@story.story_time)%></i>
+   
+			<% end %>
+		<i class="fa fa-heart" aria-hidden="true"><%= @story.like_count %></i>
+		 </h5>
 <div class="container text-center">
 	<%= link_to "刪除", account_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn btn-default"%>
 	<%= link_to "編輯", edit_account_story_path(@story) ,class:"btn btn-default"%>
 	<%= link_to "返回故事記錄", account_stories_path ,class:"btn btn-default"%>
 </div>
-<section>
-	<div class="container">
-	  <div class="row">
-	    <div class="col-sm-12">
-	    	<h2>細節</h2>  
-	    	<ul>   
-          <p><i class="fa fa-asterisk" aria-hidden="true">時間：</i><%= @story.story_time %> </p>
-         	<p><i class="fa fa-asterisk" aria-hidden="true">地點：</i><%= @story.location %> </p>
-          <p><i class="fa fa-asterisk" aria-hidden="true">是否公開：</i><%= @story.is_public %> </p>
-	        <p><i class="fa fa-asterisk" aria-hidden="true">是否置頂：</i> <%= @story.priority %> </p>
-				</ul> 
-	    </div>
-			<% if @story.youtube_link.present? %>
-	    	<iframe id="ytplayer" type="text/html" width="640" height="360" src= "<%= @link %>" frameborder="0"></iframe>
+<% if @photos.present? %>
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <% @photos.each_with_index do |outing, i| %>
+        <li data-target="#mycarousel" data-slide-to=#{i} class="#{'active' if i == 0}"></li>
       <% end %>
-      <div class="col-sm-12">
-        <h2>故事照片集</h2>
-        <% @story.photofiles.each do|p| %>
-	        <%= link_to image_tag(p.image.url(:medium)) ,class:"img-responsive" %>
-        <% end %>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <%= link_to image_tag(@photos.first.image.url)%>
       </div>
-			
-	    <div class="col-sm-12">
-	      
-	      <div style="height:100px;">
-	        <p>
-	          <h2>內容:</h2><%= sanitize(@story.content) %>
-	        </p>
-	      </div>
-	      <div style="height:100px;">
-	        <p>
-	          <h2>反思:</h2><%= sanitize(@story.reflection) %>
-	        </p>
-	      </div>
-	    </div>	    
-	  </div>
-	</div>
-</section>
+      <% if @photos_count >= 1 %>       
+        <% @story.photofiles.drop(1).each do |p| %>
+          <div class="item">
+            <%= link_to image_tag(p.image.url)%>
+          </div>
+        <% end %>
+      <% end %>      
+    </div>
+
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+     
+    </a>
+  </div>
+</div>
+</div>
+<% else %>
+  <div class="container text-center">
+  <iframe id="ytplayer" type="text/html" width="100%" height="600" src= "<%= @link %>" frameborder="0"></iframe>
+  </div>
+<% end %>
+<div class="container">
+  <h5>內容</h5>
+  <p><%= sanitize(@story.content) %></p>
+  <p><%= sanitize(@story.try(:reflection)) %></p>
+</div>
 
 
 <script type="text/javascript">
