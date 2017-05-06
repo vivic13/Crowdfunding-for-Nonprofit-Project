@@ -1,5 +1,5 @@
-json.products @products do |product|
-  json.id product.id
-  json.name product.name
-  json.created_at product.created_at
+json.projects @projects do |project|
+  json.id project.id
+  json.name project.name
+  json.created_at project.created_at
 end

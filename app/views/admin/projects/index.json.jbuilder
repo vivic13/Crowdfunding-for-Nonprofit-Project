@@ -1,4 +1,4 @@
-json.products @products do |product|
-  json.name product.name
+json.projects @projects do |project|
+  json.name project.name
   
 end
