@@ -42,12 +42,12 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <%= link_to image_tag(@photos.first.image.url)%>
+        <%= link_to image_tag(@photos.first.image.url(:medium),class:"story")%>
       </div>
       <% if @photos_count >= 1 %>       
         <% @story.photofiles.drop(1).each do |p| %>
           <div class="item">
-            <%= link_to image_tag(p.image.url)%>
+            <%= link_to image_tag(p.image.url(:medium),class:"story")%>
           </div>
         <% end %>
       <% end %>      
@@ -114,7 +114,20 @@
 <style>
   .carousel {
     width: 100%;
+    height: 450px;
   }
+  .carousel-inner {
+    width: 100%;
+    height: 450px;
+  }
+
+  .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: 550px;
+    line-height: 1;
+}
+
 </style>
 
 <script>
