@@ -13,19 +13,25 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container text-center">
 <row>
 <% @projects.each do |p| %>
-	<div class="col-md-6 ">
+	<div class="col-md-6  table-bordered">
+	<div class="col-md-12 text-center thead-inverse ">
+		<h3 ><%=truncate(p.name, length: 20)%></strong></h3>	<hr>
+	</div>
 	<div class="col-md-12">
 		<%= link_to image_tag(p.photos.first.image.url,class:"top")  %>
 	</div>					
 	<div class="col-md-12 text-center">
-		<h3><%=truncate(p.name, length: 20)%></strong></h3>	
-		<br>
+		<% @people = p.donations.count %>	
+		<i class="fa fa-users" aria-hidden="true">目前參與人數: <%= @people %></i>
+		<br><br>
+		<i class="fa fa-spinner" aria-hidden="true">目前進度：</i> 
+			<% @progress = p.progress.round(0) %> <br><br>
+
 		<div class="progress">
-			<% @progress = p.progress.round(0) %>
-	  	<div class="progress-bar pb" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="<% @progress %>" aria-valuemin="0" aria-valuemax="100"><%= @progress %> %</div>
+	  	<div class="progress-bar pb" role="gressbar" style="width: <%= @progress %>%" aria-valuenow="<% @progress %>" aria-valuemin="0" aria-valuemax="100"><%= @progress %> %</div>
 	  </div>
 		
 		<%= link_to "查看", project_path(p),class:"btn-2nd" %>	<br><br>	

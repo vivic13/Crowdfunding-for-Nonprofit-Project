@@ -1,4 +1,5 @@
 <div class="container text-center">
+
   <h1><%=truncate(@story.title, length: 20)%> </h1>
   <h6>作者: <%= @story.try(:author)%></h6>
   <% if @story.tags %>
@@ -6,15 +7,29 @@
       <i class="fa fa-tag " aria-hidden="true"><%= t.name %></i>
        <%end%>  
         &nbsp;<i class="fa fa-map-marker" aria-hidden="true"><%= @story.try(:location)%></i>  &nbsp;<i class="fa fa-clock-o" aria-hidden="true"><%= time_ago_in_words(@story.story_time)%></i>
-   
-			<% end %>
-		<i class="fa fa-heart" aria-hidden="true"><%= @story.like_count %></i>
-		 </h5>
-<div class="container text-center">
-	<%= link_to "刪除", account_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn btn-default"%>
-	<%= link_to "編輯", edit_account_story_path(@story) ,class:"btn btn-default"%>
-	<%= link_to "返回故事記錄", account_stories_path ,class:"btn btn-default"%>
+    </h5>
+  <% end %>
+  <div class="container text-center">
+    <%= social_share_button_tag(@story.title) %>
+  </div>
+  <% if current_user.present? %>
+    <% if @story.already_liked(current_user) %>   
+      <%= button_to  unlike_story_path(@story), {:remote => true} do %>
+          <i class="fa fa-heart" aria-hidden="true"><%= @story.like_count %></i>
+      <%end %>
+    <%else%>      
+      <%= button_to like_story_path(@story) , {:remote => true} do%>
+        <i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= @story.like_count %>
+        </i>
+      <%end%>
+    <% end %>
+  <% else %>
+    <i class="fa fa-heart-o fa-2x" aria-hidden="true"><%= @story.like_count %> <small>登入按讚</small>
+    </i>
+  <% end %>
+  <hr class="short">
 </div>
+
 <% if @photos.present? %>
 <div class="container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -62,16 +77,20 @@
   <p><%= sanitize(@story.try(:reflection)) %></p>
 </div>
 
+<div class="container text-center">
+  <a href="#" class="btn-default">我要提出專案</a>
+</div>
 
-<script type="text/javascript">
- $("document").ready(function(){
-	$("input:checkbox").click(function(){
-    if ($("input:checkbox:checked").length > 3){
-      alert('限制選取3項');}
-	});
 
-});
 
+
+<style>
+  .carousel {
+    width: 100%;
+  }
+</style>
+
+<script>
   // Load the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
   tag.src = "https://www.youtube.com/player_api";
@@ -88,6 +107,4 @@
       videoId: 'M7lc1UVf-VE'
     });
   }
-
-
 </script>

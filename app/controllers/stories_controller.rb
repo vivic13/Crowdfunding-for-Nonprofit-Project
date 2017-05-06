@@ -3,8 +3,8 @@ class StoriesController < ApplicationController
 	before_action :find_story, except:[:index]
 	
 	def index 	
-		@top_story =  Story.where(:is_public => true).first
-		@stories =  Story.where(:is_public => true).page(params[:page]).per(8)
+		@top_story =  Story.where(:is_public => true,:priority => true).first
+		@stories =  Story.where(:is_public => true, :priority => false).order('created_at desc').page(params[:page]).per(8)
 
 	end
 
