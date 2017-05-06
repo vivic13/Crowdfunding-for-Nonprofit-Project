@@ -37,6 +37,7 @@ class Account::StoriesController < ApplicationController
 					  
 				end		
 			else 
+				5.times {@photofiles = @story.photofiles.build}
 				render :new
 			end
 	end
