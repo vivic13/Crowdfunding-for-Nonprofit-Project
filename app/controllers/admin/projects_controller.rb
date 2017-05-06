@@ -30,6 +30,7 @@ class Admin::ProjectsController < ApplicationController
 				  
 			end		
 		else 
+			5.times {@photos = @project.photos.build}
 			render :new
 		end
 	end

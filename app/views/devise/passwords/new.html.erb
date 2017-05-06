@@ -1,16 +1,18 @@
-<h2>忘記密碼?</h2>
-
+<div class="container text-center">
+	<h2>忘記密碼?</h2>
+</div>
+<div class="container text-center">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "發送重設密碼郵件" %>
+  <div class="form-group">
+    <%= f.submit "發送重設密碼郵件",class:"btn-2nd" %>
   </div>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
