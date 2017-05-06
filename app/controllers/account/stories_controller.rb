@@ -11,6 +11,8 @@ class Account::StoriesController < ApplicationController
 	end
 
 	def show 
+		@photos = @story.photofiles
+		@photos_count = @photos.count
 		if @story.youtube_link.present?
 			@link = "https://www.youtube.com/embed/" + @story.youtube_code + "?autoplay=0"
 		end
@@ -64,10 +66,6 @@ class Account::StoriesController < ApplicationController
 	end
 
 
-
-
-
-
   def liked
   	@user = current_user
     @likes = Like.where(:user_id => current_user.id)
@@ -79,7 +77,7 @@ class Account::StoriesController < ApplicationController
 	end
 	def story_params
 		params.require(:story).permit(:story_time,:title,:content,:reflection,
-			                          :youtube_link,:is_public,:location,
+			                          :youtube_link,:is_public,:priority,:location,
 			                          :need_project,
 			                          :image, :tag_ids => [],
 			                          :photofiles_attributes => [:id, :image, :_destroy]

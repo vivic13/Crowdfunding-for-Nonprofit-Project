@@ -85,7 +85,7 @@ class Admin::StoriesController < ApplicationController
 
 	def story_params
 		params.require(:story).permit(:story_time,:title,:content,:reflection,
-			                          :youtube_link,:is_public,:location,
+			                          :youtube_link,:is_public,:priority,:location,
 			                          :need_project,
 			                          :image, :tag_ids => [],
 			                          :photofiles_attributes => [:id, :image, :_destroy]
