@@ -8,7 +8,7 @@
 <div class="container text-center" id="story">
 	<h1>TaiwanMega說故事</h1>
 	 <small>我們挖掘台灣每個不起眼的小角落，讓你知道他們的故事</small> <br><br>
-	 <p><i>依分類搜尋故事:</i>&nbsp;&nbsp;&nbsp;
+	 <p><i>依分類搜尋:</i>&nbsp;&nbsp;&nbsp;
 	<% Tag.all.each do |t| %>
 		<i class="fa fa-tag " aria-hidden="true"><%= link_to t.name, tag_path(t.id)%>&nbsp;&nbsp;</i>						
 	<% end %>
@@ -16,7 +16,7 @@
 </div>
 
 <div class="container text-center">
-	<div class="col-md-12 table-bordered">
+	<div class="col-md-12">
 	<div class="col-md-6">
 		<%= link_to image_tag(@top_story.photofiles.first.image.url,class:"top")  %>
 	</div>					
@@ -45,7 +45,7 @@
 
 <div class="container  ">
 	<% @stories.each do |s| %>
-		<div class="col-md-3 table-bordered ">
+		<div class="col-md-3">
 		
 			<div class="col-md-12">
 				<%if s.photofiles.present? %>
@@ -56,7 +56,7 @@
 				<% end %>
 			</div>
 			<div class="col-md-12 text-center ">
-				<h4><%=truncate(s.title, length: 14)%></h4>
+				<h4><%=truncate(s.title, length: 11)%></h4>
 				<% if current_user.present? %>
 		      <% if s.already_liked(current_user) %>
 		        <%= button_to  unlike_story_path(s) , {:remote => true} do %>

@@ -4,6 +4,13 @@
 	<div class="container">
 		<%= image_tag "donation.png" %>
 	</div>
+	<div class="container">
+		<p><i>依分類搜尋:</i>&nbsp;&nbsp;&nbsp;
+		<% Tag.all.each do |t| %>
+			<i class="fa fa-tag " aria-hidden="true"><%= link_to t.name, tag_path(t.id)%>&nbsp;&nbsp;</i>						
+		<% end %>
+		</i></p>
+	</div>
 </div>
 
 <div class="container">
