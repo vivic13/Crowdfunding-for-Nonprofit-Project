@@ -5,7 +5,7 @@
 	<div class="col-md-6 text-center">
 		<% if @photos.present? %>
 			<div class="container">
-			  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+			  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 50%; ">
 			    <!-- Indicators -->
 			    <ol class="carousel-indicators">
 			      <% @photos.each_with_index do |outing, i| %>
@@ -36,7 +36,7 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="col-md-6 text-center">
+	<div class="col-md-6 text-center" style="margin-left: 18px; margin-right: -18px;">
 		<i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
 			募資截止日:
 		<%= @project.due_date%> <br><br>
