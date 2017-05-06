@@ -17,7 +17,11 @@
 <% @stories.each do |s| %>
 	<div class="col-md-12">
 	<div class="col-md-6">
-		<%= link_to image_tag(s.photofiles.first.image.url,class:"top")  %>
+		<% if s.photofiles.present? %>
+		<%= link_to image_tag(s.photofiles.first.image.url,class:"story")  %>
+		<% else %>
+			<%= image_tag "donation.png",class:"story"%>
+		<% end %>
 	</div>					
 	<div class="col-md-6">
 		<h3><%=truncate(s.title, length: 20)%></strong></h3>	
@@ -31,5 +35,7 @@
 </div>
 
 <style>
-
+	.story{
+		height: 300px;
+	}
 </style>

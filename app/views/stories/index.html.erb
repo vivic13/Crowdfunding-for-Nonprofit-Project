@@ -55,6 +55,8 @@
 				<% elsif s.youtube_link.present? %>
 					<% @link = "https://www.youtube.com/embed/" + s.youtube_code + "?autoplay=0" %>
 					<iframe id="ytplayer" type="text/html"   width="100%" height="150 px" src= "<%= @link %>" frameborder="0"></iframe>
+				<% else %>
+					<%= image_tag "donation.png",class:"story"%>
 				<% end %>
 			</div>
 			<div class="col-md-12 text-center ">
