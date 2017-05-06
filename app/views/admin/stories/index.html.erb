@@ -15,7 +15,12 @@
 				</tr> 
 				<tr>
 				  <td>
-					  時間：<%= s.story_time %> / 地點：<%= s.location %>
+					  地點：<%= truncate(s.location, length: 11)%> 
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+					  發布時間：<%= s.created_at %> 
 				  </td>
 				</tr>
 				<tr>
