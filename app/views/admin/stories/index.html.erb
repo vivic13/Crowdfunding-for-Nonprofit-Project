@@ -10,7 +10,7 @@
 			<table class="table table-bordered">		
 				<tr>
 					<th class="table-info text-center">
-					  標題: <%= s.title%>	/ 作者: <%= s.try(:author)%>
+					  標題: <%= truncate(s.title, length: 11)%>	/ 作者: <%= s.try(:author)%>
 					</th>
 				</tr> 
 				<tr>
@@ -31,5 +31,6 @@
 		
 			</table>
 		</div>
+		
 	<% end %>
 </div>
