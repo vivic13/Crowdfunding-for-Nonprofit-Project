@@ -1,18 +1,25 @@
-<% if @donation.errors.present?%>
-  <ul>
-        <% @donation.errors.each do |error, message|%>
-          <li> <%= "#{error.capitalize}  #{message}" %></li>
-        <% end %>
-  </ul>
-<% end%>
-
+<div class="container text-center">
+	<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i> <h1>填寫贊助資料</h1>
+</div>
+<div class="container text-center">
+	<% if @donation.errors.present?%>
+	  <ul>
+			<% @donation.errors.each do |error, message|%>
+	      <li> <%= "#{error.capitalize}  #{message}" %></li>
+	   <% end %>
+	  </ul>
+	<% end%>
+</div>
+<div class="container donations text-center">
 <%= form_for ([@project, @project.donations.build] ) do |f| %>  
-	<%= f.label :name,"捐款姓名:" %>
-	<%= f.text_field :name %>
-	<%= f.label :amount,"金額:" %>
-	<%= f.text_field :amount %>
-
+	<i class="fa fa-user-circle-o" aria-hidden="true"><%= f.label :name,"捐款姓名:" %></i> <br>
+	<%= f.text_field :name ,class:"field"%> <br><br> <br>
 	
-	<%= f.submit "送出" ,class:"btn-default"%> 
+	<i class="fa fa-usd" aria-hidden="true" ><%= f.label :amount,"金額(台幣):" %></i> <br>
+	<%= f.text_field :amount  ,class:"field" %> <br>
+	<br><br>
+	
+	<%= f.submit "送出" ,class:"btn-default pay"%> 
 
 <% end %> 
+</div>
