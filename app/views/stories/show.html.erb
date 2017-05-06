@@ -9,6 +9,9 @@
         &nbsp;<i class="fa fa-map-marker" aria-hidden="true"><%= @story.try(:location)%></i>  &nbsp;<i class="fa fa-clock-o" aria-hidden="true"><%= time_ago_in_words(@story.story_time)%></i>
     </h5>
   <% end %>
+  <div class="container text-center">
+    <%= social_share_button_tag(@story.title) %>
+  </div>
   <% if current_user.present? %>
     <% if @story.already_liked(current_user) %>   
       <%= button_to  unlike_story_path(@story), {:remote => true} do %>
