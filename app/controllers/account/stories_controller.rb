@@ -3,6 +3,7 @@ class Account::StoriesController < ApplicationController
 	before_action :find_story, only:[:show,:edit, :update, :destroy]
 
 	def index 
+		@page_title = "我的故事記錄"
 		if current_user.role != "admin"
 			@stories = Story.where(:author => current_user.name)
 		else
@@ -11,6 +12,7 @@ class Account::StoriesController < ApplicationController
 	end
 
 	def show 
+		@page_title = "故事內容"
 		@photos = @story.photofiles
 		@photos_count = @photos.count
 		if @story.youtube_link.present?
@@ -19,6 +21,7 @@ class Account::StoriesController < ApplicationController
 	end
 
 	def new
+		@page_title = "新增故事"
 		@story = @story = Story.new
 		5.times {@photofiles = @story.photofiles.build}
 	end
@@ -42,7 +45,8 @@ class Account::StoriesController < ApplicationController
 			end
 	end
 
-	def edit 
+	def edit
+		@page_title = "編輯故事" 
 		a = @story.photofiles.count
 		b = 5-a
 		b.times {@photofiles = @story.photofiles.build}
@@ -68,6 +72,7 @@ class Account::StoriesController < ApplicationController
 
 
   def liked
+  	@page_title = "我的按讚記錄"
   	@user = current_user
     @likes = Like.where(:user_id => current_user.id)
   end

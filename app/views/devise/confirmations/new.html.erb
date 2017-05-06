@@ -1,18 +1,19 @@
 <div class="container text-center">
 <h2>重發確認信說明</h2>
-
+</div>
+<div class="container text-center">
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
+  <div class="form-group">
+    <%= f.label :email,"請輸入您的註冊email" %><br />
     <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "重新發送認證信件" %>
+  <div class="form-group">
+    <%= f.submit "重新發送認證信件" ,class:"btn-2nd" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
 </div>

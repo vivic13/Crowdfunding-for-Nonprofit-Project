@@ -2,7 +2,8 @@ class StoriesController < ApplicationController
 	before_action :authenticate_user!, except:[:index,:show]
 	before_action :find_story, except:[:index]
 	
-	def index 	
+	def index
+		@page_title = "角落故事" 	
 		@top_story =  Story.where(:is_public => true,:priority => true).first
 		@stories =  Story.where(:is_public => true, :priority => false).order('created_at desc').page(params[:page]).per(8)
 
@@ -10,6 +11,7 @@ class StoriesController < ApplicationController
 
 
 	def show 
+		@page_title = "故事內容"
 		@comment_no = @story.comments_count
 		@comments = @story.comments.page(params[:page]).per(5)
 		if @comments.last_page?

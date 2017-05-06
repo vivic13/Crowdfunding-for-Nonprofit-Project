@@ -28,7 +28,8 @@
 		
 		<br>
 		<%= sanitize(s.content, :tags=>[]).truncate(200, :separator => " ").html_safe	 %>	<br><br>
-		<%= link_to "查看",story_path(s),class:"btn-2nd" %>	<br><br>	
+		<%= link_to "查看",account_story_path(s),class:"btn-2nd" %>	
+		<br><br>	
 	</div>
 	</div>
 <% end %>			

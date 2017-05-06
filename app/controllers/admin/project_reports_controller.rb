@@ -16,6 +16,7 @@ class Admin::ProjectReportsController < ApplicationController
     if @report.save
       redirect_to admin_project_report_url( @project )
     else
+      5.times {@report_photos = @report.report_photos.build}
       render :action => :new
     end
   end

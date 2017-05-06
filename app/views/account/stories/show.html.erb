@@ -1,5 +1,4 @@
 <div class="container text-center">
-
   <h1><%=truncate(@story.title, length: 20)%> </h1>
   <h6>作者: <%= @story.try(:author)%></h6>
   <% if @story.tags %>
@@ -8,6 +7,9 @@
        <%end%>  
         &nbsp;<i class="fa fa-map-marker" aria-hidden="true"><%= @story.try(:location)%></i>  &nbsp;<i class="fa fa-clock-o" aria-hidden="true"><%= time_ago_in_words(@story.story_time)%></i>
     </h5>
+    <%= link_to "編輯",edit_account_story_path(@story),class:"btn-2nd" %> 
+    <%= link_to "刪除", account_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn-2nd"%>
+
   <% end %>
   <div class="container text-center">
     <%= social_share_button_tag(@story.title) %>
@@ -74,6 +76,7 @@
 <div class="container">
   <h5>內容</h5>
   <p><%= sanitize(@story.content) %></p>
+  <h5>反思</h5>
   <p><%= sanitize(@story.try(:reflection)) %></p>
 </div>
 
