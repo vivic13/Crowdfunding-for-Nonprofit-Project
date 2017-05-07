@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
 	def show 
 		@page_title = "專案細節"
 		@project = Project.find(params[:id])
+		@days = (@project.due_date - Date.today).to_i
 		@people = @project.donations.count
 		@photos = @project.photos
 		@photos_count = @photos.count

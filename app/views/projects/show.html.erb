@@ -1,8 +1,9 @@
 <div class="container text-center">
 	<h3><%= @project.name %></h3>  
+	(倒數 <%= @days %> 天 )
 </div>
 <div class="container">
-	<div class="col-md-6 text-center ">
+	<div class="col-md-6 text-center " style ="margin-left: -20px; margin-right: 20px;">
 		<% if @photos.present? %>
 			<div class="container ">
 			  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 50%; ">
@@ -36,16 +37,21 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="col-md-6 text-center" style="margin-left: 18px; margin-right: -18px;">
-		<i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
-			募資截止日:
-		<%= @project.due_date%> <br><br>
- 
-		<i class="fa fa-usd fa-2x" aria-hidden="true"></i>已募資金額:NT$<%= @project.donation_amount %>/總共需募資金額:NT$<%= @project.total_amount %> 
-		<br><br>
+	<div class="col-md-6 text-center" style="margin-left: 20px; margin-right: -20px;">
+		<p class="strong"><i class="fa fa-calendar" aria-hidden="true"></i>   募資截止日:  <%= @project.due_date%></p>  <br>
+	
+
+		<p class="strong"><i class="fa fa-usd " aria-hidden="true"></i>   總共需募資金額:  NT$<%= @project.total_amount %> </p><br>
+		
+		<p class="strong"><i class="fa fa-usd " aria-hidden="true"></i>   已募資金額:  NT$<%= @project.donation_amount %></p> <br>
+		
+		<p class="strong"><i class="fa fa-spinner " aria-hidden="true"></i>募資進度: </p>
+		<div class="col-md-12 float-right">
 		<div class="progress">
 	  	<div class="progress-bar pb" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="<% @progress %>" aria-valuemin="0" aria-valuemax="100"><%= @progress %>%</div>
 	  </div>
+	  </div>
+
 		<% if @project.done == true ||  DateTime.now > @project.due_date  %>
 			<%= link_to '已結束募資，回到專案頁面', projects_path ,class:"btn-2nd"%>		
 		<% else %>
@@ -56,10 +62,19 @@
 </div>
 
 
-
 <div class=" container text-center project">
 	<h3> 專案內容: </h3>
 	<p><%= sanitize(@project.content) %></p>
+</div>
+
+<div class="container text-center">
+	<h4><i class="fa fa-asterisk" aria-hidden="true">故事標題：</i><%= @project.story_title %> </h4>
+	<p><%= sanitize(@project.story_content) %></p> 
+	
+</div>
+
+<div class="container text-center">
+	<%= link_to "我有比這個專案更好的意見" ,class:"btn-2nd"%>
 </div>
 
 <style>
@@ -79,6 +94,13 @@
     line-height: 1;
    }
 
+	.project {
+		min-height: 300px;
+	}
+
+	.strong{
+		font-size: 26px;
+	}
 
 
 </style>
