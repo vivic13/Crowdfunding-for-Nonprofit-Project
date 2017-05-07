@@ -1,16 +1,16 @@
 <div class="container text-center">
 	<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i><% if @donation.paid? %>
-	 <h3>謝謝您，捐款資訊如下：</h3> <br>
+	 <h3>謝謝您，贊助資訊如下：</h3> <br>
 		<% else %>
-		<h3>請選擇捐款方式</h3>
+		<h3>尚未付款，請至該專案贊助</h3>
 	 <% end %>
 </div>
 <div class="container donations text-center">
 		<div class="container table-bordered">
 			<br>
-			<p><i class="fa fa-user-circle-o" aria-hidden="true"> 捐款姓名：</p></i> <%= @donation.name %> <br><br>
-			<p><i class="fa fa-usd" aria-hidden="true" >捐款金額:</p></i>NT$<%= @donation.amount %> <br><br>
-			<p><i class="fa fa-money" aria-hidden="true">付款狀態：</p></i><%= @donation.payment_status %><br><br>
+			<p><i class="fa fa-user-circle-o" aria-hidden="true"> 贊助姓名：</p></i> <%= @donation.name %> <br><br>
+			<p><i class="fa fa-usd" aria-hidden="true" >贊助金額:</p></i>NT$<%= @donation.amount %> <br><br>
+			<p><i class="fa fa-money" aria-hidden="true">贊助狀態：</p></i><%= @donation.payment_status %><br><br>
 	
 		<% unless @donation.paid? || %>
 			<p><i class="fa fa-gift" aria-hidden="true">	付款方式:</p></i>

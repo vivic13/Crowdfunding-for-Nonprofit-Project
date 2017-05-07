@@ -12,14 +12,14 @@
 </div>
 <div class="container donations text-center">
 <%= form_for ([@project, @project.donations.build] ) do |f| %>  
-	<i class="fa fa-user-circle-o" aria-hidden="true"><%= f.label :name,"捐款姓名:" %></i> <br>
+	<i class="fa fa-user-circle-o" aria-hidden="true"><%= f.label :name,"贊助姓名:" %></i> <br>
 	<%= f.text_field :name ,class:"field"%> <br><br> <br>
 	
 	<i class="fa fa-usd" aria-hidden="true" ><%= f.label :amount,"金額(台幣):" %></i> <br>
 	<%= f.text_field :amount  ,class:"field" %> <br>
 	<br><br>
 	
-	<%= f.submit "送出" ,class:"btn-default pay"%> 
+	<%= f.submit "下ㄧ步" ,class:"btn-default pay"%> 
 
 <% end %> 
 </div>
