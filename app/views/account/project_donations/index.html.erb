@@ -13,7 +13,7 @@
 </div>
 
 
-<div class="container">
+<div class="container record">
 	<% @donations.each do |donation| %>
 		<div class="col-md-6 text-center">
 			<table class="table table-bordered">		
@@ -40,3 +40,9 @@
 		</div>
 	<% end %>
 </div>
+
+<style>
+	.record{
+		min-height: 600px;
+	}
+</style>

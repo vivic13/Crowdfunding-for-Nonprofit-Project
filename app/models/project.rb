@@ -11,6 +11,10 @@ class Project < ApplicationRecord
 		self.story.title
 	end
 
+	def story_content
+		self.story.content
+	end
+
 	def progress 
 		(self.donation_amount.to_f/self.total_amount)*100
 	end
