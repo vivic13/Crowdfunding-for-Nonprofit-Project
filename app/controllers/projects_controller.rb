@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
 	def index
-		@page_title = "募資專案"
+		@page_title = "專案"
 		@projects = Project.where(:is_public => true)
 		
 	end
