@@ -7,6 +7,6 @@
 json.stories do |storiesElement|
   storiesElement.array!(@stories) do |story|
     json.extract! story, :id, :title, :content
-    json.image image_path(story.photofiles.first.image.url)
+    json.image image_path(story.try(:photofiles).first.image.url)
   end
 end
