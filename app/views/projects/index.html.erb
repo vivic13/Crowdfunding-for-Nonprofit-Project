@@ -18,8 +18,8 @@
 	<div class="col-md-12 text-center thead-inverse ">
 		<h3 ><%=truncate(p.name, length: 20)%></strong></h3>	<hr>
 	</div>
-	<div class="col-md-12">
-		<%= link_to image_tag(p.photos.first.image.url,class:"top")  %>
+	<div class="col-md-12" >
+		<%= link_to image_tag(p.photos.first.image.url,class:"top ")  %>
 	</div>					
 	<div class="col-md-12 text-center">
 		<% @people = p.donations.count %>	
@@ -43,6 +43,9 @@
 <style>
 	.container{
 		margin-top: 20px;
+	}
+	.top{
+		height: 250px;
 	}
 </style>
 

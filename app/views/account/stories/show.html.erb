@@ -8,12 +8,12 @@
         &nbsp;<i class="fa fa-map-marker" aria-hidden="true"><%= @story.try(:location)%></i>  &nbsp;<i class="fa fa-clock-o" aria-hidden="true"><%= time_ago_in_words(@story.story_time)%></i>
     </h5>
     <%= link_to "編輯",edit_account_story_path(@story),class:"btn-2nd" %> 
-    <%= link_to "刪除", account_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn-2nd"%>
+    <%= link_to "刪除", account_story_path(@story) ,method: :delete, data:{ confirm: "Are you sure?"} ,class: "btn-2nd"%><br><br>
 
   <% end %>
-  <div class="container text-center">
+  
     <%= social_share_button_tag(@story.title) %>
-  </div>
+
   <% if current_user.present? %>
     <% if @story.already_liked(current_user) %>   
       <%= button_to  unlike_story_path(@story), {:remote => true} do %>
@@ -44,12 +44,12 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <%= link_to image_tag(@photos.first.image.url(:medium),class:"story")%>
+        <%= link_to image_tag(@photos.first.image.url,class:"story")%>
       </div>
       <% if @photos_count >= 1 %>       
         <% @story.photofiles.drop(1).each do |p| %>
           <div class="item">
-            <%= link_to image_tag(p.image.url(:medium),class:"story")%>
+            <%= link_to image_tag(p.image.url,class:"story")%>
           </div>
         <% end %>
       <% end %>      
@@ -88,11 +88,11 @@
 <style>
   .carousel {
     width: 100%;
-    height: 350px;
+    height: 550px;
   }
   .carousel-inner {
     width: 100%;
-    height: 350px;
+    height: 550px;
   }
 
   .carousel-inner > .item > img, .carousel-inner > .item > a > img {
