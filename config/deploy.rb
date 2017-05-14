@@ -2,9 +2,9 @@
 # config valid only for current version of Capistrano
 lock "3.8.0"
 
-set :application, "getlucky"
-set :repo_url, "git@github.com:vivic13/get_lucky_project.git"
-set :deploy_to, '/home/deploy/getlucky' #遠端資料夾路徑
+set :application, "taiwanmega"
+set :repo_url, "git@github.com:vivic13/Crowdfunding-for-Nonprofit-Project.git"
+set :deploy_to, '/home/deploy2/taiwanmega' #遠端資料夾路徑
 set :keep_releases, 5
 
 # Default branch is :master
