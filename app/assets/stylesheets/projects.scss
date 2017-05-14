@@ -13,4 +13,28 @@
 	.project{
 		min-height: 400px;
 	}
+.carousel {
+    width: 100%;
+    height: 300px;
+  }
+  .carousel-inner {
+    width: 100%;
+    height: 300px;
+  }
+
+  .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: 300px;
+    line-height: 1;
+   }
+
+	.project {
+		min-height: 300px;
+	}
+
+	.strong{
+		font-size: 26px;
+	}
+
 
