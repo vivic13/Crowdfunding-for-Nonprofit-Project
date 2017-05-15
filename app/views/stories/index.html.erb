@@ -24,20 +24,9 @@
 	</div>					
 	<div class="col-md-6">
 		<h3><%=truncate(@top_story.title, length: 20)%></strong></h3>	
-		<% if current_user.present? %>
-	      <% if @top_story.already_liked(current_user) %>      
-	        <%= button_to  unlike_story_path(@top_story) , {:remote => true} do %>
-	        		<i class="fa fa-heart " aria-hidden="true"><%= @top_story.like_count %></i>
-					<%end %>
-	      <%else%>      
-	        <%= button_to like_story_path(@top_story) , {:remote => true} do%>
-	        	<i class="fa fa-heart-o " aria-hidden="true"><%= @top_story.like_count %>
-	        	</i>
-	        <%end%>
-	      <% end %>
-	   <% else %>
-				<i class="fa fa-heart-o " aria-hidden="true"><%= @top_story.like_count %> <small>登入按讚</samll></i>
-		<% end %>		
+
+		<i>目前按讚數:<%= @top_story.like_count %></i>
+	
 		<br>
 		<%= sanitize(@top_story.content, :tags=>[]).truncate(200, :separator => " ").html_safe	 %>	<br><br>
 		<%= link_to "閱讀更多",story_path(@top_story),class:"btn-2nd" %>	<br><br>	
@@ -60,20 +49,9 @@
 			</div>
 			<div class="col-md-12 text-center ">
 				<h4><%=truncate(s.title, length: 11)%></h4>
-				<% if current_user.present? %>
-		      <% if s.already_liked(current_user) %>
-		        <%= button_to  unlike_story_path(s) , {:remote => true} do %>
-		        		<i class="fa fa-heart" aria-hidden="true"><%= s.like_count %></i>
-						<%end %>
-		      <%else%>      
-		        <%= button_to like_story_path(s) , {:remote => true} do%>
-		        	<i class="fa fa-heart-o" aria-hidden="true"><%= s.like_count %>
-		        	</i>
-		        <%end%>
-		  		<% end %>
-		  	<% else %>
-						<i class="fa fa-heart-o" aria-hidden="true"><%= s.like_count %> <small>登入按讚</small></i> <br>
-				<% end %>
+				
+				<i>目前按讚數:<%= s.like_count %></i> <br>
+
 	
 				<%= sanitize(s.content, :tags=>[]).truncate(90, :separator => " ").html_safe	 %>	<br><br><%= link_to "閱讀更多",story_path(s) ,class:"btn-2nd"%> <br><br>
 		

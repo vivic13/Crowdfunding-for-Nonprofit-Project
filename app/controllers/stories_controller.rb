@@ -6,7 +6,10 @@ class StoriesController < ApplicationController
 		@page_title = "故事牆" 	
 		@top_story =  Story.where(:is_public => true,:priority => true).first
 		@stories =  Story.where(:is_public => true, :priority => false).order('created_at desc').page(params[:page]).per(8)
-
+		respond_to do |format|
+			format.html {@page_title = "故事牆" }
+			format.js
+		end	
 	end
 
 
@@ -25,6 +28,10 @@ class StoriesController < ApplicationController
 		if @story.youtube_link.present?
 			@link = "https://www.youtube.com/embed/" + @story.youtube_code + "?autoplay=0"
 		end
+		respond_to do |format|
+			format.html {@page_title = @story.title }
+			format.js
+		end		
 	end
 
 	def like 	
