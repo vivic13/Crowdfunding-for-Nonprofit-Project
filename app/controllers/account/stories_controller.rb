@@ -5,9 +5,9 @@ class Account::StoriesController < ApplicationController
 	def index 
 		@page_title = "我的故事記錄"
 		if current_user.role != "admin"
-			@stories = Story.where(:author => current_user.name)
+			@stories = Story.where(:author => current_user.name).page(params[:page]).per(8)
 		else
-			@stories = Story.where(:author => "小編")
+			@stories = Story.where(:author => "小編").page(params[:page]).per(8)
 		end
 	end
 
@@ -74,7 +74,7 @@ class Account::StoriesController < ApplicationController
   def liked
   	@page_title = "我的按讚記錄"
   	@user = current_user
-    @likes = Like.where(:user_id => current_user.id)
+    @likes = Like.where(:user_id => current_user.id).page(params[:page]).per(8)
   end
 
   protected

@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
 	def index
 		@page_title = "專案"
-		@projects = Project.where(:is_public => true)
+		@projects = Project.where(:is_public => true).page(params[:page]).per(4)
 		
 	end
 
