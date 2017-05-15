@@ -37,6 +37,7 @@
 <div class="container  ">
 	<% @stories.each do |s| %>
 		<div class="col-md-4">
+		
 			<div class="col-md-12">
 				<%if s.photofiles.present? %>
 					<%= link_to image_tag(s.photofiles.first.image.url,class:"story")%>
