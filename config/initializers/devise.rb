@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'luckybuy@gmail.com'
+  config.mailer_sender = 'meettheworldvivic@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -274,5 +274,7 @@ Devise.setup do |config|
   fb_config = Rails.application.config_for(:facebook)
 
   config.omniauth :facebook, fb_config["app_id"], fb_config["secret"],
-                  :scope => 'public_profile,email', :info_fields => 'email,name'
+                  :scope => 'public_profile,email', :info_fields => 'email,name', callback_url: "https://taiwanmega.life/users/auth/facebook/callback"
+
+
 end
